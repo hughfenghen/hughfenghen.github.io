@@ -1,6 +1,6 @@
 # 基于vue directive实现声明式埋点方案
 
-**注：本方案依赖[vue](https://github.com/vuejs/vue)、[lazyload](https://github.com/aFarkas/lazysizes)(曝光事件：lazybeforeunveil)**
+**注：本方案依赖[vue](https://github.com/vuejs/vue)、[lazysizes](https://github.com/aFarkas/lazysizes)(曝光事件：lazybeforeunveil)**
 
 ## 传统埋点 vs 声明式埋点
 
