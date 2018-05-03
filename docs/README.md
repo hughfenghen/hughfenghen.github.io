@@ -1,3 +1,5 @@
-# 风痕的博客
+# 術 & 思
 
-记录技术、笔记、随想等
+Mail: <a href="mailto:hughfenghen@gmail.com">hughfenghen@gmail.com</a>
+
+[CSDN 旧博客](https://blog.csdn.net/lj745280746)
