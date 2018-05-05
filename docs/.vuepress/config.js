@@ -10,6 +10,7 @@ module.exports = {
         children: [
           '/fe/vue-directive-track',
           '/fe/cljs-node-hotreload',
+          '/fe/bug1-safari10',
         ]
       }, {
         title: '笔记',
