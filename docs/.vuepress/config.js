@@ -7,7 +7,8 @@ module.exports = {
         title: '前端',
         collapsable: false,
         children: [
-          '/fe/vue-directive-track'
+          '/fe/vue-directive-track',
+          '/fe/cljs-node-hotreload',
         ]
       }, {
         title: '笔记',
