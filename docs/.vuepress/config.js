@@ -16,6 +16,7 @@ module.exports = {
         title: '笔记',
         collapsable: false,
         children: [
+          '/think/dao',
         ]
       }, {
         title: '随想',
