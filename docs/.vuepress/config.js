@@ -1,6 +1,7 @@
 module.exports = {
   title: '风痕的博客',
   description: '...',
+  ga: 'UA-118782515-1',
   themeConfig: {
     sidebar: {
       '/': [{
