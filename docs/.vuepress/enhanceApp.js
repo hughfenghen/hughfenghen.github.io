@@ -16,9 +16,11 @@ function integrateGitment(router) {
         const commentsContainer = document.createElement('div')
         commentsContainer.id = 'comments-container'
         commentsContainer.classList.add('content')
-        document.querySelector('.page').appendChild(commentsContainer)
-
-        renderGitment(to.fullPath)
+        const $page = valuedocument.querySelector('.page')
+        if ($page) {
+          $page.appendChild(commentsContainer)
+          renderGitment(to.fullPath)
+        }
       }
     }
   })
