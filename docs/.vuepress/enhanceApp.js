@@ -48,7 +48,23 @@ export default ({
   try {
     // 生成静态页时在node中执行，没有document对象
     document && integrateGitment(router)
+
+    addSiteMap(siteData, router)
   } catch (e) {
     console.error(e.message)
   }
+}
+
+function addSiteMap(siteData, router) {
+  const links = siteData.pages.filter(({path}) => /\.html$/.test(path))
+    .map(({path, title}) => ['a', { attrs: { href: path } }, title])
+  router.addRoutes(
+    [{
+      path: '/site-map/',
+      component: {
+        render(h) {
+          return h('div', null, links.map(link => h(...link)))
+        }
+      }
+    }]);
 }
