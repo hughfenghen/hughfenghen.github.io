@@ -11,6 +11,7 @@ module.exports = {
           '/fe/vue-directive-track',
           '/fe/cljs-node-hotreload',
           '/fe/bug1-safari10',
+          '/fe/vuepress-gitment',
         ]
       }, {
         title: '笔记',

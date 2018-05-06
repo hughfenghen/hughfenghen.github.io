@@ -43,8 +43,8 @@ export default ({
   router, // 当前应用的路由实例
   siteData // 站点元数据
 }) => {
-  // ...做一些其他的应用级别的优化
   try {
+    // 生成静态页时在node中执行，没有document对象
     document && integrateGitment(router)
   } catch (e) {
     console.error(e.message)
