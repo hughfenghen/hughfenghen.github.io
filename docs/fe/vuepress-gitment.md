@@ -43,7 +43,7 @@ function integrateGitment(router) {
         const commentsContainer = document.createElement('div')
         commentsContainer.id = 'comments-container'
         commentsContainer.classList.add('content')
-        const $page = valuedocument.querySelector('.page')
+        const $page = document.querySelector('.page')
         if ($page) {
           $page.appendChild(commentsContainer)
           renderGitment(to.fullPath)
