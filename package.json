@@ -2,7 +2,9 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:deploy": "./docs/deploy.sh"
+    "docs:deploy-github": "yarn docs:build && ./docs/deploy-github.sh",
+    "docs:deploy-coding": "VP_DEPLOY_ENV=coding.net yarn docs:build && ./docs/deploy-coding.sh",
+    "docs:deploy": "yarn docs:deploy-github && yarn docs:deploy-coding"
   },
   "devDependencies": {
     "vuepress": "^0.8.4"
