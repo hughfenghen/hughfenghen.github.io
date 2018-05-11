@@ -1,12 +1,15 @@
 {
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy-github": "yarn docs:build && ./docs/deploy-github.sh",
-    "docs:deploy-coding": "VP_DEPLOY_ENV=coding.net yarn docs:build && ./docs/deploy-coding.sh",
-    "docs:deploy": "yarn docs:deploy-github && yarn docs:deploy-coding"
+    "dev": "vuepress dev docs",
+    "gen-site-map": "node ./docs/.build/gen-site-map.js",
+    "push-baidu": "curl -H 'Content-Type:text/plain' --data-binary @'./docs/.vuepress/public/site-map.txt'  'http://data.zz.baidu.com/urls?site=fenghen.xyz&token=nqqbIIvUQ0XppZCk'",
+    "build": "vuepress build docs && yarn gen-site-map",
+    "deploy-github": "yarn build && ./docs/deploy-github.sh",
+    "deploy-coding": "VP_DEPLOY_ENV=coding.net yarn build && ./docs/deploy-coding.sh && yarn push-baidu",
+    "deploy": "yarn deploy-github && yarn deploy-coding"
   },
   "devDependencies": {
+    "lodash": "^4.17.10",
     "vuepress": "^0.8.4"
   }
 }
