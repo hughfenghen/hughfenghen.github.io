@@ -33,3 +33,6 @@ https://www.w3cplus.com/css/what-no-one-told-you-about-z-index.html
 ## Linux下批量Kill多个进程的方法
 `ps -ef | grep LOCAL=NO | grep -v grep | cut -c 9-15 | xargs kill -9`  
 `ps -ef | grep Symantec | grep -v grep | cut -c 6-11 | xargs sudo kill -9`
+
+## ios10 flex布局 高度设置100%时 实际为0
+https://bugs.webkit.org/show_bug.cgi?id=137730
