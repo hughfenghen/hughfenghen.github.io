@@ -1,7 +1,7 @@
-http://fenghen.xyz/fe/vue-directive-track.html
-http://fenghen.xyz/fe/bug1-safari10.html
-http://fenghen.xyz/fe/vuepress-gitment.html
-http://fenghen.xyz/clojure/cljs-node-hotreload.html
-http://fenghen.xyz/clojure/cljs-transient-performance.html
-http://fenghen.xyz/clojure/shadow-cljs-proto-repl.html
-http://fenghen.xyz/think/dao.html
+http://hughfenghen.github.com/fe/vue-directive-track.html
+http://hughfenghen.github.com/fe/bug1-safari10.html
+http://hughfenghen.github.com/fe/vuepress-gitment.html
+http://hughfenghen.github.com/clojure/cljs-node-hotreload.html
+http://hughfenghen.github.com/clojure/cljs-transient-performance.html
+http://hughfenghen.github.com/clojure/shadow-cljs-proto-repl.html
+http://hughfenghen.github.com/think/dao.html
