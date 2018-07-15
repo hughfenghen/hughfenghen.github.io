@@ -13,9 +13,16 @@ module.exports = {
         collapsable: false,
         children: [
           '/fe/vue-directive-track',
-          '/fe/cljs-node-hotreload',
           '/fe/bug1-safari10',
           '/fe/vuepress-gitment',
+        ]
+      }, {
+        title: 'clojure',
+        collapsable: false,
+        children: [
+          '/clojure/cljs-node-hotreload',
+          '/clojure/cljs-transient-performance',
+          '/clojure/shadow-cljs-proto-repl',
         ]
       }, {
         title: '笔记',
