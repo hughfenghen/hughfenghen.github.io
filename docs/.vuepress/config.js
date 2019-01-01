@@ -38,6 +38,8 @@ module.exports = {
         collapsable: false,
         children: [
           '/think/dao',
+          '/think/qin/qin',
+          '/think/interview',
         ]
       }],
     }
