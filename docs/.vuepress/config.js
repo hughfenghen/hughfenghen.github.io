@@ -12,6 +12,9 @@ module.exports = {
         title: '前端',
         collapsable: false,
         children: [
+          '/fe/lodash-fp',
+          '/fe/react-hooks',
+          '/fe/modularization',
           '/fe/vue-directive-track',
           '/fe/bug1-safari10',
           '/fe/vuepress-gitment',

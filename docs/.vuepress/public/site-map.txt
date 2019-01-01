@@ -1,6 +1,7 @@
 https://hughfenghen.github.com/fe/vue-directive-track.html
 https://hughfenghen.github.com/fe/bug1-safari10.html
 https://hughfenghen.github.com/fe/vuepress-gitment.html
+https://hughfenghen.github.com/fe/thinking-miniprogram.html
 https://hughfenghen.github.com/clojure/cljs-node-hotreload.html
 https://hughfenghen.github.com/clojure/cljs-transient-performance.html
 https://hughfenghen.github.com/clojure/shadow-cljs-proto-repl.html
