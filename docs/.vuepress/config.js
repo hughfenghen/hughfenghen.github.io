@@ -15,6 +15,7 @@ module.exports = {
           '/fe/vue-directive-track',
           '/fe/bug1-safari10',
           '/fe/vuepress-gitment',
+          '/fe/thinking-miniprogram',
         ]
       }, {
         title: 'clojure',
