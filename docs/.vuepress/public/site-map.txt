@@ -1,5 +1,5 @@
 https://hughfenghen.github.com/fe/lodash-fp.html
-https://hughfenghen.github.com/fe/react-hooks.html
+https://hughfenghen.github.com/fe/react-hooks/index.html
 https://hughfenghen.github.com/fe/modularization.html
 https://hughfenghen.github.com/fe/vue-directive-track.html
 https://hughfenghen.github.com/fe/bug1-safari10.html
