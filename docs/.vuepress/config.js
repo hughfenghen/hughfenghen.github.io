@@ -13,7 +13,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/fe/lodash-fp',
-          '/fe/react-hooks',
+          '/fe/react-hooks/index',
           '/fe/modularization',
           '/fe/vue-directive-track',
           '/fe/bug1-safari10',
