@@ -9,7 +9,7 @@ const siteMap = pipe(
   flatten,
   map(get('children')),
   flatten,
-  map(add('https://hughfenghen.github.com')),
+  map(add('https://hughfenghen.github.io')),
   map(add(__, '.html')),
 )(vpCfg)
 
