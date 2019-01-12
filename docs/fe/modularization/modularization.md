@@ -132,4 +132,4 @@ Page.asyncData = function({ store, route }) {
 由于所有异步模块（Vue组件）将单独获取，可能产生较多的请求，对前端性能有一定影响。  
 可以配合service worker与缓存 + http2能最大限度降低影响。  
 
-[demo代码下载](./modularization.zip)
+[demo代码下载](https://github.com/hughfenghen/hughfenghen.github.io/blob/blog/docs/fe/modularization/modularization.zip)
