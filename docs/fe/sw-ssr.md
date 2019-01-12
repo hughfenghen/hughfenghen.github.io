@@ -29,6 +29,8 @@ sw提供的接口，页面在发起时最好添加域名（api域名可能跟页
 
 ### bug
 update to reload 不生效
-  websocket 卡住
+  因websocket 卡住
 多tabs 切换状态干扰
 chrome dev tool  timestamp显示错误
+sw 热更新可能不生效
+safari 启动时 离线打开页面，sw不能接管页面

@@ -1,6 +1,6 @@
 https://hughfenghen.github.com/fe/lodash-fp.html
 https://hughfenghen.github.com/fe/react-hooks/react-hooks.html
-https://hughfenghen.github.com/fe/modularization.html
+https://hughfenghen.github.com/fe/modularization/modularization.html
 https://hughfenghen.github.com/fe/vue-directive-track.html
 https://hughfenghen.github.com/fe/bug1-safari10.html
 https://hughfenghen.github.com/fe/vuepress-gitment.html

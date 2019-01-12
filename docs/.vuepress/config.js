@@ -14,7 +14,7 @@ module.exports = {
         children: [
           '/fe/lodash-fp',
           '/fe/react-hooks/react-hooks',
-          '/fe/modularization',
+          '/fe/modularization/modularization',
           '/fe/vue-directive-track',
           '/fe/bug1-safari10',
           '/fe/vuepress-gitment',
