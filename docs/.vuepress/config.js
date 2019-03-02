@@ -19,6 +19,7 @@ module.exports = {
           '/fe/bug1-safari10',
           '/fe/vuepress-gitment',
           '/fe/thinking-miniprogram',
+          '/fe/sw-ssr/sw-ssr',
         ]
       }, {
         title: 'clojure',

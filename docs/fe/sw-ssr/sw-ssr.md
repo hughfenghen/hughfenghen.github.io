@@ -1,6 +1,6 @@
 # 同构项目 Service Worker 离线化实践
 
-> *阅读本文需要相关知识储备*：  [Service Worker 生命周期](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle?hl=zh-cn)、[workbox](https://github.com/GoogleChrome/workbox)、前端同构渲染  
+> *阅读本文需要相关知识储备*：  [Service Worker 生命周期](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle?hl=zh-cn)、[Workbox](https://github.com/GoogleChrome/workbox)、前端同构渲染  
 
 ## 背景
 
@@ -19,19 +19,17 @@
   - 如何清除失效缓存  
 * 如何解决同构项目特有问题（问题较复杂，后文详细描述）  
 
-### 方案
-
-设计图  
+用一张图来描述大致的方案  
 ![](./ssr-design.png)
 
-#### 缓存管理
+### 缓存管理
 针对缓存管理的问题，决定以workbox为基础来实现。  
 使用的workbox提供的 [workbox-webpack-plugin](https://developers.google.com/web/tools/workbox/guides/generate-service-worker/webpack)、[Precache Files](https://developers.google.com/web/tools/workbox/guides/precache-files/)、[Route Requests](https://developers.google.com/web/tools/workbox/guides/route-requests) 功能，然后再在其上编写动态资源、缓存清除逻辑，缓存关的问题基本上都解决了。  
 大致步骤如下：   
 1. 集成workbox-webpack-plugin插件到构建流程，`workboxPlugin.GenerateSW`生成precache-manifest文件(包含所有静态资源的路径)  
 1. 避免占用太多空间、节省流量等原因，只预缓存项目公共资源 `workbox.precaching.precacheAndRoute(self.__precacheManifest.filter(/* 自定义规则 */))`，SW每次install会增量获取有更新的资源  
 1. `workbox.routing.registerRoute`拦截并缓存需离线访问页面的动态请求  
-    * 如何缓存通过接口获取的头图url？  
+    * 如何缓存通过接口获取的头图url？`registerRoute`注册一个特殊路由，获取到头图url之后发送给SW，SW发起图片请求缓存Response。  
       ```js
       // service worker js
       workbox.routing.registerRoute(/sw-api\/cache-static-res/, () => {
@@ -51,7 +49,7 @@
 1. 非公共资源，按页面缓存到Cache Storage对应的key（根据页面生成）下，当页面达到一定数量则清除最老的页面缓存  
     * 如何获取到最旧的页面缓存？可以在每个页面对应的key下创建一个时间戳缓存项，页面每次访问时都更新时间戳 `cache.put('update-timestamp', new Response(Date.now())`  
 
-#### 同构项目特有问题  
+### 同构项目特有问题  
 
 **背景：不同渲染模式的差异**  
 * 纯Server端渲染，每访问一个页面，Server请求**页面初始化接口(init request)**，渲染完成后直接返回一个完整的已初始化的html文档。  
@@ -72,7 +70,7 @@
 1. 构建骨架html，其中引入必要的js、css。离线打开页面时返回骨架html，作为入口启动Client渲染。  
 1. Server端渲染请求的init request想办法传递到Client，由SW缓存起来。  
 
-##### 构建骨架html
+#### 构建骨架html
 1. 创建一个shell.html，留下两个标记用来注入页面依赖的js、css url  
     ```html
     <html>
@@ -133,7 +131,7 @@
     }
     ```
 
-##### 缓存init request
+#### 缓存init request
 1. 拦截所有Server发送的页面必要的请求。（主流的api库都提供interceptor功能）  
     ```js
     const INIT_REQUESTS = []
