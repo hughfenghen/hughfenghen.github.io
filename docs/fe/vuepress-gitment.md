@@ -37,7 +37,7 @@ function integrateGitment(router) {
   router.afterEach((to) => {
     // 已被初始化则根据页面重新渲染 评论区
     if (scriptGitment.onload) {
-      renderGitment(to.fullPath)
+      renderGitment()
     } else {
       scriptGitment.onload = () => {
         const commentsContainer = document.createElement('div')
@@ -46,17 +46,20 @@ function integrateGitment(router) {
         const $page = document.querySelector('.page')
         if ($page) {
           $page.appendChild(commentsContainer)
-          renderGitment(to.fullPath)
+          renderGitment()
         }
       }
     }
   })
 
-  function renderGitment(fullPath) {
+  function renderGitment() {
     const gitment = new Gitment({
-      id: fullPath,
+      // ！！！ID最好不要使用默认值（location.href），因为href会携带hash，可能导致一个页面对应像个评论issue！！！
+      // https://github.com/imsun/gitment/issues/55
+      id: location.pathname,
       owner: 'xxx', // 必须是你自己的github账号
       repo: 'xxx', // 上一个准备的github仓库
+      link: location.origin + location.pathname,
       oauth: {
         client_id: 'xxx', // 第一步注册 OAuth application 后获取到的 Client ID
         client_secret: 'xxx', // 第一步注册 OAuth application 后获取到的 Clien Secret
@@ -87,7 +90,7 @@ export default ({
 部署项目，如果还未部署[参考文档](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages)
 
 ## 初始化页面评论区
-部署之后，每一个页面的评论区需要管理员（new Giement 时填写的owner）进行初始化。
+部署之后，每一个页面的评论区需要管理员（new Giement 时填写的owner）进行初始化。  
 
 ## 需要注意的事项
 * VuePress构建的时候，在node中执行代码生成各个页面的时候，**此时document为undefined，所以写在try...catch块中**，构建时必然会执行到catch块代码。目前没找到环境检测方法。

@@ -27,9 +27,10 @@ function integrateGitment(router) {
 
   function renderGitment(fullPath) {
     const gitment = new Gitment({
-      id: fullPath,
+      id: location.pathname,
       owner: 'hughfenghen',
       repo: 'hughfenghen.github.io',
+      link: location.origin + location.pathname,
       oauth: {
         client_id: 'e157002b5da973611b6c',
         client_secret: 'c8659321b3c44cf1cc4f429a067d99d681bdb9e1',
