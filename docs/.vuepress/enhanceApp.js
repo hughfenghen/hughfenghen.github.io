@@ -7,7 +7,9 @@ function integrateGitment(router) {
   scriptGitment.src = 'https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js'
   document.body.appendChild(scriptGitment)
 
-  router.afterEach((to) => {
+  router.afterEach((to, from) => {
+    // 页面滚动，hash值变化，也会触发afterEach钩子，避免重新渲染
+    if (to.path === from.path) return
     // 已被初始化则根据页面重新渲染 评论区
     if (scriptGitment.onload) {
       renderGitment(to.fullPath)

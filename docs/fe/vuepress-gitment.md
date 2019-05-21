@@ -6,7 +6,7 @@ VuePress官方正在开发针对博客的优化功能[Blog Support roadmap](http
 
 在官方之前，大家也可以参考本文为自己的博客/文档添加评论模块。
 
-本文采用**Gitmen**作为示例，效果看文章底部。如果想继承其它第三方模块，本文代码也有一定参考性。
+本文采用**Gitmen**作为示例，效果看文章底部。如果想集成其它第三方模块，本文代码也有一定参考性。
 **注意：Gitmen要求用户登录github才能评论**
 
 ## 注册 OAuth application
@@ -59,7 +59,7 @@ function integrateGitment(router) {
       id: location.pathname,
       owner: 'xxx', // 必须是你自己的github账号
       repo: 'xxx', // 上一个准备的github仓库
-      link: location.origin + location.pathname,
+      link: location.origin + location.pathname, // 需要配置该项，默认link会把hash也带上，一个页面可能对应多个hash，不能对应多个评论
       oauth: {
         client_id: 'xxx', // 第一步注册 OAuth application 后获取到的 Client ID
         client_secret: 'xxx', // 第一步注册 OAuth application 后获取到的 Clien Secret
