@@ -35,6 +35,8 @@ function integrateGitment(router) {
   document.body.appendChild(scriptGitment)
 
   router.afterEach((to) => {
+    // 页面滚动，hash值变化，也会触发afterEach钩子，避免重新渲染
+    if (to.path === from.path) return
     // 已被初始化则根据页面重新渲染 评论区
     if (scriptGitment.onload) {
       renderGitment()
@@ -59,7 +61,7 @@ function integrateGitment(router) {
       id: location.pathname,
       owner: 'xxx', // 必须是你自己的github账号
       repo: 'xxx', // 上一个准备的github仓库
-      link: location.origin + location.pathname, // 需要配置该项，默认link会把hash也带上，一个页面可能对应多个hash，不能对应多个评论
+      link: location.origin + location.pathname,
       oauth: {
         client_id: 'xxx', // 第一步注册 OAuth application 后获取到的 Client ID
         client_secret: 'xxx', // 第一步注册 OAuth application 后获取到的 Clien Secret
