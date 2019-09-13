@@ -20,6 +20,7 @@ module.exports = {
           '/fe/vuepress-gitment',
           '/fe/thinking-miniprogram',
           '/fe/sw-ssr/sw-ssr',
+          '/fe/run-web-project-in-termux',
         ]
       }, {
         title: 'clojure',

@@ -6,6 +6,7 @@ https://hughfenghen.github.io/fe/bug1-safari10.html
 https://hughfenghen.github.io/fe/vuepress-gitment.html
 https://hughfenghen.github.io/fe/thinking-miniprogram.html
 https://hughfenghen.github.io/fe/sw-ssr/sw-ssr.html
+https://hughfenghen.github.io/fe/run-web-project-in-termux.html
 https://hughfenghen.github.io/clojure/cljs-node-hotreload.html
 https://hughfenghen.github.io/clojure/cljs-transient-performance.html
 https://hughfenghen.github.io/clojure/shadow-cljs-proto-repl.html
