@@ -34,7 +34,7 @@ function integrateGitment(router) {
   scriptGitment.src = 'https://imsun.github.io/gitment/dist/gitment.browser.js'
   document.body.appendChild(scriptGitment)
 
-  router.afterEach((to) => {
+  router.afterEach((to, from) => {
     // 页面滚动，hash值变化，也会触发afterEach钩子，避免重新渲染
     if (to.path === from.path) return
     // 已被初始化则根据页面重新渲染 评论区
