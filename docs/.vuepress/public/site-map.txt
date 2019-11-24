@@ -10,6 +10,7 @@ https://hughfenghen.github.io/fe/run-web-project-in-termux.html
 https://hughfenghen.github.io/clojure/cljs-node-hotreload.html
 https://hughfenghen.github.io/clojure/cljs-transient-performance.html
 https://hughfenghen.github.io/clojure/shadow-cljs-proto-repl.html
+https://hughfenghen.github.io/other/https-brief/https-brief.html
 https://hughfenghen.github.io/think/dao.html
 https://hughfenghen.github.io/think/qin/qin.html
 https://hughfenghen.github.io/think/interview.html

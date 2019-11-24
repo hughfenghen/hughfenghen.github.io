@@ -7,6 +7,12 @@ module.exports = {
   //   ? '/hughfenghen.github.io/'
   //   : '/',
   themeConfig: {
+    nav: [{
+      text: 'GitHub',
+      link: 'https://github.com/hughfenghen',
+      target: '_self',
+      rel: '',
+    }],
     sidebar: {
       '/': [{
         title: '前端',
@@ -31,9 +37,10 @@ module.exports = {
           '/clojure/shadow-cljs-proto-repl',
         ]
       }, {
-        title: '笔记',
+        title: '其他',
         collapsable: false,
         children: [
+          '/other/https-brief/https-brief'
         ]
       }, {
         title: '随想',
