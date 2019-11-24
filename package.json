@@ -9,7 +9,8 @@
     "deploy": "yarn deploy-github && yarn deploy-coding"
   },
   "devDependencies": {
-    "lodash": "^4.17.10",
-    "vuepress": "^0.14.8"
+    "@vuepress/plugin-google-analytics": "^1.2.0",
+    "vuepress": "^1.2.0",
+    "lodash": "^4.17.10"
   }
 }

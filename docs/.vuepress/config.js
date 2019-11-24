@@ -1,7 +1,7 @@
 module.exports = {
   title: '风痕的博客',
   description: '...',
-  ga: 'UA-118782515-1',
+  plugins: [['@vuepress/google-analytics', { ga: 'UA-118782515-1' }]],
   // 启用了fenghen.xyz域名, coding.net 不需要发布到子目录
   // base: process.env.VP_DEPLOY_ENV === 'coding.net'
   //   ? '/hughfenghen.github.io/'
