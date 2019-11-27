@@ -1,38 +1,58 @@
+// 重试
+function tryRun (fn, times = 3) {
+  let execCount = 1
+  
+  fn(next)
+
+  function next(delay) {
+    if (execCount >= times) return
+    setTimeout(() => {
+      execCount += 1
+      fn(next)
+    }, delay);
+  }
+}
+
 function integrateGitment(router) {
   const linkGitment = document.createElement('link')
-  linkGitment.href = 'https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css'
+  linkGitment.href = 'https://imsun.github.io/gitment/style/default.css'
   linkGitment.rel = 'stylesheet'
   const scriptGitment = document.createElement('script')
+  scriptGitment.src = 'https://imsun.github.io/gitment/dist/gitment.browser.js'
+
   document.body.appendChild(linkGitment)
-  scriptGitment.src = 'https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js'
   document.body.appendChild(scriptGitment)
 
   router.afterEach((to, from) => {
     // 页面滚动，hash值变化，也会触发afterEach钩子，避免重新渲染
     if (to.path === from.path) return
+    
     // 已被初始化则根据页面重新渲染 评论区
-    if (scriptGitment.onload) {
-      renderGitment(to.fullPath)
-    } else {
-      scriptGitment.onload = () => {
-        const commentsContainer = document.createElement('div')
-        commentsContainer.id = 'comments-container'
-        commentsContainer.classList.add('content')
-        const $page = document.querySelector('.page')
-        if ($page) {
-          $page.appendChild(commentsContainer)
-          renderGitment(to.fullPath)
-        }
+    tryRun((next) => {
+      const $page = document.querySelector('.page')
+      if ($page && window.Gitment) {
+        renderGitment($page, to.path)
+      } else {
+        next(500)
       }
-    }
+    }, 10)
   })
 
-  function renderGitment(fullPath) {
+  function renderGitment(parentEl, path) {
+    // 移除旧节点，避免页面切换 评论区内容串掉
+    const oldEl = document.getElementById('comments-container');
+    oldEl && oldEl.parentNode.removeChild(oldEl);
+
+    const commentsContainer = document.createElement('div')
+    commentsContainer.id = 'comments-container'
+    commentsContainer.classList.add('content')
+    commentsContainer.style = 'padding: 0 30px;'
+    parentEl.appendChild(commentsContainer)
     const gitment = new Gitment({
-      id: location.pathname,
+      id: path,
       owner: 'hughfenghen',
       repo: 'hughfenghen.github.io',
-      link: location.origin + location.pathname,
+      link: location.origin + path,
       oauth: {
         client_id: 'e157002b5da973611b6c',
         client_secret: 'c8659321b3c44cf1cc4f429a067d99d681bdb9e1',
