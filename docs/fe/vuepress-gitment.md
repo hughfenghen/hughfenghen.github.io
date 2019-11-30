@@ -58,7 +58,11 @@ function integrateGitment(router) {
     tryRun((next) => {
       const $page = document.querySelector('.page')
       if ($page && window.Gitment) {
-        renderGitment($page, to.path)
+        // gitment 取document.title作为issue的标题
+        // 如果不setTimeout取到是上一篇文档的标题
+        setTimeout(() => {
+          renderGitment($page, to.path)
+        }, 1);
       } else {
         next(500)
       }
