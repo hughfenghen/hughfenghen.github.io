@@ -29,6 +29,13 @@ module.exports = {
           '/fe/run-web-project-in-termux',
         ]
       }, {
+        title: '前端基础课程',
+        collapsable: false,
+        children: [
+          '/fe-basic-course/js-lang-history-and-basic',
+          '/fe-basic-course/js-data-process/',
+        ]
+      }, {
         title: 'clojure',
         collapsable: false,
         children: [
