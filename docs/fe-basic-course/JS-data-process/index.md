@@ -16,7 +16,7 @@
 
 #### 第一点：如何避免？
 **1. 熟悉并灵活使用自带函数**  
-> 1. 包装函数  
+> 1. 类型构造函数  
 >  Array, Boolean, String, Number
 > 2. 简单Object  
    Object.assign, Object.keys, Object.values, Object.entries, Object.fromEntries  
