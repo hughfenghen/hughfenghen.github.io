@@ -1,4 +1,3 @@
-https://hughfenghen.github.io/fe/lodash-fp.html
 https://hughfenghen.github.io/fe/react-hooks/react-hooks.html
 https://hughfenghen.github.io/fe/modularization/modularization.html
 https://hughfenghen.github.io/fe/vue-directive-track.html

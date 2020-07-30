@@ -1,8 +1,8 @@
 # JS数据处理
 
 ## 分享目标
-1. 数据处理技巧速成  
-2. 让你们感叹：JS还可以这样写  
+1. JS数据处理技巧速成  
+2. 让你感叹：JS还可以这样写  
 
 ***如何把JS代码写得更优雅？***  
 
@@ -43,11 +43,11 @@ Array(10).fill().map(Math.random) // => [...] 十个随机数
 ```
 
 :::tip
-使用`map、reduce、forEach`等函数代替`for`；`filter、some、every`等代替`if`
+使用`map、reduce、forEach`等函数代替`for`；`filter`部分替代`if`。
 :::
 
 
-**2. 管道、函数组合**  
+**2. 管道、函数合成**  
 高阶内容，下文介绍
 
 #### 第二点：如何分离？
@@ -100,12 +100,23 @@ const f = (a, b, c) => a + b + c
 autoCurrying(f)(1)(2, 3) // => 6
 ```
 
+**意义：方便复用、合成函数。**  
+
+复用例子：
+```js
+const discount8 = (price) => price * 0.8
+
+// x表示乘法，x支持自动柯里化
+const discount8 = x(0.8)
+```
+*合成下文介绍*  
+
 ### lodash/fp
 总结五点，让大家形成初步印象  
-1. JS自带数据结构就那么几个，操作数据结构的函数虽然比较多，也是有限的。  
-2. lodash提供了几乎所有简单的数据操作工具函数。  
+1. JS自带数据结构是有限的，那对数据结构的简单操作也是有限的。  
+2. lodash提供了几乎所有简单或常用的操作工具函数。  
 3. lodash/fp则使lodash提供的工具函数支持自动柯里化。  
-4. lodash/fp调整了参数顺序（function first，data last），方便函数组合。  
+4. lodash/fp调整了参数顺序（function first，data last），方便函数合成。  
 5. lodash/fp的工具函数默认只给回调函数传递一个参数（避免前文`map(parseInt)`问题）。  
 
 [FP-Guide](https://github.com/lodash/lodash/wiki/FP-Guide)  
@@ -147,6 +158,15 @@ sum([1, 2, 3]) // => 6
 ![](./pipe.png)  
 
 **总结：不使用所要处理的值，只合成运算过程。**  
+
+#### 简单合成
+```js
+// 大甩卖促销逻辑：涨价50%，再打八折
+const sales = (price) => discount8(price * 1.5)
+
+// pipe是用来合成函数的工具函数
+const sales = pipe(x(1.5), discount8)
+```
 
 #### 例：找到用户 Scott 的所有未完成任务，并按到期日期升序排列。
 ```js
@@ -194,7 +214,7 @@ const data = {
 pipe(
   prop('tasks'),
   filter(matches({ complete: false, username: 'Scott' })),
-  sortBy(prop('dueDate'))
+  sortBy('dueDate')
 )(data)
 
 // => output:
@@ -233,11 +253,14 @@ pipe(
 JS就像流行的VSCode，不会强迫你记快捷键，JS本身的学习曲线挺平缓的。  
 Lisp就像Vim编辑器，强迫你记快捷键，学习曲线就非常陡峭。  
 但JS本身非常灵活，我们可以综合两者的优势，就像在VSCode中开启Vim模式。  
+建议从现在开始，先实践基础篇中介绍的知识，这样会有一个相对平缓的学习曲线。  
 
 ![主流编辑器学习曲线图](./learning-curves.png)
 
 ## 回顾总结
-1. 基础篇中分享了数据处理经验：两个实践原则；  
+1. 基础篇中分享了数据处理经验，两个实践原则；  
+    - 数据处理时，尽量避免临时变量（特别是let）、修改参数、改变外部引用、for等  
+    - 分离数据处理与副作用（DOM操作、存储、网络请求等）代码  
 2. 进阶篇中介绍了柯里化、管道两个概念，然后安利了lodash/fp。  
 
 ## 参考
