@@ -54,6 +54,7 @@ module.exports = {
         children: [
           '/think/dao',
           '/think/qin/qin',
+          '/think/biosphere/',
           '/think/interview',
         ]
       }],
