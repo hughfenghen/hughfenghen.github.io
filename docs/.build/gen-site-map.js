@@ -10,7 +10,6 @@ const siteMap = pipe(
   map(get('children')),
   flatten,
   map(add('https://hughfenghen.github.io')),
-  map(add(__, '.html')),
 )(vpCfg)
 
 console.log('--------siteMap-------------')
