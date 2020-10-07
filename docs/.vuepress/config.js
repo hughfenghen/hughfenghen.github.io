@@ -18,13 +18,13 @@ module.exports = {
         title: '前端',
         collapsable: false,
         children: [
-          '/fe/react-hooks/react-hooks',
-          '/fe/modularization/modularization',
+          '/fe/react-hooks/',
+          '/fe/modularization/',
           '/fe/vue-directive-track',
           '/fe/bug1-safari10',
           '/fe/vuepress-gitment',
           '/fe/thinking-miniprogram',
-          '/fe/sw-ssr/sw-ssr',
+          '/fe/sw-ssr/',
           '/fe/run-web-project-in-termux',
         ]
       }, {
@@ -53,7 +53,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/think/dao',
-          '/think/qin/qin',
+          '/think/qin/',
           '/think/biosphere/',
           '/think/interview',
         ]
