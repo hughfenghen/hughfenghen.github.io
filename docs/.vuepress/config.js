@@ -46,7 +46,8 @@ module.exports = {
         title: '其他',
         collapsable: false,
         children: [
-          '/other/https-brief/https-brief'
+          '/other/https-brief/https-brief',
+          '/other/options-request/'
         ]
       }, {
         title: '随想',
