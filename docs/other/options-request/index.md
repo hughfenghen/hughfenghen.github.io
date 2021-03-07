@@ -5,7 +5,7 @@
 通俗来说：它的作用是用于WEB服务器是否支持某些header，也可以叫做`预检请求`(顾名思义：提前检测)。  
 *通俗说法为了快速理解，并不十分精准*   
  
-官方定义：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS  
+[MDN定义](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS)：  
 > HTTP 的 OPTIONS 方法 用于获取目的资源所支持的通信选项。  
 
 ## `OPTIONS请求`负面影响
@@ -26,7 +26,7 @@
   Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
 ```
 
-*参考： http://www.ruanyifeng.com/blog/2016/04/cors.html*  
+*参考： [阮一峰：跨域资源共享 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)*  
 
 
 大部分前后端程序员碰到`OPTIONS请求`是浏览器自动发起的。    
@@ -35,7 +35,7 @@
 
 ## 如何避免Options
 方法一：配置网关转发规则，避免跨域  
-方法二：将请求转换[简单请求](http://www.ruanyifeng.com/blog/2016/04/cors.html)    
+方法二：将请求转换[简单请求](http://www.ruanyifeng.com/blog/2016/04/cors.html)，比如自定义的header通过query参数传递  
 方法三：如果你不需要读取该请求的返回内容，可设置`mode: 'no-cors'`，参考[Request.mode](https://developer.mozilla.org/zh-CN/docs/Web/API/Request/mode)     
 > no-cors — 保证请求对应的 method 只有 HEAD，GET 或 POST 方法，并且请求的 headers 只能有简单请求头   
 
