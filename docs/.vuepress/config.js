@@ -26,6 +26,7 @@ module.exports = {
           '/fe/thinking-miniprogram',
           '/fe/sw-ssr/',
           '/fe/run-web-project-in-termux',
+          '/fe/debug-hover-element/',
         ]
       }, {
         title: '前端基础课程',
