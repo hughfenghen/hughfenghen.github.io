@@ -34,6 +34,7 @@ module.exports = {
         children: [
           '/fe-basic-course/js-lang-history-and-basic',
           '/fe-basic-course/js-data-process/',
+          '/fe-basic-course/ts-types-system',
         ]
       }, {
         title: 'clojure',
