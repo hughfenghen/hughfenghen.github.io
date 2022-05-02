@@ -27,6 +27,7 @@ module.exports = {
           '/fe/sw-ssr/',
           '/fe/run-web-project-in-termux',
           '/fe/debug-hover-element/',
+          '/fe/canvas-lib/',
         ]
       }, {
         title: '前端基础课程',
