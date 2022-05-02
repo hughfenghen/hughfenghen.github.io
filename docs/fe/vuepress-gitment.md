@@ -10,9 +10,9 @@ VuePress官方正在开发针对博客的优化功能[Blog Support roadmap](http
 **注意：Gitmen要求用户登录github才能评论**
 
 ## 注册 OAuth application
-参考[Gitmen官方文档](https://github.com/imsun/gitment)（[中文文档](https://imsun.net/posts/gitment-introduction/)），先[Register a new OAuth application](https://github.com/settings/applications/new)。  
+参考[gitalk](https://github.com/gitalk/gitalk/blob/master/readme-cn.md)  
+本博客下的评论区即是 gitalk  
 
-> ...其他内容可以随意填写，但要确保填入正确的 callback URL（一般是评论页面对应的域名，如 https://imsun.net）。  
 你会得到一个 client ID 和一个 client secret，这个将被用于之后的用户登录。
 
 ## 创建或准备一个github仓库存储评论
@@ -22,7 +22,7 @@ Gitmen将评论都存储在仓库issue中，同时要求用户登录github才能
 ## 创建一个`enhanceApp.js`文件
 在`./vuepress`目录下创建`enhanceApp.js`文件，
 copy以下代码到文件中，填写代码中的`xxx`部分。
-*如果已存在`enhanceApp`文件，则copy `try...catch`代码块和`integrateGitment`函数*
+*如果已存在`enhanceApp`文件，则copy `try...catch`代码块和`integrateGitalk`函数*
 
 ```js
 // 重试
@@ -40,15 +40,15 @@ function tryRun (fn, times = 3) {
   }
 }
 
-function integrateGitment(router) {
-  const linkGitment = document.createElement('link')
-  linkGitment.href = 'https://imsun.github.io/gitment/style/default.css'
-  linkGitment.rel = 'stylesheet'
-  const scriptGitment = document.createElement('script')
-  scriptGitment.src = 'https://imsun.github.io/gitment/dist/gitment.browser.js'
+function integrateGitalk(router) {
+  const linkGitalk = document.createElement('link')
+  linkGitalk.href = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+  linkGitalk.rel = 'stylesheet'
+  const scriptGitalk = document.createElement('script')
+  scriptGitalk.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'
 
-  document.body.appendChild(linkGitment)
-  document.body.appendChild(scriptGitment)
+  document.body.appendChild(linkGitalk)
+  document.body.appendChild(scriptGitalk)
 
   router.afterEach((to, from) => {
     // 页面滚动，hash值变化，也会触发afterEach钩子，避免重新渲染
@@ -57,11 +57,10 @@ function integrateGitment(router) {
     // 已被初始化则根据页面重新渲染 评论区
     tryRun((next) => {
       const $page = document.querySelector('.page')
-      if ($page && window.Gitment) {
-        // gitment 取document.title作为issue的标题
+      if ($page && window.Gitalk) {
         // 如果不setTimeout取到是上一篇文档的标题
         setTimeout(() => {
-          renderGitment($page, to.path)
+          renderGitalk($page, to.path)
         }, 1);
       } else {
         next(500)
@@ -69,7 +68,7 @@ function integrateGitment(router) {
     }, 10)
   })
 
-  function renderGitment(parentEl, path) {
+  function renderGitalk(parentEl, path) {
     // 移除旧节点，避免页面切换 评论区内容串掉
     const oldEl = document.getElementById('comments-container');
     oldEl && oldEl.parentNode.removeChild(oldEl);
@@ -80,19 +79,16 @@ function integrateGitment(router) {
     commentsContainer.style = 'padding: 0 30px;'
     parentEl.appendChild(commentsContainer)
 
-    const gitment = new Gitment({
-      // ！！！ID最好不要使用默认值（location.href），因为href会携带hash，可能导致一个页面对应多个评论issue！！！
-      // https://github.com/imsun/gitment/issues/55
-      id: path,
-      owner: 'xxx', // 必须是你自己的github账号
-      repo: 'xxx', // 上一个准备的github仓库
-      link: location.origin + path,
-      oauth: {
-        client_id: 'xxx', // 第一步注册 OAuth application 后获取到的 Client ID
-        client_secret: 'xxx', // 第一步注册 OAuth application 后获取到的 Clien Secret
-      },
+    const gitalk = new Gitalk({
+      clientID: 'xxx', // 第一步注册 OAuth application 后获取到的 Client ID
+      clientSecret: 'xxx', // 第一步注册 OAuth application 后获取到的 Clien Secret
+      repo: 'hughfenghen.github.io',
+      owner: 'hughfenghen',
+      admin: ['hughfenghen'],
+      id: location.pathname,      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
     })
-    gitment.render('comments-container')
+    gitalk.render('comments-container')
   }
 }
 
@@ -104,7 +100,7 @@ export default ({
 }) => {
   try {
     // 生成静态页时在node中执行，没有document对象
-    document && integrateGitment(router)
+    document && integrateGitalk(router)
   } catch (e) {
     console.error(e.message)
   }
@@ -122,5 +118,5 @@ export default ({
 ## 需要注意的事项
 * VuePress构建的时候，在node中执行代码生成各个页面的时候，**此时document为undefined，所以写在try...catch块中**，构建时必然会执行到catch块代码。目前没找到环境检测方法。
 * `document.querySelector('.page')`，page、content是VuePress现在默认的class，后续升级可能会报错，届时需要同步改一下。
-* 如果需要对本文提供的代码进行改造，`renderGitment`在每次路由切换后都必须执行，Gitment的ID是页面的fullPath，如果未执行会导致页面间评论混乱。
+* 如果需要对本文提供的代码进行改造，`renderGitalk`在每次路由切换后都必须执行，Gitalk的ID是页面的fullPath，如果未执行会导致页面间评论混乱。
 * 评论之后刷新页面，如果发现评论不见了，是因为页面缓存，不用担心，可以点击Issue Page（♡ Like 右侧）检查。

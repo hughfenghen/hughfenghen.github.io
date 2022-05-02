@@ -31,7 +31,6 @@ function integrateGitalk(router) {
     tryRun((next) => {
       const $page = document.querySelector('.page')
       if ($page && window.Gitalk) {
-        // gitment 取document.title作为issue的标题
         // 如果不setTimeout取到是上一篇文档的标题
         setTimeout(() => {
           renderGitalk($page, to.path)
@@ -58,7 +57,6 @@ function integrateGitalk(router) {
       repo: 'hughfenghen.github.io',
       owner: 'hughfenghen',
       admin: ['hughfenghen'],
-      proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
       id: location.pathname,      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
