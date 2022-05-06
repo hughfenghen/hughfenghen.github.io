@@ -112,6 +112,9 @@ function rotateSprite ( centerPos, onChange) {
 const diagonalAngle = Math.atan2(rect.h, rect.w)
 // 坐标系旋转角度， lb->rt的对角线的初始角度为负数，所以需要乘以-1
 const rotateAngle = diagonalAngle + angle
+// startPos 及 RB 的坐标（拖拽起始位置），ClientXY 是mousemove事件中获取的坐标
+const ox = clientX - startPos.x
+const oy = clientY - startPos.y
 // 坐标系旋转变化公式，让x轴与【对角线重合】，鼠标位置的x值即为增加的长度（RB’位于鼠标与对角线的垂直交点）
 const incS = ox * Math.cos(rotateAngle) + oy * Math.sin(rotateAngle)
 // 等比例缩放，增加宽高等于长度乘以对应的角度函数
