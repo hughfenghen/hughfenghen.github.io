@@ -11,6 +11,7 @@ https://hughfenghen.github.io/fe/canvas-lib/
 https://hughfenghen.github.io/fe-basic-course/js-lang-history-and-basic
 https://hughfenghen.github.io/fe-basic-course/js-data-process/
 https://hughfenghen.github.io/fe-basic-course/ts-types-system
+https://hughfenghen.github.io/fe-basic-course/js-concurrent
 https://hughfenghen.github.io/clojure/cljs-node-hotreload
 https://hughfenghen.github.io/clojure/cljs-transient-performance
 https://hughfenghen.github.io/clojure/shadow-cljs-proto-repl
