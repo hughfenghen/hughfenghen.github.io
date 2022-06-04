@@ -5,13 +5,13 @@
 但成熟 Canvas 库（比如 Sprite.js Fabric.js ）一般都比较庞大（300kb+），所以自己实现精简版本，减少体积。  
 
 ## 零
-画布中的元素（也可称为Sprite），每个元素的的位置信息由 IRect 描述，交互可体验[Fabric.js](http://fabricjs.com/)。  
 **基本功能：**  
 - 拖拽移动元素
 - 缩放元素（变形、等比例缩放）
 - 旋转元素
 - 元素内容可以是：图片、文字、摄像头
 
+画布中的元素（也可称为Sprite），每个元素的的位置信息由 IRect 描述，交互可体验[Fabric.js](http://fabricjs.com/)。  
 ```ts
 interface IRect {
   x: number;
