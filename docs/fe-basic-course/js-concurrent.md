@@ -167,3 +167,31 @@ workerPool.forEach((worker, idx) => {
 ### 方法 2（共享内存）
 共享内存（ SharedArrayBuffer ）节省了线程间通信的消耗，但增加了代码复杂性，只能共享二进制数据，且 ShareArrayBuffer 、Atomics 有一定的兼容性问题。  
 （目前我还没碰到必须使用 SharedArrayBuffer 的场景，只看到 WASM 软解 HEVC 用到了）  
+
+## 其他
+JS 中可在其他线程/进程中执行代码的其他方法。  
+
+### Cluster
+[Cluster文档](http://nodejs.cn/api/cluster.html#how-it-works)  
+> 工作进程使用 child_process.fork() 方法衍生，因此它们可以通过 IPC 与父进程通信并且来回传递服务器句柄。  
+> 尽管 node:cluster 模块的主要使用场景是网络，但它也可用于需要工作进程的其他使用场景。  
+
+多进程，一般用于在 Node.js 上运行 WEB 服务器。  
+[Cluster共享端口有点骚](https://segmentfault.com/a/1190000014701988)  
+
+### worker-threads
+[worker-threads文档](http://nodejs.cn/api/worker_threads.html#worker-threads)  
+Node.js 上的 Worker 实现。  
+
+> worker-threads对于执行 CPU 密集型的 JavaScript 操作很有用。 它们对 I/O 密集型的工作帮助不大。 Node.js 内置的异步 I/O 操作比工作线程更高效。  
+> 与 child_process 或 cluster 不同，worker_threads 可通过传输 ArrayBuffer 实例或共享 SharedArrayBuffer 实例来实现共享内存。  
+
+### Worklet
+[Worklet](https://developer.mozilla.org/en-US/docs/Web/API/Worklet)用于特定场景，非通用多线程能力
+
+> Worklet接口是Web Workers的轻量级版本，使开发人员能够访问渲染管道的低级部分。  
+> 通过Worklet，你可以运行JavaScript和WebAssembly代码来进行图形渲染或需要高性能的音频处理。  
+
+
+- PaintWorklet 自定义 css 绘制行为  
+- AudioWorklet 用于自定义AudioNodes的音频处理
