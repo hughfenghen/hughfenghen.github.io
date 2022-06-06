@@ -107,7 +107,7 @@ function workerSetup() {
     const { idx, sab } = evt.data
     const uint16Arr = new Uint16Array(sab)
     while(true){
-      // 模拟排队领取任务
+      // Atomics.add 模拟排队领取任务
       // 如果使用taskNo = uint16Arr[0]获取任务编号，会出现抢任务的现象（重复执行任务）
       const taskNo = Atomics.add(uint16Arr, 0, 1) 
       if (taskNo >= uint16Arr.length) break
