@@ -159,7 +159,8 @@ workerPool.forEach((worker, idx) => {
 > Even on the slowest devices, you can postMessage() objects up to 100KiB and stay within your 100ms response budget. If you have JS-driven animations, payloads up to 10KiB are risk-free. This should be sufficient for most apps.   
 > 即使在非常慢的设备上，你也可以使用 postMessage() 传递 100KiB 的对象，可保证在 100 毫秒内响应。如果有用 JS 驱动的动画，那么传递 10KiB 的数据是无风险的。这对于大多数应用程序来说应该足够了。
 
-另外，部分原生对象是 [Transferable objects](https://developer.mozilla.org/en-US/docs/Glossary/Transferable_objects)，postMessage(arrayBuffer, [arrayBuffer]) 可以**传递这些对象对所有权，无需clone**。  
+另外，部分原生对象是 [Transferable objects](https://developer.mozilla.org/en-US/docs/Glossary/Transferable_objects)，postMessage(arrayBuffer, [arrayBuffer]) 可以**转移这些对象的所有权，无需clone**，原线程将无法读写被转移所有权的对象。  
+
 目前实现 Transferrable 的对象有：`ArrayBuffer, MessagePort, ReadableStream, WritableStream, TransformStream, AudioData, ImageBitmap, VideoFrame, OffscreenCanvas, RTCDataChannel`  
 
 **所以应优先采用该方法**。  
