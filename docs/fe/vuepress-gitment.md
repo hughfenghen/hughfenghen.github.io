@@ -10,8 +10,7 @@ VuePress官方正在开发针对博客的优化功能[Blog Support roadmap](http
 **注意：Gitalk要求用户登录github才能评论**
 
 ## 注册 OAuth application
-参考[gitalk](https://github.com/gitalk/gitalk/blob/master/readme-cn.md)  
-本博客下的评论区即是 gitalk  
+参考[gitalk](https://github.com/gitalk/gitalk/blob/master/readme-cn.md)，本博客下的评论区即是 gitalk  
 
 你会得到一个 client ID 和一个 client secret，这个将被用于之后的用户登录。
 
@@ -110,12 +109,9 @@ export default ({
 [enhanceApp 参考文档](https://vuepress.vuejs.org/zh/guide/basic-config.html#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE)
 
 ## VuePress deploy
-部署项目，如果还未部署[参考文档](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages)
+部署项目，如果还未部署，请参考[部署文档](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages)
 
-## 初始化页面评论区
-部署之后，每一个页面的评论区需要管理员（new Giement 时填写的owner）进行初始化。  
-
-## 需要注意的事项
+## 注意事项
 * VuePress构建的时候，在node中执行代码生成各个页面的时候，**此时document为undefined，所以写在try...catch块中**，构建时必然会执行到catch块代码。目前没找到环境检测方法。
 * `document.querySelector('.page')`，page、content是VuePress现在默认的class，后续升级可能会报错，届时需要同步改一下。
 * 如果需要对本文提供的代码进行改造，`renderGitalk`在每次路由切换后都必须执行，Gitalk的ID是页面的fullPath，如果未执行会导致页面间评论混乱。
