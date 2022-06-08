@@ -6,8 +6,8 @@ VuePress官方正在开发针对博客的优化功能[Blog Support roadmap](http
 
 在官方之前，大家也可以参考本文为自己的博客/文档添加评论模块。
 
-本文采用**Gitmen**作为示例，效果看文章底部。如果想集成其它第三方模块，本文代码也有一定参考性。
-**注意：Gitmen要求用户登录github才能评论**
+本文采用**Gitalk**作为示例，效果看文章底部。如果想集成其它第三方模块，本文代码也有一定参考性。
+**注意：Gitalk要求用户登录github才能评论**
 
 ## 注册 OAuth application
 参考[gitalk](https://github.com/gitalk/gitalk/blob/master/readme-cn.md)  
@@ -16,7 +16,7 @@ VuePress官方正在开发针对博客的优化功能[Blog Support roadmap](http
 你会得到一个 client ID 和一个 client secret，这个将被用于之后的用户登录。
 
 ## 创建或准备一个github仓库存储评论
-Gitmen将评论都存储在仓库issue中，同时要求用户登录github才能评论，所以需要先准备一个仓库。
+Gitalk将评论都存储在仓库issue中，同时要求用户登录github才能评论，所以需要先准备一个仓库。
 本博客托管在Github Pages上，所以直接使用[hughfenghen.github.io仓库](https://github.com/hughfenghen/hughfenghen.github.io)来存储评论了。
 
 ## 创建一个`enhanceApp.js`文件
@@ -42,10 +42,10 @@ function tryRun (fn, times = 3) {
 
 function integrateGitalk(router) {
   const linkGitalk = document.createElement('link')
-  linkGitalk.href = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+  linkGitalk.href = 'https://unpkg.com/gitalk@1/dist/gitalk.css'
   linkGitalk.rel = 'stylesheet'
   const scriptGitalk = document.createElement('script')
-  scriptGitalk.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'
+  scriptGitalk.src = 'https://unpkg.com/gitalk@1/dist/gitalk.min.js'
 
   document.body.appendChild(linkGitalk)
   document.body.appendChild(scriptGitalk)
