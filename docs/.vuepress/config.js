@@ -15,21 +15,6 @@ module.exports = {
     }],
     sidebar: {
       '/': [{
-        title: '前端',
-        collapsable: false,
-        children: [
-          '/fe/react-hooks/',
-          '/fe/modularization/',
-          '/fe/vue-directive-track',
-          '/fe/bug1-safari10',
-          '/fe/vuepress-gitment',
-          '/fe/thinking-miniprogram',
-          '/fe/sw-ssr/',
-          '/fe/run-web-project-in-termux',
-          '/fe/debug-hover-element/',
-          '/fe/canvas-lib/',
-        ]
-      }, {
         title: '前端基础课程',
         collapsable: false,
         children: [
@@ -37,6 +22,23 @@ module.exports = {
           '/fe-basic-course/js-data-process/',
           '/fe-basic-course/ts-types-system',
           '/fe-basic-course/js-concurrent',
+          '/fe-basic-course/https-brief/https-brief',
+          '/fe-basic-course/options-request'
+        ]
+      }, {
+        title: '前端杂货',
+        collapsable: false,
+        children: [
+          '/fe/vuepress-gitment',
+          '/fe/canvas-lib/',
+          '/fe/react-hooks/',
+          '/fe/thinking-miniprogram',
+          '/fe/modularization/',
+          '/fe/vue-directive-track',
+          '/fe/bug1-safari10',
+          '/fe/sw-ssr/',
+          '/fe/run-web-project-in-termux',
+          '/fe/debug-hover-element/',
         ]
       }, {
         title: 'clojure',
@@ -46,13 +48,10 @@ module.exports = {
           '/clojure/cljs-transient-performance',
           '/clojure/shadow-cljs-proto-repl',
         ]
-      }, {
-        title: '其他',
-        collapsable: false,
-        children: [
-          '/other/https-brief/https-brief',
-          '/other/options-request/'
-        ]
+      // }, {
+      //   title: '其他',
+      //   collapsable: false,
+      //   children: []
       }, {
         title: '随想',
         collapsable: false,
