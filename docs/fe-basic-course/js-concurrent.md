@@ -5,6 +5,8 @@
 如果某些任务计算量较大，将阻塞主线程，UI 界面轻则掉帧、重则卡死。  
 
 ```js
+// 提示：本文所有代理均可复制到浏览器控制台中执行，验证效果
+
 // 在任意网页控制台执行以下代码，页面将卡住 3s
 function execTask() {
     const t = performance.now()
@@ -30,6 +32,8 @@ execTask()
 
 ## JS 中如何实现上述两种方法
 JS 采用 [Web Worker](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API) API 来实现多线程并发。
+
+**任务说明：将 1~1000 每个数字求平方（每次随机卡住 0~100ms 模拟耗时任务）**  
 
 ### 分配任务，多 Worker 执行
 ```js
@@ -96,6 +100,7 @@ for (const idx in tasks) {
 可复制代码在 <a href="https://live.bilibili.com/3" target="_blank">该页面</a> 的控制台执行测试
 :::
 ```js
+// 执行以下代码，预期打印 1000 次 ’process task‘
 function workerSetup() {
   function execTask(val) {
     const t = performance.now()
@@ -108,7 +113,8 @@ function workerSetup() {
     const uint16Arr = new Uint16Array(sab)
     while(true){
       // Atomics.add 模拟排队领取任务
-      // 如果使用taskNo = uint16Arr[0]获取任务编号，会出现抢任务的现象（重复执行任务）
+      // 如果分成两步（取值、+1）获取任务编号，会出现抢任务的现象（重复执行任务）
+      // taskNo = uint16Arr[0]; uint16Arr[0] = taskNo + 1
       const taskNo = Atomics.add(uint16Arr, 0, 1) 
       if (taskNo >= uint16Arr.length) break
       
@@ -166,8 +172,8 @@ workerPool.forEach((worker, idx) => {
 **所以应优先采用该方法**。  
 
 ### 方法 2（共享内存）
-共享内存（ SharedArrayBuffer ）节省了线程间通信的消耗，但增加了代码复杂性，只能共享二进制数据，且 ShareArrayBuffer 、Atomics 有一定的兼容性问题。  
-（目前我还没碰到必须使用 SharedArrayBuffer 的场景，只看到 WASM 软解 HEVC 用到了）  
+共享内存（ SharedArrayBuffer ）节省了线程间通信的消耗，但增加了代码复杂性，只能共享二进制数据，且 SharedArrayBuffer 、Atomics 有一定的兼容性问题。  
+（目前只看到 WASM 相关的场景用到了 SharedArrayBuffer ）  
 
 ## 其他
 JS 中可在其他线程/进程中执行代码的其他方法。  
