@@ -7,22 +7,22 @@
 ### 主流实现原理
 #### 点播
 1. up 上传视频
-2. 服务器后台计算提取视频画面中的人体区域，转换成 svg 存储  
-3. 客户端播放视频的同时，从服务器下载 svg 与弹幕合成，人体区域不显示弹幕  
+2. 服务器后台计算提取视频画面中的人像区域，转换成 svg 存储  
+3. 客户端播放视频的同时，从服务器下载 svg 与弹幕合成，人像区域不显示弹幕  
 
 #### 直播
-1. 主播推流时，实时（主播设备）从画面提取人体区域，转换成 svg  
+1. 主播推流时，实时（主播设备）从画面提取人像区域，转换成 svg  
 2. 将 svg 数据合并到视频流中（SEI），推流至服务器  
 3. 客户端播放视频同时，从视频流中（SEI）解析出 svg  
-4. 将 svg 与弹幕合成，人体区域不显示弹幕  
+4. 将 svg 与弹幕合成，人像区域不显示弹幕  
 
 ### 本文实现方案
-1. 客户端播放视频同时，实时从画面提取人体区域信息
-2. 将人体区域信息导出成图片，与弹幕合成，人体区域不显示弹幕  
+1. 客户端播放视频同时，实时从画面提取人像区域信息
+2. 将人像区域信息导出成图片，与弹幕合成，人像区域不显示弹幕  
 
 #### 实现原理
-1. 采用机器学习开源库从视频画面实时提取人体轮廓，如[Body Segmentation](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/README.md)  
-2. 将人体轮廓转导出为图片，设置弹幕层的 [mask-image](https://developer.mozilla.org/zh-CN/docs/Web/CSS/mask-image)  
+1. 采用机器学习开源库从视频画面实时提取人像轮廓，如[Body Segmentation](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/README.md)  
+2. 将人像轮廓转导出为图片，设置弹幕层的 [mask-image](https://developer.mozilla.org/zh-CN/docs/Web/CSS/mask-image)  
 
 #### 面临的问题
 众所周知“*JS 性能太辣鸡*”，不适合执行 CPU 密集型任务。  
@@ -91,7 +91,7 @@
 <summary><span style="color: #1989fa; cursor: pointer;">可展开</span>  
 
 [MediaPipe SelfieSegmentation](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/selfie_segmentation_mediapipe/README.md) **√**  
-精确度优秀，只提供了人体区域信息，性能取胜  
+精确度优秀，只提供了人像区域信息，性能取胜  
 
 </summary>
 
@@ -175,8 +175,8 @@ async function detect (): Promise<void> {
   window.setTimeout(detect, 66)
 }
 ```
-第 2、3 步相当于给人体区域外的内容填充黑色（反向填充`ImageBitmap`），是为了配合css（mask-image），
-不然只有当弹幕飘到人体区域才可见（与目标效果正好相反）。  
+第 2、3 步相当于给人像区域外的内容填充黑色（反向填充`ImageBitmap`），是为了配合css（mask-image），
+不然只有当弹幕飘到人像区域才可见（与目标效果正好相反）。  
 [globalCompositeOperation MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation)  
 
 此时，**<span style="color: red;">CPU 占用 33% 左右</span>**  
@@ -279,12 +279,12 @@ function checkHasBody (ctx): boolean {
   while (true) {
     if (distance > maxDistance) return false
     // 某个像素值为 0 表示该像素点透明 { r:0, g:0, b:0, a:0 }
-    // 是人体区域内的一个点
+    // 是人像区域内的一个点
     if (img[p + distance] === 0) return true
     if (img[p - distance] === 0) return true
 
     // 从中间开始分别向左右跳跃检测
-    // 人体区域是连续的，每次跳 10 像素，提升性能也不会误判
+    // 人像区域是连续的，每次跳 10 像素，提升性能也不会误判
     distance += 10
   }
 }
@@ -318,6 +318,6 @@ function checkHasBody (ctx): boolean {
 - 性能优化需要业务场景分析，防档弹幕场景可以使用低分辨率、低刷新率的 mask-image，能大幅减少计算量  
 - 该方案其他应用场景：
   - 替换/模糊人物背景
-  - 人体马赛克
-  - 人体抠图
+  - 人像马赛克
+  - 人像抠图
   - 卡通头套，虚拟饰品，如猫耳朵、兔耳朵、带花、戴眼镜什么的（换一个模型，略改）  
