@@ -220,8 +220,7 @@ danmakuContainer.style.webkitMaskImage = `url(${imgStr})`
 **优化实现**
 ```ts
 // 拉伸 mask-image
-const rect = danmakuContainer.getBoundingClientRect()
-danmakuContainer.style.webkitMaskSize = `${rect.width}px, ${rect.height}px` 
+danmakuContainer.style.webkitMaskSize = '100%, 100%' 
 
 const cvsEl = document.createElement('canvas')
 // 将宽度缩小至 300 像素 
@@ -311,7 +310,10 @@ function checkHasBody (ctx): boolean {
 - 判断画面是否有人，无人时 CPU 接近 0%
 
 *CPU 数值指主线程占用*  
-因为使用了`OffsccenCanvasn`，**兼容性**：Chrome 79及以上，不支持 Firefox、Safari。
+
+### 注意事项
+- **兼容性**：Chrome 79及以上，不支持 Firefox、Safari。因为使用了`OffsccenCanvas`。  
+- **mediapipe 内存泄露及解决方法**： https://github.com/google/mediapipe/issues/2819  
 
 ### 经验
 - 优化完成之后，提取并应用 Mask 关键计算量在 GPU (30%左右)，而不是 CPU  
