@@ -267,7 +267,7 @@ if (!hasBody) {
 
 function checkHasBody (ctx): boolean {
   const imgData = ctx.getImageData(0, 0, imgW, imgH)
-  // imgData 是 UInt8ArrayBuffer, 每个像素 4 字节 [r, g, b, a]
+  // imgData 是 Uint8ArrayBuffer, 每个像素 4 字节 [r, g, b, a]
   // 转成 Uint32Array 相当于一个像素点对应一个比较大的整数
   const img = new Uint32Array(imgData.data.buffer)
   const len = img.length
@@ -278,7 +278,7 @@ function checkHasBody (ctx): boolean {
   while (true) {
     if (distance > maxDistance) return false
     // 某个像素值为 0 表示该像素点透明 { r:0, g:0, b:0, a:0 }
-    // 是人像区域内的一个点
+    // 说明该点是人像区域内的一个点
     if (img[p + distance] === 0) return true
     if (img[p - distance] === 0) return true
 
