@@ -313,7 +313,7 @@ function checkHasBody (ctx): boolean {
 
 ### 注意事项
 - **兼容性**：Chrome 79及以上，不支持 Firefox、Safari。因为使用了`OffsccenCanvas`  
-- [mediapipe 内存泄露 解决方法](https://github.com/google/mediapipe/issues/2819)  
+- [mediapipe 内存泄露 解决方法](https://github.com/google/mediapipe/issues/2819#issuecomment-1160335349)  
 
 ### 经验
 - 优化完成之后，提取并应用 Mask 关键计算量在 GPU (30%左右)，而不是 CPU  

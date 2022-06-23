@@ -6,6 +6,7 @@ https://hughfenghen.github.io/fe-basic-course/https-brief/https-brief
 https://hughfenghen.github.io/fe-basic-course/options-request
 https://hughfenghen.github.io/fe/vuepress-gitment
 https://hughfenghen.github.io/fe/canvas-lib/
+https://hughfenghen.github.io/fe/body-mask-danmaku/
 https://hughfenghen.github.io/fe/react-hooks/
 https://hughfenghen.github.io/fe/thinking-miniprogram
 https://hughfenghen.github.io/fe/modularization/

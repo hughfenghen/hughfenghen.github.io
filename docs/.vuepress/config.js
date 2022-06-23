@@ -31,6 +31,7 @@ module.exports = {
         children: [
           '/fe/vuepress-gitment',
           '/fe/canvas-lib/',
+          '/fe/body-mask-danmaku/',
           '/fe/react-hooks/',
           '/fe/thinking-miniprogram',
           '/fe/modularization/',
