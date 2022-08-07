@@ -2,7 +2,7 @@
 
 Mail: <a href="mailto:hughfenghen@gmail.com">hughfenghen@gmail.com</a>
 
-[经验随记](https://github.com/hughfenghen/hughfenghen.github.io/issues)  
+[经验随记](https://github.com/hughfenghen/hughfenghen.github.io/issues?q=-label%3AGitalk+)  
 
 [CSDN 旧博客](https://blog.csdn.net/lj745280746)
 
