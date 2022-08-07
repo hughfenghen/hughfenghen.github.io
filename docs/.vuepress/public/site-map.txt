@@ -20,6 +20,7 @@ https://hughfenghen.github.io/clojure/cljs-node-hotreload
 https://hughfenghen.github.io/clojure/cljs-transient-performance
 https://hughfenghen.github.io/clojure/shadow-cljs-proto-repl
 https://hughfenghen.github.io/think/dao
-https://hughfenghen.github.io/think/qin/
 https://hughfenghen.github.io/think/biosphere/
+https://hughfenghen.github.io/think/book-review
+https://hughfenghen.github.io/think/qin/
 https://hughfenghen.github.io/think/interview

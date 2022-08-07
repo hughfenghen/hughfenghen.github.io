@@ -59,8 +59,9 @@ module.exports = {
         collapsable: false,
         children: [
           '/think/dao',
-          '/think/qin/',
           '/think/biosphere/',
+          '/think/book-review',
+          '/think/qin/',
           '/think/interview',
         ]
       }],
