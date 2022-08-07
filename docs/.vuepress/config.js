@@ -32,6 +32,7 @@ module.exports = {
           '/fe/vuepress-gitment',
           '/fe/canvas-lib/',
           '/fe/body-mask-danmaku/',
+          '/fe/js-perf-detect',
           '/fe/react-hooks/',
           '/fe/thinking-miniprogram',
           '/fe/modularization/',
