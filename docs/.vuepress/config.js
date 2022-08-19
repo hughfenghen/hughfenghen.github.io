@@ -8,7 +8,17 @@ module.exports = {
   //   : '/',
   themeConfig: {
     nav: [{
-      text: 'GitHub',
+      text: '博客首页',
+      link: '/',
+      target: '_self',
+      rel: '',
+    }, {
+      text: '经验随记',
+      link: 'https://github.com/hughfenghen/hughfenghen.github.io/issues?q=-label%3AGitalk+',
+      target: '_self',
+      rel: '',
+    }, {
+      text: '风痕的GitHub',
       link: 'https://github.com/hughfenghen',
       target: '_self',
       rel: '',
