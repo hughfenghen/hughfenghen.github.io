@@ -33,7 +33,8 @@ module.exports = {
           '/fe-basic-course/ts-types-system',
           '/fe-basic-course/js-concurrent',
           '/fe-basic-course/https-brief/https-brief',
-          '/fe-basic-course/options-request'
+          '/fe-basic-course/options-request',
+          '/fe-basic-course/timer-delay'
         ]
       }, {
         title: '前端杂货',

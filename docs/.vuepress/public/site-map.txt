@@ -4,6 +4,7 @@ https://hughfenghen.github.io/fe-basic-course/ts-types-system
 https://hughfenghen.github.io/fe-basic-course/js-concurrent
 https://hughfenghen.github.io/fe-basic-course/https-brief/https-brief
 https://hughfenghen.github.io/fe-basic-course/options-request
+https://hughfenghen.github.io/fe-basic-course/timer-delay
 https://hughfenghen.github.io/fe/vuepress-gitment
 https://hughfenghen.github.io/fe/canvas-lib/
 https://hughfenghen.github.io/fe/body-mask-danmaku/
