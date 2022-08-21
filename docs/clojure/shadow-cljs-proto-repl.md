@@ -19,8 +19,8 @@ proto-repl 中执行`(shadow.cljs.devtools.api/nrepl-select :your-build)`
 
 执行文件头部的 `ns` 代码块 (右键 -> proto-repl -> Execute Block)
 ```clj
-; 本来我以为是用 `use` 来切换命名空间，时间上是用 `ns`
+; 本来我以为是用 `use` 来切换命名空间，实际上是用 `ns`
 (ns 想进入的namespace
   (:require 引用的包))
 ```
-输入 1， shift-enter (此时ns 已切换，可以执行文件中的任意代码，也可以访问的namesp中的状态、函数)
+输入 1， shift-enter (此时ns 已切换，可以执行文件中的任意代码，也可以访问的namespace中的状态、函数)
