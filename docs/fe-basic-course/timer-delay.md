@@ -7,6 +7,7 @@
 > 在浏览器中，由于函数嵌套（嵌套层级达到一定深度），或者是由于已经执行的 setInterval 的回调函数阻塞导致 setTimeout()/setInterval() 的每调用一次定时器的最小间隔是 4ms。  
 
 尝试在不同浏览器分别执行以下两段代码，观察打印的间隔值。  
+前几次（不同浏览器有差异）间隔差不多1ms，后续间隔市场都大于4ms。  
 ```js
 var t = performance.now()
 setInterval(() => {
