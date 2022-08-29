@@ -313,7 +313,9 @@ function checkHasBody (ctx): boolean {
 
 ### 注意事项
 - **兼容性**：Chrome 79及以上，不支持 Firefox、Safari。因为使用了`OffsccenCanvas`  
-- [mediapipe 内存泄露 解决方法](https://github.com/google/mediapipe/issues/2819#issuecomment-1160335349)  
+- 不应创建多个或多次创建`segmenter`实例（bodySegmentation.createSegmenter），如需复用请保存实例引用，因为：  
+  - 创建实例时低性能设备会有明显的卡顿现象  
+  - 会内存泄露；如果无可避免，这是[mediapipe 内存泄露 解决方法](https://github.com/google/mediapipe/issues/2819#issuecomment-1160335349)  
 
 ### 经验
 - 优化完成之后，提取并应用 Mask 关键计算量在 GPU (30%左右)，而不是 CPU  
