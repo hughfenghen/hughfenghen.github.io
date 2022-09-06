@@ -169,6 +169,8 @@ workerPool.forEach((worker, idx) => {
 
 目前实现 Transferrable 的对象有：`ArrayBuffer, MessagePort, ReadableStream, WritableStream, TransformStream, AudioData, ImageBitmap, VideoFrame, OffscreenCanvas, RTCDataChannel`  
 
+[Web Worker 传递 ArrayBuffer 时间消耗验证](https://github.com/hughfenghen/hughfenghen.github.io/issues/108)，结论：传输 ArrayBuffer 成本几乎可以忽略。  
+
 **所以应优先采用该方法**。  
 
 ### 方法 2（共享内存）
