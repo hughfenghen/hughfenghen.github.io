@@ -73,7 +73,6 @@ module.exports = {
           '/think/biosphere/',
           '/think/book-review',
           '/think/qin/',
-          '/think/interview',
         ]
       }],
     }
