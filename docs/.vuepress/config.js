@@ -34,7 +34,8 @@ module.exports = {
           '/fe-basic-course/js-concurrent',
           '/fe-basic-course/https-brief/https-brief',
           '/fe-basic-course/options-request',
-          '/fe-basic-course/timer-delay'
+          '/fe-basic-course/timer-delay',
+          '/fe-basic-course/js-regex-basic/',
         ]
       }, {
         title: '前端杂货',
