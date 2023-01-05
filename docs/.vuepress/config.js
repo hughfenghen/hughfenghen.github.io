@@ -36,6 +36,7 @@ module.exports = {
           '/fe-basic-course/options-request',
           '/fe-basic-course/timer-delay',
           '/fe-basic-course/js-regex-basic/',
+          '/fe-basic-course/unit-test/',
         ]
       }, {
         title: '前端杂货',
