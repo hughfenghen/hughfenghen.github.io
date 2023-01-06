@@ -1,7 +1,7 @@
 # 单测（Unit Test）技巧
 
 ## 前言
-本文期望提高编写单测的效率，适合于有一定单测编写经验，但被单测困扰的同学。  
+本文目的是提高编写单测的效率，适合于有一定单测编写经验，但被单测困扰的同学。  
 
 ## 单测的意义与价值
 本质：将测试行为及结果固化下来，后续自动化运行  
@@ -25,9 +25,14 @@
 *优秀的代码有很多要素，优秀的代码肯定是易于测试的。*  
 
 #### 隔离副作用代码
-*函数副作用是指函数在正常工作任务之外对外部环境所施加的影响*  
-对js来说，最常见的副作用是 网络请求、增删DOM节点、读写文件。  
+*函数副作用是指函数在正常工作任务之外对外部环境所施加的影响。*  
+
+对JS来说，最常见的副作用是 网络请求、增删DOM节点、读写文件；  
 副作用**不可避免**，但可以隔离后只测试相对比较纯的函数。  
+
+<details>
+<summary><span style="color: #1989fa; cursor: pointer;">展开查看示例代码</span>
+</summary>
 
 ```js
 // 错误示例
@@ -62,11 +67,18 @@ function insertList() {
 }
 ```
 
+</details>
+
 #### 控制圈复杂度
 
 [圈复杂度](https://baike.baidu.com/item/%E5%9C%88%E5%A4%8D%E6%9D%82%E5%BA%A6)简单来说就是逻辑分支越多，圈复杂度越高，单测用例覆盖代码越困难。  
 
 圈复杂度跟业务复杂度相关，无法完全避免，但可通过编码技巧降低或拆分成多个函数，降低单测难度。  
+
+<details>
+<summary><span style="color: #1989fa; cursor: pointer;">展开查看示例代码</span>
+</summary>
+
 
 ```js
 // 错误示例
@@ -98,11 +110,13 @@ function envCode2Str(code) {
 }
 ```
 
+</details>
+
 参考： [圈复杂度优化](https://cloud.tencent.com/developer/article/1806628)  
 > 圈复杂度常用优化方法  
 > 1. 算法优化  
 > 1. 表达式逻辑优化  
-> 1. 大函数拆小函数  
+> 1. 大函数拆小函数
 
 ## Jest 技巧
 
@@ -134,4 +148,4 @@ a f t
 参考vscode配置：[.vscode/launch.json](https://github.com/hughfenghen/unit-test-examples/blob/main/.vscode/launch.json)
 
 
-https://info.bilibili.co/pages/viewpage.action?pageId=105002726
+<!-- https://info.bilibili.co/pages/viewpage.action?pageId=105002726 -->
