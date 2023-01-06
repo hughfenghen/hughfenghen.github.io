@@ -104,13 +104,34 @@ function envCode2Str(code) {
 > 1. 表达式逻辑优化  
 > 1. 大函数拆小函数  
 
-
 ## Jest 技巧
-Mock、结果比较（snapshot（错误、dom、较长的内容） 、 expect.any）、fakeTimer
 
-Data.now
-fetch
-location
-document
+### Mock
+- [fs](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fs.test.js)；Mock 原生或第三方模块
+- [Data.now](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/date-now.test.js)；拦截 now 返回特定的时间戳
+- [fetch](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fetch.test.js)；禁止单测发送请求，检测函数调用参数
+- [location](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/location.test.js)；Mock 全局只读属性
+- [dom](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/dom.test.js)；拦截所有 DOM 节点的方法
+
+### Timer
+- timeout
+- interval
+- promise
+
+fakeTimer
+
+### Snapshot
+
+### Expect
+结果比较（snapshot（错误、dom、较长的内容） 、 expect.any）
+
+### 模式
+a f t
+
+### 配合 vscode
+配合 vscode，在保存代码自动运行单测用例，且能在编辑器中随时 debug  
+<img src="./unit-test-debug.png" style="width: 600px;">  
+参考vscode配置：[.vscode/launch.json](https://github.com/hughfenghen/unit-test-examples/blob/main/.vscode/launch.json)
+
 
 https://info.bilibili.co/pages/viewpage.action?pageId=105002726
