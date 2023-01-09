@@ -16,7 +16,7 @@
 ### 单测的边界
 单元测试的目标是你写的代码，测试你写的代码符合期望（白盒测试），边界之外代码若有意外尽量 Mock。  
 如何确定边界？  
-1. import 的第三方包（无IO操作可以不Mock）  
+1. 导入的第三方包  
 2. 系统(Node.js, 浏览器)提供的部分 API，主要包括 fetch、document、fs
 
 *Mock的方法、技巧参考后文。*
@@ -119,6 +119,7 @@ function envCode2Str(code) {
 > 1. 大函数拆小函数
 
 ## Jest 技巧
+Jest是当前最流行的JS单测框架，通过Jest来介绍单测高频使用的技巧来提高编写单测代码的效率。  
 
 ### Mock
 - [fs](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fs.test.js)；Mock 原生或第三方模块
@@ -126,13 +127,17 @@ function envCode2Str(code) {
 - [fetch](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fetch.test.js)；禁止单测发送请求，检测函数调用参数
 - [location](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/location.test.js)；Mock 全局只读属性
 - [dom](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/dom.test.js)；拦截所有 DOM 节点的方法
+- [Mock ES6 Class](https://jestjs.io/zh-Hans/docs/es6-class-mocks#4-%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8E%BB%E6%A8%A1%E6%8B%9F-es6-%E7%B1%BB)  
 
 ### Timer
-- timeout
-- interval
-- promise
+JS是单线程异步执行代码，所以需要工具精确控制定时器毁掉函数的执行时机，来完全掌控被测试代码的执行。  
 
-fakeTimer
+- `jest.useFakeTimers()`所有[timer 定时器](https://jestjs.io/zh-Hans/docs/jest-object#%E5%81%87%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8)都会停止运行，需手动控制来执行定时器的毁掉函数  
+  - `jest.advanceTimersByTime(msToRun)`相当于时间往前拨N毫秒，满足的条件的定时器回调函数将被执行
+  - `jest.advanceTimersToNextTimer(steps)`相当于时间往前拨一定时间（不确定），恰好让第1..N个定时器回调被执行，是`jest.advanceTimersByTime`的快捷方式，控制次数而不是时间，[参考解释](https://stackoverflow.com/questions/71667406/explain-jest-advancetimerstonexttimer)  
+- `jest.useRealTimers()`恢复真实定时器，`jest.useFakeTimers()`的反操作  
+- `jest.runAllTicks()`执行所有微任务队列
+- `jest.runAllTimers()`执行所有宏任务队列
 
 ### Snapshot
 
@@ -143,7 +148,7 @@ fakeTimer
 a f t
 
 ### 配合 vscode
-配合 vscode，在保存代码自动运行单测用例，且能在编辑器中随时 debug  
+配合 vscode，在保存代码实时运行单测用例，反馈执行结果；且能在编辑器中随时 debug。  
 <img src="./unit-test-debug.png" style="width: 600px;">  
 参考vscode配置：[.vscode/launch.json](https://github.com/hughfenghen/unit-test-examples/blob/main/.vscode/launch.json)
 
