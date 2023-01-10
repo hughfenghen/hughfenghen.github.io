@@ -5,7 +5,7 @@
 *后文的示例都在 [unit-test-examples](https://github.com/hughfenghen/unit-test-examples) 仓库中。*  
 
 ## 单测的意义与价值
-本质：将测试行为及结果固化下来，后续自动化运行。  
+单测本质：将测试行为及结果固化下来，自动检查被测试代码的运行结果是否符合期望。  
 
 - 单测是一种调试工具；在开发阶段验证代码是否符合期望，比浏览器中调试更有效率  
 - 单测是一种项目文档；帮助了解SDK的API及如何使用  
@@ -20,7 +20,7 @@
 1. 导入的第三方包  
 2. 系统(Node.js, 浏览器)提供的部分 API，主要包括 fetch、document、fs
 
-*Mock的方法、技巧参考后文。*
+*使用Mock的方法技巧参考后文。*
 
 ### 编写易于测试的代码  
 *优秀的代码有很多要素，优秀的代码肯定是易于测试的。*  
@@ -134,7 +134,7 @@ Jest是当前最流行的JS单测框架，下文介绍单测高频使用的技�
 ### Mock
 - [fs](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fs.test.js)；Mock 原生或第三方模块
 - [Data.now](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/date-now.test.js)；拦截 now 返回特定的时间戳
-- [fetch](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fetch.test.js)；禁止单测发送请求，检测函数调用参数
+- [fetch](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fetch.test.js)；禁止单测发送 HTTP 请求，检测函数调用参数
 - [location](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/location.test.js)；Mock 全局只读属性
 - [dom](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/dom.test.js)；拦截所有 DOM 节点的方法
 - [Mock ES6 Class](https://jestjs.io/zh-Hans/docs/es6-class-mocks#4-%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8E%BB%E6%A8%A1%E6%8B%9F-es6-%E7%B1%BB)  
@@ -156,20 +156,28 @@ JS是单线程异步执行代码，所以需要API能精确控制定时器回调
 
 快照是把上次检测的值序列化为字符串保存到本地文件中，后续检测如果不一致，单测用例就会报错。  
 <img src="./snapshot-error.png" style="width: 300px;">  
-如果结果**变化符合期望**，则需在交互界面按下【`u`】键去更新本地文件中的快照内容。  
+若结果**变化符合期望**，则需在交互界面按下【`u`】键去更新本地文件中的快照内容。  
 <img src="./snapshot-update.png" style="width: 400px;">  
 
 如果快照中包含**随机数、时间戳、id**之类每次都会变化的值，默认情况每次执行结果都与上次有差异，导致用例失败，可参考[官方示例](https://jestjs.io/zh-Hans/docs/snapshot-testing#%E5%B1%9E%E6%80%A7%E5%8C%B9%E9%85%8D%E5%99%A8)  
 
 [复杂数据快照示例](https://github.com/hughfenghen/unit-test-examples/blob/main/src/snapshot/__tests__/snapshot.test.js)  
 
-### 模式
-a f t
-
 ### 配合 vscode
-配合 vscode，在保存代码实时运行单测用例，反馈执行结果；且能在编辑器中随时 debug。  
+配合 vscode，在保存代码实时运行单测用例，反馈执行结果；且能在编辑器中随时断点 Debug。  
 <img src="./unit-test-debug.png" style="width: 600px;">  
-参考vscode配置：[.vscode/launch.json](https://github.com/hughfenghen/unit-test-examples/blob/main/.vscode/launch.json)
+参考 vscode 配置：[.vscode/launch.json](https://github.com/hughfenghen/unit-test-examples/blob/main/.vscode/launch.json)
 
+### Watch 模式
+jest 启用 Watch 模式，会监听文件变化自动执行单测用例。  
 
-<!-- https://info.bilibili.co/pages/viewpage.action?pageId=105002726 -->
+[--watch](https://github.com/hughfenghen/unit-test-examples/blob/main/.vscode/launch.json#L17)表示vscode中运行单测时启用 Watch 模式。  
+
+Debug 代码时，经常需要执行特定的用例，避免干扰。  
+<img src="./snapshot-update.png" style="width: 400px;">  
+介绍几个Jest交互模式下高频使用的快捷键：  
+- f: 仅运行失败的单测用例  
+- p: 仅执行测试文件名匹配的单测用例  
+- t: 仅执行测试用例名（test('用例名')）匹配的用例  
+- u: 更新快照文件（前文介绍了）  
+- q: 退出
