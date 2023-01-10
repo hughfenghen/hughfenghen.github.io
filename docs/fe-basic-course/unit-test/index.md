@@ -2,9 +2,10 @@
 
 ## 前言
 本文目的是提高编写单测的效率，适合于有一定单测编写经验，但被单测困扰的同学。  
+*后文的示例都在 [unit-test-examples](https://github.com/hughfenghen/unit-test-examples) 仓库中。*  
 
 ## 单测的意义与价值
-本质：将测试行为及结果固化下来，后续自动化运行  
+本质：将测试行为及结果固化下来，后续自动化运行。  
 
 - 单测是一种调试工具；在开发阶段验证代码是否符合期望，比浏览器中调试更有效率  
 - 单测是一种项目文档；帮助了解SDK的API及如何使用  
@@ -130,7 +131,7 @@ Jest是当前最流行的JS单测框架，通过Jest来介绍单测高频使用�
 - [Mock ES6 Class](https://jestjs.io/zh-Hans/docs/es6-class-mocks#4-%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8E%BB%E6%A8%A1%E6%8B%9F-es6-%E7%B1%BB)  
 
 ### Timer
-JS是单线程异步执行代码，所以需要工具精确控制定时器毁掉函数的执行时机，来完全掌控被测试代码的执行。  
+JS是单线程异步执行代码，所以需要API能精确控制定时器回调函数的执行时机，来完全掌控被测试代码的执行。  
 
 - `jest.useFakeTimers()`所有[timer 定时器](https://jestjs.io/zh-Hans/docs/jest-object#%E5%81%87%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8)都会停止运行，需手动控制来执行定时器的毁掉函数  
   - `jest.advanceTimersByTime(msToRun)`相当于时间往前拨N毫秒，满足的条件的定时器回调函数将被执行
@@ -138,6 +139,8 @@ JS是单线程异步执行代码，所以需要工具精确控制定时器毁掉
 - `jest.useRealTimers()`恢复真实定时器，`jest.useFakeTimers()`的反操作  
 - `jest.runAllTicks()`执行所有微任务队列
 - `jest.runAllTimers()`执行所有宏任务队列
+
+[示例代码](https://github.com/hughfenghen/unit-test-examples/blob/main/src/timer/__tests__/jest-api.test.js)  
 
 ### Snapshot
 
