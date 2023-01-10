@@ -142,7 +142,7 @@ Jest是当前最流行的JS单测框架，下文介绍单测高频使用的技�
 ### Timer
 JS是单线程异步执行代码，所以需要API能精确控制定时器回调函数的执行时机，来完全掌控被测试代码的执行。  
 
-- `jest.useFakeTimers()`所有[timer 定时器](https://jestjs.io/zh-Hans/docs/jest-object#%E5%81%87%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8)都会停止运行，需手动控制来执行定时器的毁掉函数  
+- `jest.useFakeTimers()`所有[timer 定时器](https://jestjs.io/zh-Hans/docs/jest-object#%E5%81%87%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8)都会停止运行，需手动控制来执行定时器的回调函数  
   - `jest.advanceTimersByTime(msToRun)`相当于时间往前拨N毫秒，满足的条件的定时器回调函数将被执行
   - `jest.advanceTimersToNextTimer(steps)`相当于时间往前拨一定时间（不确定），恰好让第1..N个定时器回调被执行，是`jest.advanceTimersByTime`的快捷方式，控制次数而不是时间，[参考解释](https://stackoverflow.com/questions/71667406/explain-jest-advancetimerstonexttimer)  
 - `jest.useRealTimers()`恢复真实定时器，`jest.useFakeTimers()`的反操作  
@@ -152,7 +152,7 @@ JS是单线程异步执行代码，所以需要API能精确控制定时器回调
 [示例代码](https://github.com/hughfenghen/unit-test-examples/blob/main/src/timer/__tests__/jest-api.test.js)  
 
 ### [Snapshot 快照](https://jestjs.io/zh-Hans/docs/snapshot-testing)
-快照经常用来检测UI（DOM）结构是否符合期望，实际上只要检测的数据比较复杂（比如一个复杂JSON）就可使用快照来简化测试代码。  
+快照经常用来检测 UI（DOM）结构是否符合期望，实际上只要检测的数据比较复杂（比如一个复杂JSON）就可使用快照来简化测试代码。  
 
 快照是把上次检测的值序列化为字符串保存到本地文件中，后续检测如果不一致，单测用例就会报错。  
 <img src="./snapshot-error.png" style="width: 300px;">  
