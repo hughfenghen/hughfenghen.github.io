@@ -120,7 +120,16 @@ function envCode2Str(code) {
 > 1. 大函数拆小函数
 
 ## Jest 技巧
-Jest是当前最流行的JS单测框架，通过Jest来介绍单测高频使用的技巧来提高编写单测代码的效率。  
+Jest是当前最流行的JS单测框架，下文介绍单测高频使用的技巧来提高编写单测代码的效率，未入门请阅读[官方文档](https://jestjs.io/zh-Hans/docs/getting-started)。  
+
+### [Expect（断言）](https://jestjs.io/zh-Hans/docs/expect)
+*基础的值判断 `.toBe`、`.toEqual` 等就不介绍了*  
+
+- 当检测的数据只知道类型，但具体值是不确定的，就使用`expect.any(constructor)`  
+- 当只需要检测数据的特征，如字符串的子串、数组的值、对象的key，使用`expect.stringContaining`、`expect.arrayContaining`、`expect.objectContaining`  
+- `toHaveBeenCalled`用于判断Mock函数（通常是jest.fn）是否执行，还有多个以`toHaveBeenCalled`开头的函数用于判断执行Mock函数的参数、次数  
+
+[expect 示例](https://github.com/hughfenghen/unit-test-examples/blob/main/src/expect/__tests__/expect.test.js)  
 
 ### Mock
 - [fs](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fs.test.js)；Mock 原生或第三方模块
@@ -142,10 +151,17 @@ JS是单线程异步执行代码，所以需要API能精确控制定时器回调
 
 [示例代码](https://github.com/hughfenghen/unit-test-examples/blob/main/src/timer/__tests__/jest-api.test.js)  
 
-### Snapshot
+### [Snapshot 快照](https://jestjs.io/zh-Hans/docs/snapshot-testing)
+快照经常用来检测UI（DOM）结构是否符合期望，实际上只要检测的数据比较复杂（比如一个复杂JSON）就可使用快照来简化测试代码。  
 
-### Expect
-结果比较（snapshot（错误、dom、较长的内容） 、 expect.any）
+快照是把上次检测的值序列化为字符串保存到本地文件中，后续检测如果不一致，单测用例就会报错。  
+<img src="./snapshot-error.png" style="width: 300px;">  
+如果结果**变化符合期望**，则需在交互界面按下【`u`】键去更新本地文件中的快照内容。  
+<img src="./snapshot-update.png" style="width: 400px;">  
+
+如果快照中包含**随机数、时间戳、id**之类每次都会变化的值，默认情况每次执行结果都与上次有差异，导致用例失败，可参考[官方示例](https://jestjs.io/zh-Hans/docs/snapshot-testing#%E5%B1%9E%E6%80%A7%E5%8C%B9%E9%85%8D%E5%99%A8)  
+
+[复杂数据快照示例](https://github.com/hughfenghen/unit-test-examples/blob/main/src/snapshot/__tests__/snapshot.test.js)  
 
 ### 模式
 a f t
