@@ -4,13 +4,11 @@
 1. JS数据处理技巧速成  
 2. 让你感叹：JS还可以这样写  
 
-***如何把JS代码写得更优雅？***  
-
 ## 基础
 
 ### 实践原则
-1. 数据处理时，尽量避免临时变量（特别是let）、修改参数、改变外部引用、for等  
-2. 分离数据处理与副作用（DOM操作、存储、网络请求等）代码  
+1. 数据处理时，尽量避免创建临时变量（特别是let）、修改参数、改变外部引用、for、if 等  
+2. 分离 数据处理 与 副作用（DOM操作、存储、网络请求等）代码  
 
 数据处理指：数值计算和数据结构变换。  
 
@@ -43,7 +41,7 @@ Array(10).fill().map(Math.random) // => [...] 十个随机数
 ```
 
 :::tip
-使用`map、reduce、forEach`等函数代替`for`；`filter`部分替代`if`。
+使用`map、reduce、forEach`等函数代替`for`；`filter`替代`if`。
 :::
 
 
@@ -52,12 +50,16 @@ Array(10).fill().map(Math.random) // => [...] 十个随机数
 
 #### 第二点：如何分离？
 *分离并不一定要隔离到不同的函数，也可以在同一个函数中分段。*  
-**忌讳数据处理跟副作用混杂在一起。**  
 
 例：
 ```js
 // 榜单：排序后将前三名插入的容器中
-const data = [{ nickName: '张三', score: 75 }, { nickName: '李四', score: 10 }, { nickName: '王五', score: 42 } /*...*/]
+const data = [
+  { nickName: '张三', score: 75 }, 
+  { nickName: '李四', score: 10 }, 
+  { nickName: '王五', score: 42 },
+  /*...*/
+]
 
 const container = document.getElementById('rank')
 
@@ -82,7 +84,7 @@ renderRank(container, data)
 
 ### 柯里化
 
-**柯里化是把接受多个参数的函数变换成接受一个单一参数的函数，并且返回接受余下的参数而且返回结果的新函数的技术。**  
+*柯里化是把接受多个参数的函数变换成接受一个单一参数的函数，并且返回接受余下的参数而且返回结果的新函数的技术。*  
 
 说人话：
 ```js
@@ -100,7 +102,7 @@ const f = (a, b, c) => a + b + c
 autoCurrying(f)(1)(2, 3) // => 6
 ```
 
-**意义：方便复用、合成函数。**  
+柯里化意义：**方便函数的合成、复用。**  
 
 复用例子：
 ```js
@@ -112,16 +114,14 @@ const discount8 = x(0.8)
 *合成下文介绍*  
 
 ### lodash/fp
-总结五点，让大家形成初步印象  
+总结几点，让大家形成初步印象  
 1. JS自带数据结构是有限的，那对数据结构的简单操作也是有限的。  
 2. lodash提供了几乎所有简单或常用的操作工具函数。  
 3. lodash/fp则使lodash提供的工具函数支持自动柯里化。  
-4. lodash/fp调整了参数顺序（function first，data last），方便函数合成。  
-5. lodash/fp的工具函数默认只给回调函数传递一个参数（避免前文`map(parseInt)`问题）。  
 
 [FP-Guide](https://github.com/lodash/lodash/wiki/FP-Guide)  
 
-类似的库还有[Ramda](http://ramdajs.com/docs/)，甚至可以说Ramda在函数式方面更“专业”，但鉴于lodash的流行度、较低的学习成本，下文例子采用lodash/fp  
+类似的库还有[Ramda.js](http://ramdajs.com/docs/)，甚至可以说Ramda在函数式方面更“专业”，但鉴于lodash的流行度、较低的学习成本，下文例子采用lodash/fp  
 
 #### 例：数组求和实现方法对比
 ```js
@@ -147,7 +147,7 @@ import { reduce, add } from 'lodash/fp'
 const sum = reduce(add, 0) // lodash/fp reduce要求三个参数
 
 sum([1, 2, 3]) // => 6
-// 如果sum不需要复用，则不需要命名： reduce(add, 0)([1, 2, 3])
+// 等价于 reduce(add, 0)([1, 2, 3])
 
 // Lisp中符号‘+’ 也是一个函数，可以这样写：(+ 1 2 3)  或  (apply + [1 2 3])
 ```
@@ -165,7 +165,7 @@ sum([1, 2, 3]) // => 6
 const sales = (price) => discount8(price * 1.5)
 
 // pipe是用来合成函数的工具函数
-const sales = pipe(x(1.5), discount8)
+const sales = pipe(x(1.5), x(0.8))
 ```
 
 #### 例：找到用户 Scott 的所有未完成任务，并按到期日期升序排列。
@@ -211,11 +211,17 @@ const data = {
   ]
 };
 
+// lodash/fp
 pipe(
   prop('tasks'),
   filter(matches({ complete: false, username: 'Scott' })),
   sortBy('dueDate')
 )(data)
+
+// 原生js，没有工具函数，略微繁琐
+data.tasks
+  .filter(({ username, complete }) => username === 'Scott' && !complete)
+  .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
 
 // => output:
 // [
@@ -243,7 +249,7 @@ pipe(
 *例子来源于：[Pointfree 编程风格指南](https://www.ruanyifeng.com/blog/2017/03/pointfree.html)*  
 
 :::tip
-如果有数据处理是一个pipe搞不定的，那可能是你对工具函数的熟悉度不够。:dog:  
+如果有数据变换是一个pipe搞不定的，那可能是你对工具函数的熟悉度不够。:dog:  
 
 优雅流畅地处理数据，除了了解几个简单的基本概念之后（柯里化、管道），还需要花费一些时间来学习、练习常用的工具函数。  
 :::
@@ -259,13 +265,13 @@ Lisp就像Vim编辑器，强迫你记快捷键，学习曲线就非常陡峭。
 
 ## 回顾总结
 1. 基础篇中分享了数据处理经验，两个实践原则；  
-    - 数据处理时，尽量避免临时变量（特别是let）、修改参数、改变外部引用、for等  
-    - 分离数据处理与副作用（DOM操作、存储、网络请求等）代码  
+    - 数据处理时，尽量避免临时变量（特别是let）、修改参数、改变外部引用、for、if等  
+    - 分离 数据处理 与 副作用（DOM操作、存储、网络请求等）代码  
 2. 进阶篇中介绍了柯里化、管道两个概念，然后安利了lodash/fp。  
 
 ## 参考
 [Pointfree 编程风格指南](https://www.ruanyifeng.com/blog/2017/03/pointfree.html)  
-[Ramda 函数库参考教程](http://www.ruanyifeng.com/blog/2017/03/ramda.html)  
-[FP-Guide](https://github.com/lodash/lodash/wiki/FP-Guide)  
-[Ramda](http://ramdajs.com/docs/)  
 [柯里化](https://zh.wikipedia.org/zh/%E6%9F%AF%E9%87%8C%E5%8C%96)  
+[FP-Guide](https://github.com/lodash/lodash/wiki/FP-Guide)  
+[Ramda 函数库参考教程](http://www.ruanyifeng.com/blog/2017/03/ramda.html)  
+[Ramda.js](http://ramdajs.com/docs/)  
