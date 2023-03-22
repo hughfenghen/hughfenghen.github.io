@@ -1,4 +1,4 @@
-# Options请求介绍及应对
+# 跨域（Options）请求介绍及解决方法
 
 ## 介绍
 `OPTIONS请求`指method为`OPTIONS`的http请求。  
