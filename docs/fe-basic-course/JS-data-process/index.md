@@ -168,7 +168,8 @@ const sales = (price) => discount8(price * 1.5)
 const sales = pipe(x(1.5), x(0.8))
 ```
 
-#### 例：找到用户 Scott 的所有未完成任务，并按到期日期升序排列。
+#### 简单示例
+找到用户 Scott 的所有未完成任务，并按到期日期升序排列。  
 ```js
 const { pipe, prop, filter, matches, sortBy } = require('lodash/fp');
 
@@ -247,6 +248,39 @@ data.tasks
 ```
 
 *例子来源于：[Pointfree 编程风格指南](https://www.ruanyifeng.com/blog/2017/03/pointfree.html)*  
+
+#### 复杂示例
+从 Vuepress Sidebar中  抽取数据，生成当前博客的 [sitemap](https://hughfenghen.github.io/site-map.txt) 文件  
+```js
+const { tap, pipe, flatten, values, map, get, add } = require('lodash/fp')
+
+// 数据结构示例
+const vpCfg = {
+  title: '风痕的博客',
+  themeConfig: {
+    sidebar: {
+      '/': [{
+        title: '前端基础课程',
+        children: [
+          '/fe-basic-course/js-data-process/'
+          // ...
+        ]
+      }]
+    }
+  }
+}
+
+const siteMap = pipe(
+  get('themeConfig.sidebar'),
+  values,
+  flatten,
+  map(get('children')),
+  flatten,
+  // 单独 md 没有 .html 结尾，vuepress 会有一次重定向，导致 Google 拒绝收录
+  map(v => v.endsWith('/') ? v : v + '.html'),
+  map(add('https://hughfenghen.github.io')),
+)(vpCfg)
+```
 
 :::tip
 如果有数据变换是一个pipe搞不定的，那可能是你对工具函数的熟悉度不够。:dog:  
