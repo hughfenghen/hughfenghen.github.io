@@ -9,6 +9,27 @@
 但可以统计一些性能相关的数值来间接评估主线程当前的繁忙度。  
 注意是[**主线程**](https://developer.mozilla.org/zh-CN/docs/Glossary/Main_thread)，不是设备CPU的繁忙度或占用率。  
 
+### LongTask
+[**LongTask**](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming) 必然导致绘制丢帧、交互延迟响应。  
+根据 LongTask 触发频率、持续时间，可在一定程度上判定当前主线程、UI线程性能状况。  
+
+```js
+// 按经验调整“回血”速度、减分力度
+let score = 100
+const timerId = setInterval(() => {
+  // 回血
+  score += 2
+}, 1000)
+
+const observer = new PerformanceObserver((list) => {
+  score -= list.length * 10
+
+  if (score < 0) score = 0
+});
+
+observer.observe({ type: "longtask", buffered: true });
+```
+
 ### FPS
 计算 FPS（每秒渲染帧数）可评估当前页面渲染的压力，一般期望大于等于60帧，页面看起来流畅。  
 FPS 越小体验越差，若小于30，一般人都能感觉到动画的卡顿现象。  
