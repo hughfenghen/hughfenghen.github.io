@@ -1,5 +1,7 @@
 # JS 多线程并发
 
+[[toc]]
+
 ## 为什么需要并发
 我们常听说 JS 是单线程模型，即所有代码都在[主线程](https://developer.mozilla.org/zh-CN/docs/Glossary/Main_thread)中执行的。  
 如果某些任务计算量较大，将阻塞主线程，UI 界面轻则掉帧、重则卡死。  
