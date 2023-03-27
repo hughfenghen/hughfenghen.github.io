@@ -21,6 +21,7 @@ let score = 100
 const timerId = setInterval(() => {
   // 回血
   score += 2
+  if (score > 100) score = 100
 }, 1000)
 
 const observer = new PerformanceObserver((list) => {
