@@ -55,7 +55,7 @@ module.exports = {
           '/fe/sw-ssr/',
           '/fe/run-web-project-in-termux',
           '/fe/debug-hover-element/',
-          'fe/vscode-shortcut',
+          '/fe/vscode-shortcut',
         ]
       }, {
         title: 'clojure',
