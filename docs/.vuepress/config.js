@@ -46,6 +46,7 @@ module.exports = {
           '/fe/canvas-lib/',
           '/fe/body-mask-danmaku/',
           '/fe/js-perf-detect',
+          '/fe/webcontainer/',
           '/fe/react-hooks/',
           '/fe/thinking-miniprogram',
           '/fe/modularization/',
