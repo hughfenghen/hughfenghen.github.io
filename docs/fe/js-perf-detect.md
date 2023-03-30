@@ -162,6 +162,22 @@ export function monitorFPS (
 ```
 </details>
 
+### LongTask vs FPS
+1. LongTask 相对来说没有 FPS 灵敏
+    - 主线程、UI线程阻塞超过 50ms 触发 LongTask，FPS 一般来说期望 16.6ms 一帧  
+2. FPS 在页面处于后台时不可用，无法统计到卡顿事件
+    - FPS 原理是使用 `requestAnimationFrame` 计数，页面处于后台时该函数不会执行
+3. FPS 计数本身有一定的性能损耗
+    - 可用以下最简化代码在空白标签页的控制台中验证 CPU 消耗
+   ```js
+   let frame = 0
+   const loop = function () {
+     frame += 1
+     requestAnimationFrame(loop)
+   }
+   loop()
+   ```
+
 ### CPU 空闲
 通过定时执行 `window.requestIdleCallback` 可评估主线程的空闲度。  
 
@@ -190,7 +206,7 @@ usedJSHeapSize 当前 JS 堆活跃段（segment）的体积，以字节计算。
 比如低端设备不运行软解视频，而是选择合适的编码格式视频。  
 
 1. CPU 逻辑核心个数[Navigator.hardwareConcurrency](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/hardwareConcurrency)  
-2. 设备内存[Navigator.deviceMemory](https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/deviceMemory)（不一定是准确，避免泄露隐私）  
+2. 设备内存[Navigator.deviceMemory](https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/deviceMemory)（经常不准确，浏览器为了避免泄露隐私）  
 3. 获取GPU信息，常用于高度依赖 GPU 的网页应用（游戏、软解视频、机器学习）做决策  
 ```ts
 function getUnmaskedInfo() {
