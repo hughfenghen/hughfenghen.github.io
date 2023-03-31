@@ -136,7 +136,9 @@ Jest是当前最流行的JS单测框架，下文介绍单测高频使用的技�
 - [Data.now](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/date-now.test.js)；拦截 now 返回特定的时间戳
 - [fetch](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/fetch.test.js)；禁止单测发送 HTTP 请求，检测函数调用参数
 - [location](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/location.test.js)；Mock 全局只读属性
-- [dom](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/dom.test.js)；拦截所有 DOM 节点的方法
+- [dom](https://github.com/hughfenghen/unit-test-examples/blob/main/src/mock/__tests__/dom.test.js)  
+  - Mock 所有 DOM 节点的方法 (HTMLElement.prototype.appendChild)  
+  - Mock 只读属性 (MouseEvent.offsetX)
 - [Mock ES6 Class](https://jestjs.io/zh-Hans/docs/es6-class-mocks#4-%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8E%BB%E6%A8%A1%E6%8B%9F-es6-%E7%B1%BB)  
   - 建议优先选择 [自动模拟](https://jestjs.io/zh-Hans/docs/es6-class-mocks#%E8%87%AA%E5%8A%A8%E6%A8%A1%E6%8B%9F)，使用 `ClassName.mock.instances` 获取源码深处创建的 class 实例
   - 如果场景简单，只需要 [mock 某个特定方法](https://jestjs.io/zh-Hans/docs/es6-class-mocks#mocking-a-specific-method-of-a-class)
