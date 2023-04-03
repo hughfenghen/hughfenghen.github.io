@@ -201,6 +201,11 @@ usedJSHeapSize 当前 JS 堆活跃段（segment）的体积，以字节计算。
 ```
 一般内存占用不会明显影响运行效率，但如果内存占用过大，或出现内存泄露时，页面会出现卡爆的现象。  
 
+### Compute Pressure Level（草案阶段）
+[Compute Pressure](https://www.w3.org/TR/compute-pressure/) 是检测硬件性能压力的W3C标准API，尚在草案阶段，可以关注  
+
+[Compute Pressure 中文介绍](https://mp.weixin.qq.com/s?__biz=MzA3OTY5NDI0OA==&mid=2247486741&idx=1&sn=35f3df740c642f2f2e5047f3ce2f5abe&chksm=9faeddd2a8d954c4f4fb5defb11059575d361a3b86f5764b675ba6d8b614dc470f9cbb5678f7&mpshare=1&scene=1&srcid=0208tI2TeHhj1NDxT3LQBVsw&sharer_sharetime=1675829339132&sharer_shareid=2f01e94044ea9d43734a8595adbe5559&version=4.1.0.99228&platform=mac#rd)
+
 ## 设备硬件信息
 设备硬件可以反应当前设备的性能水平如何，可用于决定密集型任务的执行策略。  
 比如低端设备不运行软解视频，而是选择合适的编码格式视频。  
