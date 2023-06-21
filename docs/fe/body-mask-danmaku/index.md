@@ -265,6 +265,7 @@ async function detect (): Promise<void> {
 **判定画面是否有人**  
 第一步中为了高性能，选择的模型只有`ImageBitmap`，并没有提供肢体点位信息。  
 所以只能使用`ImageBitmap`来判断是否有人。  
+画面中的人物大概率是画面**中间且是连续的区域**，所以从中间开始往左右反复横跳检查像素值，碰到一个alpha通道为零的像素点就表示画面有人。  
 <img src="./detect-person.png" width="400">  
 ```ts
 // ...
