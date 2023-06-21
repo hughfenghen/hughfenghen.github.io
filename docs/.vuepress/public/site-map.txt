@@ -9,6 +9,7 @@ https://hughfenghen.github.io/fe-basic-course/js-regex-basic/
 https://hughfenghen.github.io/fe-basic-course/unit-test/
 https://hughfenghen.github.io/fe/vuepress-gitment.html
 https://hughfenghen.github.io/fe/canvas-lib/
+https://hughfenghen.github.io/fe/body-mask-danmaku/
 https://hughfenghen.github.io/fe/js-perf-detect.html
 https://hughfenghen.github.io/fe/webcontainer/
 https://hughfenghen.github.io/fe/react-hooks/
