@@ -29,6 +29,9 @@
 1. 采用机器学习开源库从视频画面实时提取人像轮廓，如[Body Segmentation](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/README.md)  
 2. 将人像轮廓转导出为图片，设置弹幕层的 [mask-image](https://developer.mozilla.org/zh-CN/docs/Web/CSS/mask-image)  
 
+<img src="./body-mask.png" width="300">  
+<img src="./compsite.png" width="600">  
+
 #### 面临的问题
 众所周知“*JS 性能太辣鸡*”，不适合执行 CPU 密集型任务。  
 由官方demo转换成工程实践，并非调一下API就行了，最大的挑战就是——**性能**。  
@@ -185,6 +188,8 @@ async function detect (): Promise<void> {
 不然只有当弹幕飘到人像区域才可见（与目标效果正好相反）。  
 [globalCompositeOperation MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation)  
 
+<img src="./css-mask-expect.png">  
+
 此时，**<span style="color: red;">CPU 占用 33% 左右</span>**  
 
 ### 多线程优化
@@ -260,6 +265,7 @@ async function detect (): Promise<void> {
 **判定画面是否有人**  
 第一步中为了高性能，选择的模型只有`ImageBitmap`，并没有提供肢体点位信息。  
 所以只能使用`ImageBitmap`来判断是否有人。  
+<img src="./detect-person.png" width="400">  
 ```ts
 // ...
 const dataURL = reader.readAsDataURL(blob)
@@ -324,6 +330,7 @@ function checkHasBody (ctx): boolean {
   - 会内存泄露；如果无可避免，这是[mediapipe 内存泄露 解决方法](https://github.com/google/mediapipe/issues/2819#issuecomment-1160335349)  
 
 ### 经验
+- 结合业务场景特征进行分析优化，往往有更多的思路和途径
 - 优化完成之后，提取并应用 Mask 关键计算量在 GPU (30%左右)，而不是 CPU  
 - 性能优化需要业务场景分析，防档弹幕场景可以使用低分辨率、低刷新率的 mask-image，能大幅减少计算量  
 - 该方案其他应用场景：
@@ -331,3 +338,4 @@ function checkHasBody (ctx): boolean {
   - 人像马赛克
   - 人像抠图
   - 卡通头套，虚拟饰品，如猫耳朵、兔耳朵、带花、戴眼镜什么的（换一个模型，略改）  
+- 关注 [WebNN](https://www.w3.org/TR/webnn/)、[WebGPU](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGPU_API) 的进展和应用，端智能将覆盖更多的应用场景  
