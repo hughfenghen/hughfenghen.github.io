@@ -21,6 +21,7 @@ https://hughfenghen.github.io/fe/sw-ssr/
 https://hughfenghen.github.io/fe/run-web-project-in-termux.html
 https://hughfenghen.github.io/fe/debug-hover-element/
 https://hughfenghen.github.io/fe/vscode-shortcut.html
+https://hughfenghen.github.ioother/diy-handheld-game/
 https://hughfenghen.github.io/clojure/cljs-node-hotreload.html
 https://hughfenghen.github.io/clojure/cljs-transient-performance.html
 https://hughfenghen.github.io/clojure/shadow-cljs-proto-repl.html

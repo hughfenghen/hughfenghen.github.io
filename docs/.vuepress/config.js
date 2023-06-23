@@ -58,6 +58,12 @@ module.exports = {
           '/fe/vscode-shortcut',
         ]
       }, {
+        title: '其他',
+        collapsable: false,
+        children: [
+          'other/diy-handheld-game/'
+        ]
+      }, {
         title: 'clojure',
         collapsable: false,
         children: [
@@ -65,10 +71,6 @@ module.exports = {
           '/clojure/cljs-transient-performance',
           '/clojure/shadow-cljs-proto-repl',
         ]
-      // }, {
-      //   title: '其他',
-      //   collapsable: false,
-      //   children: []
       }, {
         title: '随想',
         collapsable: false,
