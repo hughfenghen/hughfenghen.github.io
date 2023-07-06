@@ -13,11 +13,8 @@ jobs:
       uses: actions/setup-node@master
       with:
         node-version: 18.16.1
-    - name: NPM or Yarn install with caching
-      uses: bahmutov/npm-install@v1.1.0
-    - uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: deploy-github
+    - run: yarn
+    - run: yarn build
       env:
         EMAIL: hughfenghen@gmail.com 
-        GH_TOKEN: ${{ secrets.ACCESS_TOKEN }} # https://github.com/settings/tokens
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
