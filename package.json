@@ -3,7 +3,7 @@
     "dev": "vuepress dev docs",
     "gen-site-map": "node ./docs/.build/gen-site-map.js",
     "push-baidu": "curl -H 'Content-Type:text/plain' --data-binary @'./docs/.vuepress/public/site-map.txt'  'http://data.zz.baidu.com/urls?site=fenghen.xyz&token=nqqbIIvUQ0XppZCk'",
-    "build": "vuepress build docs && yarn gen-site-map",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress build docs && yarn gen-site-map",
     "deploy-github": "yarn build && ./docs/deploy-github.sh",
     "deploy-gitee": "VP_DEPLOY_ENV=gitee yarn build && ./docs/deploy-gitee.sh",
     "deploy-coding": "VP_DEPLOY_ENV=coding.net yarn build && ./docs/deploy-coding.sh && yarn push-baidu",
