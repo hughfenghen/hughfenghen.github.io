@@ -12,6 +12,6 @@
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "lodash": "^4.17.10",
-    "vuepress": "^1.5.2"
+    "vuepress": "^1.9.9"
   }
 }
