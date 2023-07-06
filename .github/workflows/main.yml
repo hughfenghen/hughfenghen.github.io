@@ -12,12 +12,12 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
-        node-version: 16.16.0
+        node-version: 18.16.1
     - name: NPM or Yarn install with caching
       uses: bahmutov/npm-install@v1.1.0
     - uses: borales/actions-yarn@v2.1.0
       with:
-        cmd: deploy-github # will run `yarn build` command
+        cmd: deploy-github
       env:
-        EMAIL: hughfenghen@gmail.com               # must be a verified email
+        EMAIL: hughfenghen@gmail.com 
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }} # https://github.com/settings/tokens
