@@ -12,7 +12,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
-        node-version: 12.13.0
+        node-version: 16.16.0
     - name: NPM or Yarn install with caching
       uses: bahmutov/npm-install@v1.1.0
     - uses: borales/actions-yarn@v2.1.0
