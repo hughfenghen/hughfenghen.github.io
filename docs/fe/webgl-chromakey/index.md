@@ -25,7 +25,7 @@
 3. 根据颜色距离判断
    - 超过range上限（颜色差距很大）则保留原像素  
    - 低于range下限（颜色很相似）则移除像素  
-   - 处于range之中，原像素 - 目标像素 * 系数（后面代码再解释系数）  
+   - 处于range之中，原像素 - 目标像素 * 相似度系数
 
 **[查看DEMO](https://hughfenghen.github.io/WebAV/demo/chromakey.html)**
 
@@ -42,42 +42,42 @@ uniform vec2 range;      // the smoothstep range
 varying vec2 v_texCoord;
 
 vec2 RGBToCC(vec4 rgba) {
- float Y = 0.299 * rgba.r + 0.587 * rgba.g + 0.114 * rgba.b;
- return vec2((rgba.b - Y) * 0.565, (rgba.r - Y) * 0.713);
+  float Y = 0.299 * rgba.r + 0.587 * rgba.g + 0.114 * rgba.b;
+  return vec2((rgba.b - Y) * 0.565, (rgba.r - Y) * 0.713);
 }
 
 void main() {
- // 从贴图获取源像素
- vec4 srcColor = texture2D(u_texture, v_texCoord);
- // 源像素 RGB 转换为 YUV
- vec2 srcCC = RGBToCC(srcColor);
- // 目标颜色转换为 YUV
- vec2 keyCC = RGBToCC(keyRGBA);
+  // 从贴图获取源像素
+  vec4 srcColor = texture2D(u_texture, v_texCoord);
+  // 源像素 RGB 转换为 YUV
+  vec2 srcCC = RGBToCC(srcColor);
+  // 目标颜色转换为 YUV
+  vec2 keyCC = RGBToCC(keyRGBA);
 
- // 计算距离
- float mask = sqrt(pow(keyCC.x - srcCC.x, 2.0) + pow(keyCC.y - srcCC.y, 2.0));
- // 对距离值在range中进行平滑映射取值
- mask = smoothstep(range.x, range.y, mask);
+  // 计算距离
+  float mask = sqrt(pow(keyCC.x - srcCC.x, 2.0) + pow(keyCC.y - srcCC.y, 2.0));
+  // 对距离值在range中进行平滑映射取值
+  mask = smoothstep(range.x, range.y, mask);
 
- // 低于range下限
- if (mask == 0.0) { discard; }
- // 超过range上限
- else if (mask == 1.0) { gl_FragColor = srcColor; }
- // 处于range之中
- else {
-   // 某些源像素（如头发边缘）混合了绿幕颜色，需要减去绿幕颜色，否则边缘会有绿斑
-   gl_FragColor = max(srcColor - (1.0 - mask) * keyRGBA, 0.0);
- }
+  // 低于range下限
+  if (mask == 0.0) { discard; }
+  // 超过range上限
+  else if (mask == 1.0) { gl_FragColor = srcColor; }
+  // 处于range之中
+  else {
+    // 某些源像素（如头发边缘）混合了绿幕颜色，需要减去绿幕颜色，否则边缘会有绿斑
+    gl_FragColor = max(srcColor - (1.0 - mask) * keyRGBA, 0.0);
+  }
 }
 ```
 
-*使用 CPU（纯js代码）也能实现，但性能会低很多*  
+*上面算法使用 CPU（纯js代码）也能实现，但性能会差很多*  
 
 除了上面分析的核心代码之外还有一些为了让Shader运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)  
 
 ## 如何使用
-1. `import { createChromakey } from '../src/chromakey'` 或 copy 完整代码到项目中
-2. 参考以下示例代码
+1. `import { createChromakey } from '@webav/av-cliper'` 或复制完整代码到项目中
+2. 参考以下示例
 ```ts
 import { createChromakey } from '../src/chromakey'
 
@@ -93,6 +93,7 @@ const ctx = cvs.getContext('2d', {
     img.onload = resolve
   })
   const chromakey = createChromakey({
+    // 不传默认取第一个像素值
     keyColor: [65, 249, 0]
   })
   ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height)
@@ -100,7 +101,3 @@ const ctx = cvs.getContext('2d', {
 ```
 
 传入一张 720P 的图片给 `chromakey` 大概耗时20ms，所以按照 30FPS 循环在 Canvas 上绘制 Video Element 即可对视频实现**实时抠图**。  
-
-### 扩展自动识别背景色
-当前 `chromakey` 仍需要传入 `keyColor` 参数，若有需要可以考虑支持自动识别背景色；  
-使用`Canvas.getImageData` 获取特定位置的像素值作为背景色。  
