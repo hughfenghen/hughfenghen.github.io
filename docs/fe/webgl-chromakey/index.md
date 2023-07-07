@@ -95,14 +95,11 @@ const ctx = cvs.getContext('2d', {
   const chromakey = createChromakey({
     keyColor: [65, 249, 0]
   })
-  console.time('cost')
-  // for (let i = 0; i < 10; i++)
   ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height)
-  console.timeEnd('cost')
 })()
 ```
 
-传入一张720P的图片给 `chromakey` 大概耗时20ms，所以按照 30FPS 循环在 Canvas 上绘制 Video Element 即可对视频实现**实时抠图**
+传入一张 720P 的图片给 `chromakey` 大概耗时20ms，所以按照 30FPS 循环在 Canvas 上绘制 Video Element 即可对视频实现**实时抠图**。  
 
 ### 扩展自动识别背景色
 当前 `chromakey` 仍需要传入 `keyColor` 参数，若有需要可以考虑支持自动识别背景色；  
