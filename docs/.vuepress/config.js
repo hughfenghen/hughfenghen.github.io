@@ -45,6 +45,7 @@ module.exports = {
           '/fe/vuepress-gitment',
           '/fe/canvas-lib/',
           '/fe/body-mask-danmaku/',
+          '/fe/webgl-chromakey/',
           '/fe/js-perf-detect',
           '/fe/webcontainer/',
           '/fe/react-hooks/',
