@@ -1,3 +1,4 @@
+
 module.exports = {
   title: '风痕 · 術&思',
   description: '...',
@@ -41,8 +42,10 @@ module.exports = {
       prefix: "[Post]",
       owner: "hughfenghen",
       repo: "hughfenghen.github.io",
-      clientId: "8a03da926cf95085e3cc",
-      clientSecret: "1b9a0256e3ac0a88ff287df6582d06c7806d017a"
+      ...(process.env.NODE_ENV === 'development' ? {} : {
+        clientId: "8a03da926cf95085e3cc",
+        clientSecret: "1b9a0256e3ac0a88ff287df6582d06c7806d017a"
+      })
     },
     sitemap: {
       hostname: "https://hughfenghen.github.io/"
