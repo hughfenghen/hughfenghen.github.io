@@ -1,0 +1,25 @@
+---
+title: About
+---
+
+# 術 & 思
+
+---
+
+[文章列表](./posts/)
+
+[经验随记](https://github.com/hughfenghen/hughfenghen.github.io/issues?q=-label%3AGitalk%2C%E5%BF%83%E6%83%85%2C%E8%AF%97%E8%AF%8D)
+
+[CSDN 旧博客](https://blog.csdn.net/lj745280746)
+
+---
+
+### 主要项目
+- [WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件
+- [Erra](https://hughfenghen.github.io/erra/): HTTP接口 Mock、Debug工具  
+
+---
+
+Mail: <a href="mailto:hughfenghen@gmail.com">hughfenghen@gmail.com</a>
+
+*本博客托管在[Github仓库](https://github.com/hughfenghen/hughfenghen.github.io)，若有兴趣可 Star 收藏*

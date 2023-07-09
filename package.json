@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "vuepress dev docs",
+    "blog": "vuepress dev blog",
     "gen-site-map": "node ./docs/.build/gen-site-map.js",
     "push-baidu": "curl -H 'Content-Type:text/plain' --data-binary @'./docs/.vuepress/public/site-map.txt'  'http://data.zz.baidu.com/urls?site=fenghen.xyz&token=nqqbIIvUQ0XppZCk'",
     "build": "vuepress build docs && yarn gen-site-map",
@@ -10,7 +11,9 @@
     "deploy": "yarn deploy-github && yarn deploy-coding"
   },
   "devDependencies": {
+    "@vuepress/plugin-blog": "^1.9.4",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
+    "@vuepress/theme-blog": "^2.3.3",
     "lodash": "^4.17.10",
     "vuepress": "^1.9.9"
   }
