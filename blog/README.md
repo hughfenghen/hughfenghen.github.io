@@ -1,9 +1,5 @@
 ---
-title: About
----
-
-# 術 & 思
-
+title: Home 
 ---
 
 [文章列表](./posts/)
@@ -14,12 +10,13 @@ title: About
 
 ---
 
-### 主要项目
-- [WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件
-- [Erra](https://hughfenghen.github.io/erra/): HTTP接口 Mock、Debug工具  
+[WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件  
+[ts-brpc](https://hughfenghen.github.io/ts-rpc): 以 RPC 风格调用 TypeScript 编写的服务端接口  
+[Erra](https://hughfenghen.github.io/erra/): HTTP接口 Mock、Debug工具   
+   
 
 ---
 
 Mail: <a href="mailto:hughfenghen@gmail.com">hughfenghen@gmail.com</a>
 
-*本博客托管在[Github仓库](https://github.com/hughfenghen/hughfenghen.github.io)，若有兴趣可 Star 收藏*
+*本博客托管在 [Github仓库](https://github.com/hughfenghen/hughfenghen.github.io)，若有兴趣可 Star 收藏*

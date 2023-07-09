@@ -1,5 +1,5 @@
 module.exports = {
-  title: '风痕的博客',
+  title: '风痕 · 術&思',
   description: '...',
   theme: '@vuepress/blog',
   plugins: [['@vuepress/google-analytics', { ga: 'UA-118782515-1' }]],
