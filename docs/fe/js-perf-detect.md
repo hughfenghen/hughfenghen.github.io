@@ -194,7 +194,7 @@ window.setInterval(() => {
 
 ### 内存
 [Performance.memory](https://developer.mozilla.org/zh-CN/docs/Web/API/Performance/memory) 包含三个属性   
-```shell
+```sh
 jsHeapSizeLimit 上下文内可用堆的最大体积，以字节计算。
 totalJSHeapSize 已分配的堆体积，以字节计算。
 usedJSHeapSize 当前 JS 堆活跃段（segment）的体积，以字节计算。
