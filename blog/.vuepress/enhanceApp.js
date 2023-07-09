@@ -15,10 +15,10 @@ function tryRun (fn, times = 3) {
 
 function integrateGitalk(router) {
   const linkGitalk = document.createElement('link')
-  linkGitalk.href = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+  linkGitalk.href = 'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.css'
   linkGitalk.rel = 'stylesheet'
   const scriptGitalk = document.createElement('script')
-  scriptGitalk.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'
+  scriptGitalk.src = 'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js'
 
   document.body.appendChild(linkGitalk)
   document.body.appendChild(scriptGitalk)
@@ -29,7 +29,7 @@ function integrateGitalk(router) {
     
     // 已被初始化则根据页面重新渲染 评论区
     tryRun((next) => {
-      const $page = document.querySelector('.page')
+      const $page = document.querySelector('.content-wrapper')
       if ($page && window.Gitalk) {
         // 如果不setTimeout取到是上一篇文档的标题
         setTimeout(() => {
@@ -74,23 +74,7 @@ export default ({
   try {
     // 生成静态页时在node中执行，没有document对象
     document && integrateGitalk(router)
-
-    addSiteMap(siteData, router)
   } catch (e) {
     console.error(e.message)
   }
-}
-
-function addSiteMap(siteData, router) {
-  const links = siteData.pages.filter(({path}) => /\.html$/.test(path))
-    .map(({path, title}) => ['a', { attrs: { href: path } }, title])
-  router.addRoutes(
-    [{
-      path: '/site-map/',
-      component: {
-        render(h) {
-          return h('div', null, links.map(link => h(...link)))
-        }
-      }
-    }]);
 }
