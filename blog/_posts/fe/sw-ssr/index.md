@@ -1,3 +1,9 @@
+---
+tags:
+  - 前端
+date: 2020-10-07
+---
+
 # 同构项目 Service Worker 离线化实践
 
 > *阅读本文需要相关知识储备*：  [Service Worker 生命周期](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle?hl=zh-cn)、[Workbox](https://github.com/GoogleChrome/workbox)、前端同构渲染  

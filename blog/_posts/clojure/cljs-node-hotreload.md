@@ -1,3 +1,9 @@
+---
+tags:
+  - Clojure
+date: 2020-07-13
+---
+
 # ClojureScript + node + hotreload
 
 *假设你已经创建了项目，并安装了shadow-cljs相关依赖，若未完成请参考文档创建项目：https://shadow-cljs.github.io/docs/UsersGuide.html*

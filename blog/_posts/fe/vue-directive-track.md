@@ -1,3 +1,9 @@
+---
+tags:
+  - 前端
+date: 2018-05-01
+---
+
 # 基于vue directive实现声明式埋点方案
 
 **注：本方案依赖[vue](https://github.com/vuejs/vue)、[lazysizes](https://github.com/aFarkas/lazysizes)(曝光事件：lazybeforeunveil)**

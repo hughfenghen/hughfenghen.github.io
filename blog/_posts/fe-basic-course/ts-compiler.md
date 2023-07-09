@@ -1,3 +1,9 @@
+---
+tags:
+  - 前端基础
+date: 2023-01-03
+---
+
 # compilerOptions字段详解
 ```ts
 {

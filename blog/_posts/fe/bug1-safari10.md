@@ -1,6 +1,7 @@
 ---
 tags:
   - Bugfix
+date: 2020-07-13
 ---
 
 # BUG: Safari10 Cannot declare a let variable twice: 'e'.

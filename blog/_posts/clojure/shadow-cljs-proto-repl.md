@@ -1,3 +1,9 @@
+---
+tags:
+  - Clojure
+date: 2022-08-21
+---
+
 # shadow-cljs项目 在 proto repl 切换namespace
 
 *按官方文档中的说明已经能正常连接proto-repl，但是repl中不能切换到源码所在的namespace，不能在开发期间执行业务代码*
