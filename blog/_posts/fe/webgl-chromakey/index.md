@@ -23,6 +23,10 @@ date: 2023-07-07
 <img src="./webgl-alpha2.png" width="300">
 <img src="./webgl-alpha1.png" width="300">
 
+## 效果演示
+静态图片抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/chromakey.html)**  
+配合 [@webav/av-cliper](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper) 进行视频抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/concat-media.html)**  
+
 *方法二参考：<https://juejin.cn/post/6885673542642302984>*  
 
 ## 绿幕抠图原理
@@ -32,8 +36,6 @@ date: 2023-07-07
    - 超过range上限（颜色差距很大）则保留原像素  
    - 低于range下限（颜色很相似）则移除像素  
    - 处于range之中，原像素 - 目标像素 * 相似度系数
-
-**[查看DEMO](https://hughfenghen.github.io/WebAV/demo/chromakey.html)**
 
 ## 实现
 *需要先了解一下 [YUV](https://baike.baidu.com/item/YCrCb/10874556) 颜色编码*
