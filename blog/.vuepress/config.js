@@ -3,7 +3,11 @@ module.exports = {
   title: '风痕 · 術&思',
   description: '...',
   theme: '@vuepress/blog',
-  plugins: [['@vuepress/google-analytics', { ga: 'UA-118782515-1' }]],
+  plugins: [['copy-code1', {
+    showInMobile:true, 
+    selector: 'div[class*="language-"] pre', 
+    pure: true 
+  }], ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }]],
   base: '/',
   themeConfig: {
     directories: [
@@ -36,16 +40,14 @@ module.exports = {
         link: "https://github.com/hughfenghen"
       }
     ],
-    comment: {
+    comment: process.env.NODE_ENV === 'development' ? null : {
       service: "vssue",
       autoCreateIssue: true,
       prefix: "[Post]",
       owner: "hughfenghen",
       repo: "hughfenghen.github.io",
-      ...(process.env.NODE_ENV === 'development' ? {} : {
-        clientId: "8a03da926cf95085e3cc",
-        clientSecret: "1b9a0256e3ac0a88ff287df6582d06c7806d017a"
-      })
+      clientId: "8a03da926cf95085e3cc",
+      clientSecret: "1b9a0256e3ac0a88ff287df6582d06c7806d017a"
     },
     sitemap: {
       hostname: "https://hughfenghen.github.io/"
