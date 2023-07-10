@@ -34,7 +34,10 @@ export default ({
       path = '/posts/2023/03/29/vscode-shortcut/' 
     }
 
-    if (path != null) { next({ path }) }
+    if (path != null) { 
+      location.href = path
+      return false
+    }
     else { next() } 
   })
 }
