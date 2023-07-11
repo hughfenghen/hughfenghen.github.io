@@ -6,12 +6,15 @@ date: 2022-05-02
 
 # Mini Canvas Lib 核心交互实现原理
 
-背景：
-需要使用 Canvas 实现添加图片、文字、摄像头画面，并且支持拖拽、缩放、旋转等功能。
+**背景**  
+需要使用 Canvas 实现添加图片、文字、摄像头画面，并且支持**拖拽、缩放、旋转**等功能。  
 但成熟 Canvas 库（比如 Sprite.js Fabric.js ）一般都比较庞大（300kb+），所以自己实现精简版本，减少体积。  
 
+[DEMO](https://hughfenghen.github.io/WebAV/demo/record-avcanvas.html)  
+[核心代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-canvas/src/sprites/sprite-op.ts)  
+
 ## 零
-**基本功能：**  
+**基本功能**  
 - 拖拽移动元素
 - 缩放元素（变形、等比例缩放）
 - 旋转元素
@@ -104,7 +107,7 @@ function rotateSprite ( centerPos, onChange) {
 
 ## 缩放元素
 *本身rect缩放非常简单，加上旋转后，缩放效果就复杂了很多。*  
-**比如：**  
+**比如**  
 1. 拖拽rect右侧的控制点，只能改变矩形的宽度，在旋转情况下，rect左侧的边是保持不动的。  
 2. 拖拽 rect 右下角的控制点，同时改变宽高，但需要位置等比，rect 左上角的点保持不动。  
 
@@ -113,7 +116,7 @@ function rotateSprite ( centerPos, onChange) {
 2. 需要解出的答案：新的IRect（坐标、宽高）。  
 
 ### 解题步骤
-以拖拽右下角控制点（RB）为例，因为是等比缩放，所以中心点会一直处于对角线（LT-RB）上。  
+以**拖拽右下角控制点**（RB）为例，因为是等比缩放，所以中心点会一直处于对角线（LT-RB）上。  
 <img src="./scale-rect.png" width="600px"/>  
 
 1. 监听 mousemove 事件，获取鼠标坐标，减去中心点坐标，得到相对于中心点的坐标。  
