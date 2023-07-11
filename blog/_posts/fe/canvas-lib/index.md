@@ -20,7 +20,7 @@ date: 2022-05-02
 - 旋转元素
 - 元素内容可以是：图片、文字、摄像头
 
-画布中的元素（也可称为Sprite），每个元素的的位置信息由 IRect 描述，交互可体验[Fabric.js](http://fabricjs.com/)。  
+画布中的元素（也可称为Sprite），每个元素的的位置信息由 IRect 描述，可点击[DEMO](https://hughfenghen.github.io/WebAV/demo/record-avcanvas.html)进行体验。  
 ```ts
 interface IRect {
   x: number;
