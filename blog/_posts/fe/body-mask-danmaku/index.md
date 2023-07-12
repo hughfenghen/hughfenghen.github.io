@@ -310,8 +310,7 @@ function checkHasBody (ctx): boolean {
 画面无人时，**<span style="color: red;">CPU 占用接近 0%</span>**  
 
 ## 发布构建优化
-虽然优化耗时较长，完整的代码差不多 200 行，核心代码都贴出来了。  
-但依赖包的提交较大，构建出的 bundle 体积：`684.75 KiB / gzip: 125.83 KiB`  
+依赖包的体积较大，构建出的 bundle 体积：`684.75 KiB / gzip: 125.83 KiB`  
 
 所以，可以进行异步加载SDK，提升页面加载性能。  
 1. 分别打包一个 loader，一个主体
