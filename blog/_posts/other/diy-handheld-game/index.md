@@ -143,7 +143,7 @@ tips：
 - Parsec Icon 连接后可随时关闭  
 
 ### 手柄没有陀螺仪 怎么玩体感游戏
-教程： https://www.bilibili.com/video/BV1cs4y167iB/  
+教程： <https://www.bilibili.com/video/BV1cs4y167iB/>  
 
 
 ## 其他问题
