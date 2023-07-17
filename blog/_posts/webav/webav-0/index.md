@@ -69,7 +69,7 @@ WebCodecs 将会像 Video、Audio、MSE 一样，促进音视频在 Web 端的�
 本系列的素材、案例来源于 [WebAV 项目](https://github.com/hughfenghen/WebAV)；  
 WebAV 尝试提供简单易用的 API 在浏览器中处理音视频数据。  
 
-你可以扫码打赏，给作者提供更新动力（压力）。  
+你可以扫码打赏，给作者提供更新动力（压力 ：）。  
 <img src="../../assets/alipay-qcode.png" width="200" alt="支付宝" />
 <img src="../../assets/wechatpay-qcode.png" width="200" alt="微信" />  
 
