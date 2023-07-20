@@ -108,4 +108,13 @@ const ctx = cvs.getContext('2d', {
 })()
 ```
 
-传入一张 720P 的图片给 `chromakey` 大概耗时20ms，所以按照 30FPS 循环在 Canvas 上绘制 Video Element 即可对视频实现**实时抠图**。  
+传入一张 720P 的图片给 `chromakey` 首次执行（包括初始化）大概耗时 20ms，后续每次执行基本在 1ms 之内；  
+所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 快速刷新即可  
+```js
+async function render() {
+  ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height)
+  requestAnimationFrame(render)
+}
+
+render()
+```
