@@ -113,7 +113,7 @@ const ctx = cvs.getContext('2d', {
 ```js
 async function render() {
   ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height)
-  requestAnimationFrame(render)
+  requestAnimationFrame(render) // 注意：后台页面 requestAnimationFrame 停止执行
 }
 
 render()
