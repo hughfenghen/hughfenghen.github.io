@@ -10,7 +10,7 @@ module.exports = {
   }], ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }]],
   base: '/',
   markdown: {
-    lineNumbers: true
+    lineNumbers: false
   },
   themeConfig: {
     directories: [
