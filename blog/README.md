@@ -23,4 +23,4 @@ title: Home
 
 Mail: <a href="mailto:hughfenghen@gmail.com">hughfenghen@gmail.com</a>
 
-*本博客托管在 [Github仓库](https://github.com/hughfenghen/hughfenghen.github.io)，若有兴趣可 Star 收藏*
+*本博客托管在 [Github仓库](https://github.com/hughfenghen/hughfenghen.github.io)，若有兴趣可 Star 收藏，或[订阅 RSS](https://hughfenghen.github.io/rss.xml)*  

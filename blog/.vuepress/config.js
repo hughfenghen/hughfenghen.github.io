@@ -1,13 +1,16 @@
 
 module.exports = {
   title: '风痕 · 術&思',
-  description: '...',
+  description: '个人思考，Web技术',
   theme: '@vuepress/blog',
   plugins: [['copy-code1', {
     showInMobile:true, 
     selector: 'div[class*="language-"] pre', 
     pure: true 
-  }], ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }]],
+  }], ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }], ['feed', {
+    canonical_base: 'https://hughfenghen.github.io',
+    count: 5000,
+  }]],
   base: '/',
   markdown: {
     lineNumbers: false
