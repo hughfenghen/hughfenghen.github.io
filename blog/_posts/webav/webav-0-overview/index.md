@@ -97,5 +97,6 @@ Star 或 Watch [本博客站点](https://github.com/hughfenghen/hughfenghen.gith
   - [MediaStream](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream)
 
 ## 附录
+- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs、mp4box.js 构建的音视频处理 SDK
 - [WebCodecs Explainer](https://github.com/w3c/webcodecs/blob/main/explainer.md)
 - [Video processing with WebCodecs](https://developer.chrome.com/articles/webcodecs/)

@@ -78,4 +78,7 @@ VideoFrame -> VideoEncoder => EncodedVideoChunk ->  VideoDecoder => VideoFrame
 - 要及时检查 [encodeQueueSize](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/encodeQueueSize) ， 编码器若来不及处理则需要暂停生产新的 VideoFrame  
 - 编解码器使用完后需要主动 close，比如 [VideoEncoder.close](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/close)，否则可能阻塞其他编解码器正常工作  
 
+## 附录
+- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs、mp4box.js 构建的音视频处理 SDK
+
 
