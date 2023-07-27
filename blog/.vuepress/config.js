@@ -3,14 +3,44 @@ module.exports = {
   title: '风痕 · 術&思',
   description: '个人思考，Web技术',
   theme: '@vuepress/blog',
-  plugins: [['copy-code1', {
-    showInMobile:true, 
-    selector: 'div[class*="language-"] pre', 
-    pure: true 
-  }], ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }], ['feed', {
-    canonical_base: 'https://hughfenghen.github.io',
-    count: 5000,
-  }]],
+  plugins: [
+    ['copy-code1', {
+      showInMobile:true, 
+      selector: 'div[class*="language-"] pre', 
+      pure: true 
+    }], 
+    ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }], 
+    ['feed', {
+      canonical_base: 'https://hughfenghen.github.io',
+      count: 5000,
+    }],
+    ['container', {
+      type: 'tip',
+      defaultTitle: {
+        '/': 'TIP',
+        '/zh/': '提示'
+      }
+    }],
+    ['container', {
+      type: 'warning',
+      defaultTitle: {
+        '/': 'WARNING',
+        '/zh/': '注意'
+      }
+    }],
+    ['container', {
+      type: 'danger',
+      defaultTitle: {
+        '/': 'DANGER',
+        '/zh/': '警告'
+      }
+    }],
+    ['container', {
+      type: 'details',
+      before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
+      after: () => '</details>\n'
+    }],
+  ],
   base: '/',
   markdown: {
     lineNumbers: false

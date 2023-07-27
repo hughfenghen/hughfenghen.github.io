@@ -73,7 +73,7 @@ VideoFrame -> VideoEncoder => EncodedVideoChunk ->  VideoDecoder => VideoFrame
 ### WebCodecs API 注意事项
 记录新手容易碰到的陷阱
 
-- VideoFrame 非常占显存，及时 close 避免影响性能  
+- VideoFrame 可能占用大量显存，及时 close 避免影响性能  
 - VideoDecoder 维护了队列，其输出（output）的 VideoFrame 需要及时 close 否则它将暂停输出 VideoFrame
 - 要及时检查 [encodeQueueSize](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/encodeQueueSize) ， 编码器若来不及处理则需要暂停生产新的 VideoFrame  
 - 编解码器使用完后需要主动 close，比如 [VideoEncoder.close](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/close)，否则可能阻塞其他编解码器正常工作  
