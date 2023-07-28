@@ -8,6 +8,8 @@ date: 2023-07-16
 
 # Web 音视频（零）概览
 
+> [**Web 音视频目录**](/tag/webav)
+
 WebCodecs API 已经发布一段时间（chrome 94），在浏览器中处理音视频文件或实时视频流已经可行。  
 计划开一个系列介绍 Web 音视频基础知识，及如何在浏览器中处理视频文件（或视频流）。  
 
@@ -97,6 +99,6 @@ Star 或 Watch [本博客站点](https://github.com/hughfenghen/hughfenghen.gith
   - [MediaStream](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream)
 
 ## 附录
-- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs、mp4box.js 构建的音视频处理 SDK
+- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 - [WebCodecs Explainer](https://github.com/w3c/webcodecs/blob/main/explainer.md)
 - [Video processing with WebCodecs](https://developer.chrome.com/articles/webcodecs/)

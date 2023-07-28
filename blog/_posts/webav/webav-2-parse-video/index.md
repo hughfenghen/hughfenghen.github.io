@@ -7,6 +7,9 @@ date: 2023-07-23
 ---
 
 # Web 音视频（二）在浏览器中解析视频
+
+> [**Web 音视频目录**](/tag/webav)
+
 浏览器中已经能直播播放视频，为什么需要手动解析？  
 某些场景需要对视频进行更细致的处理，比如截取关键帧、提取视频中的文字、人物打码、极低延时播放视频等等。  
 
@@ -146,7 +149,7 @@ clip.destroy()
 ## 附录
 - [mp4box.js][1] 能在浏览器中运行的 MP4 封装、解封装工具
 - [mp4box.js filereader][2] MP4 文件可视化工具，基于 mp4box.js 构建
-- [WebAV][3] 基于 WebCodecs、mp4box.js 构建的音视频处理 SDK
+- [WebAV][3] 基于 WebCodecs 构建的音视频处理 SDK
 - [WebAV 视频处理 DEMO][6]
 - [WebAV 解码 DEMO][5]
 

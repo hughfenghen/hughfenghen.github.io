@@ -7,6 +7,9 @@ date: 2023-07-19
 ---
 
 # Web 音视频（一）基础知识
+
+> [**Web 音视频目录**](/tag/webav)
+
 阅读后续文章或开始使用 WebAV 处理音视频数据之前，需要一点点背景知识。  
 
 本篇主要简单介绍音视频最基础的知识，以及 WebCodecs 的核心 API。  
@@ -79,6 +82,6 @@ VideoFrame -> VideoEncoder => EncodedVideoChunk ->  VideoDecoder => VideoFrame
 - 编解码器使用完后需要主动 close，比如 [VideoEncoder.close](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/close)，否则可能阻塞其他编解码器正常工作  
 
 ## 附录
-- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs、mp4box.js 构建的音视频处理 SDK
+- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 
 
