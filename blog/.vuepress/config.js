@@ -1,7 +1,7 @@
 
 module.exports = {
   title: '风痕 · 術&思',
-  description: '个人思考，Web技术',
+  description: '个人思考、Web技术',
   theme: '@vuepress/blog',
   plugins: [
     ['copy-code1', {
