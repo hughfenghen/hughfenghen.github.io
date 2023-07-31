@@ -15,7 +15,7 @@ date: 2023-07-23
 
 总之，除了最单纯的视频播放外，对视频数据的一切处理都需要从解析开始。  
 
-*你可以跳过知识介绍，直接查看 [WebAV 解析 MP4 示例](#webav-视频解析示例)*  
+*你可以跳过原理介绍，直接查看 [WebAV 解析 MP4 示例](#webav-视频解析示例)*  
 
 ## MP4 简单介绍
 MP4 是最流行兼容性最好的视频封装格式之一，在浏览器中也得到了良好支持；  
@@ -147,11 +147,11 @@ clip.destroy()
 [体验 DEMO][5]，点击 `decode video` 按钮； 查看[详细代码][7]
 
 ## 附录
-- [mp4box.js][1] 能在浏览器中运行的 MP4 封装、解封装工具
-- [mp4box.js filereader][2] MP4 文件可视化工具，基于 mp4box.js 构建
 - [WebAV][3] 基于 WebCodecs 构建的音视频处理 SDK
 - [WebAV 视频处理 DEMO][6]
 - [WebAV 解码 DEMO][5]
+- [mp4box.js][1] 能在浏览器中运行的 MP4 封装、解封装工具
+- [mp4box.js filereader][2] MP4 文件可视化工具，基于 mp4box.js 构建
 
 
 [1]: https://gpac.github.io/mp4box.js

@@ -45,28 +45,29 @@ date: 2023-07-19
 
 **其他常见格式**
 - FLV，flv.js 主要是将 FLV 转封装成 fMP4，使得浏览器能播放 FLV 格式的视频  
-- WebM，免费， [MediaRecorder](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaRecorder) 输出的就是 WebM 格式  
+- WebM，免费， [MediaRecorder][9] 输出的就是 WebM 格式  
 
 ## WebCodecs 核心 API
 
 ![音视频工作流程](./media-workflow.png)  
 由上图可知，WebCodecs 工作在编解码阶段，不涉及封装、解封装  
-与 API 的对应关系  
+
+上图节点与 API 的对应关系  
 **视频**
-- 原始图像数据： [VideoFrame](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame)
-- 图像编码器： [VideoEncoder](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder)
-- 压缩图像数据： [EncodedVideoChunk](https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk)
-- 图像解码器： [VideoDecoder](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder)
+- 原始图像数据： [VideoFrame][1]
+- 图像编码器： [VideoEncoder][3]
+- 压缩图像数据： [EncodedVideoChunk][5]
+- 图像解码器： [VideoDecoder][4]
 
 数据转换关系：  
-VideoFrame -> VideoEncoder => EncodedVideoChunk ->  VideoDecoder => VideoFrame
+`VideoFrame -> VideoEncoder => EncodedVideoChunk ->  VideoDecoder => VideoFrame`
 <img src="./video-encodeing.png" width="50%" /><img src="./video-decoding.png" width="50%" />
 
 **音频**
-- 原始音频数据： [AudioData](https://developer.mozilla.org/en-US/docs/Web/API/AudioData)
-- 音频编码器： [AudioEncoder](https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder)
-- 压图音频数据： [EncodedAudioChunk](https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk)
-- 音频解码器： [AudioDecoder](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder)
+- 原始音频数据： [AudioData][2]
+- 音频编码器： [AudioEncoder][6]
+- 压图音频数据： [EncodedAudioChunk][7]
+- 音频解码器： [AudioDecoder][8]
 
 *音频数据转换跟视频对称*  
 
@@ -83,5 +84,18 @@ VideoFrame -> VideoEncoder => EncodedVideoChunk ->  VideoDecoder => VideoFrame
 
 ## 附录
 - [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
+- [VideoFrame][1] 、 [AudioData][2]
+- [VideoEncoder][3] 、 [VideoDecoder][4]
+- [AudioEncoder][6] 、 [AudioDecoder][8]
+- [EncodedVideoChunk][5] 、 [EncodedAudioChunk][7]
 
 
+[1]: https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame
+[2]: https://developer.mozilla.org/en-US/docs/Web/API/AudioData
+[3]: https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder
+[4]: https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder
+[5]: https://developer.mozilla.org/en-US/docs/Web/API/EncodedVideoChunk
+[6]: https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder
+[7]: https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk
+[8]: https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder
+[9]: https://developer.mozilla.org/zh-CN/docs/Web/API/MediaRecorder

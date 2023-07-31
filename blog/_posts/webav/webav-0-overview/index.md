@@ -56,7 +56,7 @@ WebCodecs 将会像 Video、Audio、MSE 一样，促进音视频在 Web 端的�
 - [在浏览器中解析视频](../webav-2-parse-video/)
   - 解析视频、视频逐帧处理...
   - WebCodecs 解码相关 API 应用
-- 在浏览器中创建视频
+- [在浏览器中创建视频](../webav-3-create-video/)
   - 从 Canvas、摄像头、麦克风等采集数据创建并导出视频文件
   - WebCodecs 编码相关 API 应用
 - 音频数据处理
