@@ -270,7 +270,7 @@ const { stream } = file2stream(muxer.mp4file, 500)
 // upload or write stream
 ```
 
-体验使用不同素材[创建的视频 DEMO][6]； 查看[详细代码][7]
+体验使用不同素材[创建视频 DEMO][6]； 查看 [recodemux 详细用例][7]
 
 ## 附录
 - [WebAV][4] 基于 WebCodecs 构建的音视频处理 SDK
@@ -285,4 +285,4 @@ const { stream } = file2stream(muxer.mp4file, 500)
 [4]: https://github.com/hughfenghen/WebAV
 [5]: https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder
 [6]: https://hughfenghen.github.io/WebAV/demo/concat-media.html
-[7]: https://github.com/hughfenghen/WebAV/blob/bfdc5bd3b1bed50a0477cfc51d103c9bfa99e310/packages/av-cliper/demo/concat-media.ts#L15
+[7]: https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/combinator.ts#L118
