@@ -1,3 +1,26 @@
+
+// ---- 解决 URL 中文 404 start -----
+import Router from 'vue-router'
+function decode (str) {
+  try {
+    return decodeURIComponent(str)
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      warn(false, ("Error decoding \"" + str + "\". Leaving it intact."));
+    }
+  }
+  return str
+}
+
+const VueRouterMatch = Router.prototype.match
+Router.prototype.match = function match (raw, currentRoute, redirectedFrom) {
+  if (typeof raw === 'string') {
+    raw = decode(raw)
+  }
+  return VueRouterMatch.call(this, raw, currentRoute, redirectedFrom)
+}
+// ---- 解决 URL 中文 404 end -----
+
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
   options, // 附加到根实例的一些选项
