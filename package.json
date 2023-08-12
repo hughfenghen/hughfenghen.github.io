@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "vuepress dev blog",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress dev blog",
     "push-baidu": "curl -H 'Content-Type:text/plain' --data-binary @'./blog/.vuepress/public/site-map.xml'  'http://data.zz.baidu.com/urls?site=fenghen.xyz&token=nqqbIIvUQ0XppZCk'",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress build blog",
     "deploy-github": "yarn build && ./blog/deploy-github.sh",
