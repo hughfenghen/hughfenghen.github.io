@@ -60,3 +60,49 @@ console.error
 ## 总结
 黑魔法：能力却强、责任越大，容易误伤，性能损耗
 其他作用：监控、全局修改、定位问题
+
+
+---
+
+
+### 前端黑魔法：拦截
+
+**前端安全模型**
+
+边界清晰（高墙），内部灵活
+
+CSP、站点隔离
+
+**拦截的价值**
+
+监控、全局修改、定位问题
+
+黑魔法：能力却强、责任越大，容易误伤，性能损耗
+
+**拦截方法**
+
+服务层拦截
+
+DNS、Nginx（拦截注入 ff-sdk chii eruda），url、header { cookie、 referer }
+
+例子：ff-dev 支持vite，uat CDN 支持 染色
+
+客户端网络
+
+xhr、fetch、websocket、ServiceWorker
+
+DOM/BOM
+
+a、iframe，MutationObsever
+
+window.open 
+
+history 拦截
+
+console.error
+
+Object.definePorperty 定位问题
+
+proxy
+
+new Function
