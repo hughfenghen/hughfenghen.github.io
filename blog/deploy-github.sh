@@ -3,6 +3,9 @@
 # 确保脚本抛出遇到的错误
 set -e
 
+# 给 github 项目添加 readme
+sed "s#(./posts/)#(//hughfenghen.github.io/posts/)#g" blog/README.md > blog/.vuepress/dist/README.md
+
 # 进入生成的文件夹
 cd blog/.vuepress/dist
 
