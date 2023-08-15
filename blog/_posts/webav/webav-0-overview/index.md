@@ -62,7 +62,7 @@ WebCodecs 将会像 Video、Audio、MSE 一样，促进音视频在 Web 平台�
 - [在浏览器中创建视频](../webav-3-create-video/)
   - 从 Canvas、摄像头、麦克风等采集数据创建并导出视频文件
   - WebCodecs 编码相关 API 应用
-- [编码封装音频数据](../webav-4-process-audio/)
+- [在浏览器中处理音频](../webav-4-process-audio/)
   - 在浏览器中**采集、处理、编码、封装**音频数据全流程介绍
   - 音频数据基本处理：音量调节、混流、淡入淡出、重采样
 - 合成视频
