@@ -8,7 +8,7 @@ date: 2023-07-31
 
 # Web 音视频（三）在浏览器中创建视频
 
-> [**Web 音视频目录**](/tag/webav)
+> [**Web 音视频目录**](/tag/WebAV)
 
 ![音视频工作流程](./media-workflow.png)  
 
