@@ -27,6 +27,8 @@ date: 2023-08-05
 ### 数字化声波
 **声音的本质是波**，对一段连续声波进行采样，每一个点用一个浮点数来表示，声音就被数字化成了一个浮点数组；js 中通常使用 **`Float32Array`** 来记录数字化后的浮点数组。  
 
+如果对音频、波、数字化没什么概念，**强烈建议**体验 [Waveforms][13]  
+
 数字化（Pulse Code Modulation, PCM）一段声音后（`Float32Array`），还需要几个**必要属性**来描述这段数据  
 - SampleRate（采样率）：采样声波的频率，48KHz 就是每秒采样 48000 个数字
 - ChannelCount（声道数）：声音来源数量，比如两个声波（双声道）采样后会得到两个 `Float32Array`，通常会将它们前后拼接成一个 `Float32Array`，前一半为左声道声波采样数据，后一半为右声道数据
@@ -305,3 +307,4 @@ readAudioData.catch(console.error)
 [10]: https://github.com/hughfenghen/WebAV
 [11]: https://github.com/hughfenghen/WebAV/blob/bb95c96e2023fd27ef8abb45ab45aec5abff8b02/packages/av-recorder/src/mux-mp4-worker.ts#L42
 [12]: https://hughfenghen.github.io/WebAV/demo/record-usermedia.html
+[13]: https://pudding.cool/2018/02/waveforms/

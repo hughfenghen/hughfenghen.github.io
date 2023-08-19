@@ -41,10 +41,10 @@ date: 2023-07-19
 编码数据是压缩后的原始数据，需要元数据来描述才能被正确解析播放；  
 常见的元数据包括：时间信息，编码格式，分辨率，码率，语言等等。  
 
-最常见的是 MP4，且 MSE 只支持 [fMP4](https://github.com/CharonChui/AndroidNote/blob/master/VideoDevelopment/%E8%A7%86%E9%A2%91%E5%B0%81%E8%A3%85%E6%A0%BC%E5%BC%8F/fMP4%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3.md)，所以后续示例都是处理 MP4 文件。  
+在 Web 平台最常见、兼容性最好的视频格式是 MP4，所以后续使用 MP4 文件作为输入输出示例。  
 
 **其他常见格式**
-- FLV，flv.js 主要是将 FLV 转封装成 fMP4，使得浏览器能播放 FLV 格式的视频  
+- FLV，flv.js 主要是将 FLV 转封装成 [fMP4][10]，使得浏览器能播放 FLV 格式的视频  
 - WebM，免费， [MediaRecorder][9] 输出的就是 WebM 格式  
 
 ## WebCodecs 核心 API
@@ -99,3 +99,4 @@ date: 2023-07-19
 [7]: https://developer.mozilla.org/en-US/docs/Web/API/EncodedAudioChunk
 [8]: https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder
 [9]: https://developer.mozilla.org/zh-CN/docs/Web/API/MediaRecorder
+[10]: https://github.com/CharonChui/AndroidNote/blob/master/VideoDevelopment/%E8%A7%86%E9%A2%91%E5%B0%81%E8%A3%85%E6%A0%BC%E5%BC%8F/fMP4%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3.md
