@@ -4,7 +4,7 @@ tags:
 date: 2023-08-18
 ---
 
-# 我在 20 年的软件工程师生涯中学到的事情
+# 【转】我在 20 年的软件工程师生涯中学到的事情
 
 [原文](https://www.simplethread.com/20-things-ive-learned-in-my-20-years-as-a-software-engineer/)  
 [阮一峰翻译](https://www.ruanyifeng.com/blog/2023/08/weekly-issue-267.html)  
