@@ -7,6 +7,8 @@ date: 2023-06-21
 
 # Web 端实时防挡脸弹幕（基于机器学习）
 
+[*W3C 分享视频版*](https://www.bilibili.com/video/BV12P411p7He/)  
+
 **防档弹幕**，即大量弹幕飘过，但不会遮挡视频画面中的人物，看起来像是从人物背后飘过去的。  
 <img src="./bili-mask-danmaku.jpeg" width="400">  
 
