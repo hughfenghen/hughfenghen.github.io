@@ -146,6 +146,22 @@ export async function audioResample (
 :::
 [WebAV 中的 audioResample 函数源码][4]
 
+::: tip 
+WebWorker 环境中不存在 `OfflineAudioContext`，可采用 js 实现的音频重采样库来实现，如 [wave-resampler][14]
+```js
+import { resample } from 'wave-resampler'
+// The Worker scope does not have access to OfflineAudioContext
+if (globalThis.OfflineAudioContext == null) {
+  return pcmData.map(
+    p =>
+      new Float32Array(
+        resample(p, curRate, target.rate, { method: 'sinc', LPF: false })
+      )
+  )
+}
+```
+:::
+
 ## 编码音频
 因为 [AudioEncoder][6] 只能编码 [AudioData][5] 对象，所以需要先将 Float32Array 转换成 AudioData 对象。  
 ```js
@@ -294,6 +310,7 @@ readAudioData.catch(console.error)
 - [AudioData][5] 、 [AudioEncoder][6]
 - [WebAV audioResample 源码][4]
 - [WebAV createESDSBox 源码][7]
+- [wave-resampler][14] PCM audio resampler written entirely in JavaScript
 
 [1]: https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API
 [2]: https://www.zhangxinxu.com/wordpress/2017/06/html5-web-audio-api-js-ux-voice/
@@ -308,3 +325,4 @@ readAudioData.catch(console.error)
 [11]: https://github.com/hughfenghen/WebAV/blob/bb95c96e2023fd27ef8abb45ab45aec5abff8b02/packages/av-recorder/src/mux-mp4-worker.ts#L42
 [12]: https://hughfenghen.github.io/WebAV/demo/record-usermedia.html
 [13]: https://pudding.cool/2018/02/waveforms/
+[14]: https://github.com/rochars/wave-resampler
