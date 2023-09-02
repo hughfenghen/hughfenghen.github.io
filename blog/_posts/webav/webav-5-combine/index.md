@@ -19,7 +19,7 @@ date: 2023-08-12
 ## 在视频上叠加素材
 常见的素材有：视频、音频、图片、文字
 
-[在浏览器中创建视频](../webav-3-create-video/)章节介绍了，视频编码器只接受 VideoFrame 对象，而 canvas 可以构造 VideoFrame；  
+[在浏览器中创建视频](/posts/2023/07/31/webav-3-create-video/)章节介绍了，视频编码器只接受 VideoFrame 对象，而 canvas 可以构造 VideoFrame；  
 
 在视频上叠加素材的实现原理：`视频 + 素材 -> canvas -> VideoFrame -> VideoEncoder`  
 1. 先绘制视频到 canvas，再绘制其他素材
@@ -27,19 +27,19 @@ date: 2023-08-12
 3. 使用编码器编码 VideoFrame
 4. 处理下一帧
 
-*音频则是将各个素材的音频数据（如果有）相加即可，详情可查看上一章[在浏览器中处理音频](../webav-4-process-audio/)*
+*音频则是将各个素材的音频数据（如果有）相加即可，详情可查看上一章[在浏览器中处理音频](/posts/2023/08/05/webav-4-process-audio/)*
 
 视频是由一帧帧图像在时间轴上排列而成，原视频也视为一个普通素材；  
 所以问题可以简化为：决定某一**时刻**分别需要绘制**哪些素材**的**第几帧**，时间轴从 0 开始，重复以上步骤就能得到一个新视频。  
 
 ### 实现步骤总结
 1. 将素材抽象为 `Clip` 接口，不同素材有不同实现，如 `MP4Clip`、`ImgClip`
-2. 创建一个 `Conbinator` 对象控制时间轴，向各个素材（Clip）发送时间信号，首次为 0
+2. 创建一个 `Combinator` 对象控制时间轴，向各个素材（Clip）发送时间信号，首次为 0
    时间不断增加，增加的步长取决于最终需要合成视频 FPS，`step = 1000 / FPS` ms
 3. 素材由接收到的时间值，决定当前时刻需要提供的数据：自身的第几帧图像、音频片段（`Float32Array`）
-4. `Conbinator` 收集并合成各个素材的图像（绘制到 canvas）、音频（`Float32Array`相加）数据
-5. `Conbinator` 将合成的数据转换成 VideoFrame、AudioData 传递给编码器，编码（压缩）后封装到对应格式的视频容器格式
-6. `Conbinator` 增加时间信号的值，重复步骤 2~5
+4. `Combinator` 收集并合成各个素材的图像（绘制到 canvas）、音频（`Float32Array`相加）数据
+5. `Combinator` 将合成的数据转换成 VideoFrame、AudioData 传递给编码器，编码（压缩）后封装到对应格式的视频容器格式
+6. `Combinator` 增加时间信号的值，重复步骤 2~5
 
 ### 素材抽象设计（Clip）
 素材分为动态（视频、音频、动图）与静态（图片、文字）两种，静态素材不受时间影响比较简单，接下来以视频素材举例。  
@@ -61,7 +61,7 @@ export interface IClip {
 }
 ```
 
-[MP4Clip][2] 的实际源码有两百多行，限于篇幅，这里只介绍原理
+[MP4Clip][2] 实际源码有两百多行，限于篇幅，这里只介绍原理
 1. 使用 mp4box.js 解封装、WebCodecs 解码视频，得到 VideoFrame、AudioData
 2. 从 AudioData 提取 PCM 数据（Float32Array）
 3. MP4Clip 内部使用数组管理图像（VideoFrame）与音频数据（Float32Array）

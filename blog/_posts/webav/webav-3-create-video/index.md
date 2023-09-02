@@ -25,7 +25,7 @@ WebCodecs 补齐了编解码能力，相当于在浏览器中提供了视频创�
 <img src="./video-encodeing.png" width="75%" />   
 
 前面的文章已介绍过 WebCodecs 使用 VideoFrame、AudioData 来描述音视频原始数据。  
-*请参考 [WebCodecs 核心 API](../webav-1-basic/#webcodecs-核心-api)*
+*请参考 [WebCodecs 核心 API](/posts/2023/07/19/webav-1-basic/#webcodecs-核心-api)*
 
 常见的音视频源有：MediaStream（摄像头、麦克风、分享屏幕）、Canvas、Video标签、文件流等...  
 
@@ -66,7 +66,7 @@ setInterval(() => {
 ```
 
 ::: warning
-当高频调用 `encoder.encode` 时应根据当前编码器的队列大小 `encoder.encodeQueueSize` 决定是否需要暂停，队列中的 VideoFrame 数量过多会爆掉显存，导致性能极其低下
+当高频调用 `encoder.encode` 时应根据当前编码器的队列大小 `encoder.encodeQueueSize` 决定是否需要暂停，队列中的 VideoFrame **数量过多会爆掉显存**，导致性能极其低下
 :::
 
 ## 封装
@@ -129,9 +129,11 @@ file.addSample(audioTrackId, audioSample.data, audioSample)
 :::
 
 以上代码是为了将主要过程与 API 建立对应关系，实际上还需要比较复杂的流程控制逻辑，以及进一步了解 mp4 格式知识才能编写出完整可运行的程序。  
-注意事项：  
+
+::: tip
 - addSample 前必须保证音视频轨道（addTrack）都已经创建完成
-- 创建音频轨道需要传递 `description`(esds box)，否则某些播放器将丢失声音
+- 创建音频轨道需要传递 `description`(esds box)，否则某些播放器将无法播放声音
+:::
 
 ## 生成文件流
 使用 mp4box.js 封装编码器输出的数据，我们持有的是一个 MP4File 对象（`mp4box.createFile()`），将 MP4File 对象转换成 `ReadableStream` 可以非常方便地写入本地文件、上传到服务器。  
