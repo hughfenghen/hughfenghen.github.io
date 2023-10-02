@@ -53,6 +53,8 @@ WebCodecs 将会像 Video、Audio、MSE 一样，促进音视频在 Web 平台�
 
 *这就是本系列文章的写作动机。*  
 
+如果之前没了解过 WebCodecs，建议先阅读[【译】WebCodecs 说明][1]
+
 ## 本系列内容预告
 - 系列概览
 - [Web 音视频基础知识](/posts/2023/07/19/webav-1-basic/)
@@ -112,3 +114,6 @@ Star 或 Watch [本博客站点](https://github.com/hughfenghen/hughfenghen.gith
 - [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 - [WebCodecs Explainer](https://github.com/w3c/webcodecs/blob/main/explainer.md)
 - [Video processing with WebCodecs](https://developer.chrome.com/articles/webcodecs/)
+- [【译】WebCodecs 说明][1]
+
+[1]: /posts/2023/10/02/webcodecs-explainer/
