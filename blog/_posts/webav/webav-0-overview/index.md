@@ -53,7 +53,7 @@ WebCodecs 将会像 Video、Audio、MSE 一样，促进音视频在 Web 平台�
 
 *这就是本系列文章的写作动机。*  
 
-如果之前没了解过 WebCodecs，建议先阅读[【译】WebCodecs 说明][1]
+如果之前没接触过 WebCodecs，建议先阅读[【译】WebCodecs 说明][1]，能快速了解 WebCodecs API 的动机与目标
 
 ## 本系列内容预告
 - 系列概览
