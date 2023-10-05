@@ -8,7 +8,7 @@ date: 2023-10-02
 
 # 【译】WebCodecs 说明
 
-*本文翻译至官方文章 [WebCodecs Explainer][1]*
+*本文翻译至 [WebCodecs Explainer][1]*
 
 ## 问题与动机
 
