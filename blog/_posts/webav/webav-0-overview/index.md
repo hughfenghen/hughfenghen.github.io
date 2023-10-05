@@ -47,8 +47,8 @@ WebCodecs API 已经发布一段时间（chrome 94），在浏览器中处理音
 
 <strong>
 WebCodecs 就是来改变这个现状的；<br>  
-WebCodecs 是 Web 端未来音视频处理的基础；<br>    
-WebCodecs 将会像 Video、Audio、MSE 一样，促进音视频在 Web 平台的发展和应用。  <br>  
+WebCodecs 是 Web 平台音视频处理的基础；<br>    
+WebCodecs 将会像 HTML5 一样，促进音视频在 Web 平台的应用和发展。  <br>  
 </strong>
 
 *这就是本系列文章的写作动机。*  

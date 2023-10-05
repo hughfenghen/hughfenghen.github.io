@@ -117,7 +117,11 @@ com.ouput()
 import { createChromakey, Combinator, MP4Clip, OffscreenSprite, createImageBitmap } from '@webav/av-cliper'
 
 // 创建抠图工具函数
-const chromakey = createChromakey()
+const chromakey = createChromakey({
+  similarity: 0.4,
+  smoothness: 0.05,
+  spill: 0.05,
+})
 // 背景绿幕的测试视频
 const clip = new MP4Clip((await fetch('./public/video/chromakey-test.mp4')).body!)
 // MP4 的每一帧 都会经过 tickInterceptor

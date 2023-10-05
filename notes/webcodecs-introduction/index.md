@@ -65,7 +65,7 @@
 - 图像编解码习得的知识，可以对称迁移到音频编解码
 
 ![](./audio-data-flow.png)  
-音频数据转换可 Web Audio 配合，涉及的 API 比图像数据更多一些  
+音频数据转换可与 Web Audio 配合，涉及的 API 比图像数据更多一些  
 
 以上就是 WebCodecs 提供的核心 API，新增 API 的数量非常少；  
 不过，设计的音视频背景知识、与之相互配合的 Web API 需要一定时间学习  
@@ -82,58 +82,177 @@
 基于 Web 平台已有的能力，加上 WebCodecs 提供的编解码能力，能帮助开发者实现那些功能呢？  
 
 ### 视频生产，从零到一
-填补空白
+由于缺失编码能力，导致 Web 端少有视频生产工具；现有的 Web 视频剪辑工具都强依赖服务端能力支持，交互体验存在优化空间；  
 
-**视频合成**
-片段合成，配音、配字幕
+在 Web 页面借助 Canvas 制作动画是非常简单的，借助 WebCodecs 的编码能力，现在就能将动画快速保存为视频。  
 
-**视频录制**
-能制作酷炫的动效、交互，却无法保存下来
+视频裁剪、添加水印、内嵌字幕等基础视频剪辑能力，没有 WebCodecs 都是难以实现的。  
+
+WebCodecs 将填补该领域的空白。  
 
 ### 视频消费，精细控制
-超低延迟播放
+借助 HTMLMediaElement、MSE，Web 平台的视频消费应用已经非常成熟；  
+以上 API 虽然简单易用，但无法控制细节，常有美中不足之感
 
-### 算力转移，实时交互
-<!-- 大势所趋 -->
-转码、降低画质、变速、生成预览图
-众多小工具能在用户设备完成，且实时预览进度
+比如，缓冲延迟控制、逐帧播放、超快速播放、解码进度控制等
 
-### DEMO 演示
-解码、合成
+WebCodecs 将支持构建更强、体验更好的视频消费应用  
 
-## 如何实现
-怎么做
-API介绍、
-WebAV 项目介绍、示例
-Bloom Shadow介绍、远程协同示例
+### 算力转移，成本体验双赢
+目前 Web 使用的音视频服务，其处理过程都是在服务器上完成的
 
-<!-- 二维码：WebAV、系列文章 -->
+比如，众多在线视频处理工具提供的：压缩（降低分辨率、码率）、水印、变速、预览图 功能
+
+处理流程：用户上传视频 -> 服务器处理 -> 用户下载视频；  
+整个过程消耗了服务器的计算成本、带宽成本，用户上传下载的等待时间，且处理过程是不透明的，不能预览  
+
+WebCodecs 能让更多的任务在本地运行，不仅降低了服务运营成本，还能提升用户体验
+
+### DEMO 演示及实现
+WebCodecs 是相对底层 API，实现产品功能需要编写大量的上层代码；  
+所以这里引用作者开源的 WebAV 来演示功能实现  
+
+WebAV 基于 WebCodecs，尝试提供简单易用的 API 在浏览器中处理音视频数据。  
+
+**快速解码**
+以设备最快的速度解码视频，并将视频帧绘制到 Canvas 上
+
+```js
+import { MP4Clip } from '@webav/av-cliper'
+
+// 传入一个 mp4 文件流即可初始化
+const clip = new MP4Clip((await fetch('<mp4 url>')).body)
+await clip.ready
+
+let time = 0
+// 最快速度渲染视频所有帧
+while (true) {
+  const { state, video: videoFrame } = await clip.tick(time)
+  if (state === 'done') break
+  if (videoFrame != null && state === 'success') {
+    ctx.clearRect(0, 0, cvs.width, cvs.height)
+    // 绘制到 Canvas
+    ctx.drawImage(videoFrame, 0, 0, videoFrame.codedWidth, videoFrame.codedHeight)
+    // 注意，用完立即 close
+    videoFrame.close()
+  }
+  // 时间单位是 微秒，所以差不多每秒取 30 帧，丢掉多余的帧
+  time += 33000
+}
+clip.destroy()
+```
+
+**添加水印**
+给视频文件添加随时间移动的文字水印
+
+```js
+const spr1 = new OffscreenSprite(
+  new MP4Clip((await fetch('<mp4 url>')).body)
+)
+
+const spr2 = new OffscreenSprite(
+  new ImgClip('水印')
+)
+spr2.setAnimation(/* animation config */)
+
+const com = new Combinator()
+
+await com.add(spr1, { main: true })
+await com.add(spr2, { offset: 0, duration: 5 })
+// com.ouput() => ReadableStream
+```
+
+
+**绿幕抠图**
+带绿幕的数字人形象与背景图片合成视频
+
+```js
+// 创建抠图工具函数
+const chromakey = createChromakey(/* 绿幕抠图配置 */)
+// 背景绿幕的测试视频
+const clip = new MP4Clip((await fetch('<mp4 url>')).body)
+// MP4 的每一帧 都会经过 tickInterceptor
+clip.tickInterceptor = async (_, tickRet) => {
+  if (tickRet.video == null) return tickRet
+  return {
+    ...tickRet,
+    // 抠图之后再返回
+    video: await chromakey(tickRet.video)
+  }
+}
+```
+
+**花影**
+在浏览器中运行的视频录制工具，可用于视频课程制作、直播推流工作台
+
+<!-- 二维码：WebAV、系列文章、花影项目 -->
+
+## WebCodecs 的优劣分析
+
+### 优势
+WebCodecs 的优势在于 Web 平台  
+- Web 平台天然具有的优势
+  - 跨平台
+  - 易访问
+  - 迭代效率
+- Web 基建越来越完善，已具备构建大型、专业应用的条件
+  - WebGPU、OPFS、WebTransport、WASM
+
+### 劣势
+- 生态不成熟
+  - 比如 缺少优秀的 封装/解封装 工具包，支持容器格式有限
+  - 需要更多音视频、前端开发者参与共同推动
+- 兼容性
+  - Firefox、旧版本浏览器不支持 WebCodecs
+  - to C 的产品需要做好降级
+- 受限于浏览器提供的编解码器
+  - 编解码的可控参数不够丰富（通用性不可避免的交换）
+  - 暂无法自定义编解码器
 
 ## WebCodecs 会带来什么改变
-WebCodecs 的应用场景、案例
 
-大局方向  多元丰富、可能性
-圈：WebGPU、OPFS、WebTransport、WebRTC、WASM
+**应用场景预测**  
+- 视频生产工具（剪辑、直播工作台），搭配多人协同、AI 能力  
+- 视频消费工具（播放器、视频会议、云游戏）  
+- 在线视频处理工具
 
-预测 困难；并非资深音视频专家
+没有 WebCodecs 以上的工具已经存在了，为什么预测它们会应用 WebCodecs？  
 
-### 关键用例
+首先，有了 WebCodecs 之后这些工具能做到体验更好、更便宜、迭代更快；  
+再结合以往经验，加上的 Web 平台所具有优势，相信 WebCodecs 未来会得到广泛应用  
 
-### 举例 富文本
-、figma、web ps
+分享两个例子
 
-### 基础能力
+**用户视频消费行为变化**  
+0. 荒芜 时代  
+   Web 不支持流媒体，PC 硬件标配光驱，软件标配本地播放器  
+   用户行为：下载电影然后离线观看  
+1. Flash 时代  
+   Flash 插件是浏览器的标配，可以播放 FLV 视频
+   用户行为：在线观看视频逐渐流行  
+2. HTML5 时代  
+   Video 标签可直接播放 MP4 视频，对与大量已存在的 FLV 视频文件转封装为 fMP4，使用 MSE API 播放；FLV.js 成为明星项目  
+   用户行为：在线观看视频成为首选
+3. WebCodecs 时代  
+   补齐音视频编解码能力  
+   用户行为：预计 WebCodecs 配合 AI 加多人协同，音视频剪辑、视频会议、直播推流等工具将逐渐 Web 化  
+
+**富文本编辑**  
+Web 开放了几个核心 API，让大部分文字编辑转移到线上，产生大量优秀的知识管理应用  
+借助 Web 的易访问性、搭配协同编辑，将生产沟通效率提升了一个等级　　
+- contenteditable：可编辑节点
+- Selection：选区
+- Range：文档片段
+
+### 总结
+- 一旦 Web 平台具备某个领域的基础能力，相关领域的产品不可避免的 Web 化；
+- WebCodecs 是 Web 平台音视频处理的基础；  
+- WebCodecs 将会像 HTML5 一样，促进音视频在 Web 平台的应用和发展。 
 
 
-## WebCodecs 的优势与挑战
-
-### 优
-基于 Web 平台
-跨平台、开发效率
-
-### 挑战
-兼容性
-生态不成熟
-受限于平台提供的编解码器
+## 附录
+- [译 Webcodecs 说明][1]
+- [Web 音视频（零）概览][2]
 
 [1]: /posts/2023/10/02/webcodecs-explainer/
+[2]: /posts/2023/07/16/webav-0-overview/
