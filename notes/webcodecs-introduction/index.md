@@ -45,16 +45,32 @@
 
 ## Webcodecs 能做什么
 
+### Webcodecs API 介绍
+
 先了解 Webcodecs API 在视频生产消费链路所处的位置  
 
 ![](./media-workflow.png)
 
-由图可知
+由图可知 Webcodecs API  
 **提供的能力**  
 - 控制编解码过程
 - 访问编解码前后的底层数据
 
-**不涉及部分**由其他 Web API 提供  
+![](./video-encodeing.png)
+![](./video-decoding.png)
+
+- `VideoFrame、EncodedVideoChunk` 对应编码前的源图像和编码后的压缩数据，两者均提供获取底层二进制数据的接口；  
+- `VideoEncoder、VideoDecoder` 用于 `VideoFrame、EncodedVideoChunk` 两者的类型转换
+- 这里可以看到编码、解码过程在 API 设计上的对称性
+- 图像编解码习得的知识，可以对称迁移到音频编解码
+
+![](./audio-data-flow.png)  
+音频数据转换可 Web Audio 配合，涉及的 API 比图像数据更多一些  
+
+以上就是 WebCodecs 提供的核心 API，新增 API 的数量非常少；  
+不过，设计的音视频背景知识、与之相互配合的 Web API 需要一定时间学习  
+
+音视频生产消费链路中，WebCodecs **不涉及部分**由其他 Web API 提供  
 - 音视频数据的采集与渲染
   - 源：navigator.mediaDevices、Canvas、Web Audio ...
   - 输出：Canvas、Web Audio、HTMLMediaElement ...
@@ -63,10 +79,7 @@
 - 传输、存储
   - fetch、WebTransport、OPFS ...
 
-<!-- API 映射关系
-数据结构流转 图 -->
-
-新提供的能力，能帮助开发者实现那些功能呢？
+基于 Web 平台已有的能力，加上 WebCodecs 提供的编解码能力，能帮助开发者实现那些功能呢？  
 
 ### 视频生产，从零到一
 填补空白
