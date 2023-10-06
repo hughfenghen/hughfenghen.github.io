@@ -1,4 +1,5 @@
 # Webcodecs 开启 Web 音视频新篇章 
+<!-- webcodecs-new-era-for-media-on-the-web -->
 
 ## Webcodecs 是什么
 
@@ -115,7 +116,9 @@ WebCodecs 是相对底层 API，实现产品功能需要编写大量的上层代
 WebAV 基于 WebCodecs，尝试提供简单易用的 API 在浏览器中处理音视频数据。  
 
 **快速解码**
-以设备最快的速度解码视频，并将视频帧绘制到 Canvas 上
+以设备最快的速度解码一个 20s 的视频，并将视频帧绘制到 Canvas 上  
+
+<video src="./decode-video-demo.mp4" controls></video>
 
 ```js
 import { MP4Clip } from '@webav/av-cliper'
@@ -143,7 +146,9 @@ clip.destroy()
 ```
 
 **添加水印**
-给视频文件添加随时间移动的文字水印
+给视频添加随时间移动的半透明文字水印
+
+<video src="./watermask-demo.mp4" controls></video>
 
 ```js
 const spr1 = new OffscreenSprite(
@@ -158,13 +163,15 @@ spr2.setAnimation(/* animation config */)
 const com = new Combinator()
 
 await com.add(spr1, { main: true })
-await com.add(spr2, { offset: 0, duration: 5 })
-// com.ouput() => ReadableStream
+await com.add(spr2, { offset: 0 })
+// com.ouput() => 输出视频流 
 ```
 
 
 **绿幕抠图**
-带绿幕的数字人形象与背景图片合成视频
+带绿幕的数字人形象与背景图片合成视频，使用 WebGL 对每帧图像进行处理，将人物背景修改为透明效果  
+
+<video src="./chromakey-demo.mp4" controls></video>
 
 ```js
 // 创建抠图工具函数
@@ -183,7 +190,10 @@ clip.tickInterceptor = async (_, tickRet) => {
 ```
 
 **花影**
-在浏览器中运行的视频录制工具，可用于视频课程制作、直播推流工作台
+在浏览器中运行的视频录制工具，可用于视频课程制作、直播推流工作台  
+视频演示视频课程制作的基本操作，包含“添加摄像头、分享屏幕、修改素材层级、剪切视频片段、预览导出视频”五个步骤  
+
+<video src="Bloom-Shadow-demo.mp4" controls></video>
 
 <!-- 二维码：WebAV、系列文章、花影项目 -->
 
@@ -244,7 +254,7 @@ Web 开放了几个核心 API，让大部分文字编辑转移到线上，产生
 - Selection：选区
 - Range：文档片段
 
-### 总结
+### 愿景
 - 一旦 Web 平台具备某个领域的基础能力，相关领域的产品不可避免的 Web 化；
 - WebCodecs 是 Web 平台音视频处理的基础；  
 - WebCodecs 将会像 HTML5 一样，促进音视频在 Web 平台的应用和发展。 
@@ -253,6 +263,10 @@ Web 开放了几个核心 API，让大部分文字编辑转移到线上，产生
 ## 附录
 - [译 Webcodecs 说明][1]
 - [Web 音视频（零）概览][2]
+- [WebAV][3] 基于 WebCodecs 构建的音视频处理 SDK
+- [花影][4] 在浏览器中运行的视频录制工具
 
 [1]: /posts/2023/10/02/webcodecs-explainer/
 [2]: /posts/2023/07/16/webav-0-overview/
+[3]: https://github.com/hughfenghen/WebAV
+[3]: https://github.com/hughfenghen/bloom-shadow
