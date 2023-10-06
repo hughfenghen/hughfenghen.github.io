@@ -132,7 +132,9 @@ MSE 已被广泛用于低延迟流媒体。 但也存在一些问题：
 - [WebCodecs Explainer][1]
 - [WebRTC Insertable Stream 初探与 WebRTC"管道化"][2]
 - [WebAV 系列文章][3]
+- [WebAV][4] 基于 WebCodecs 构建的音视频处理 SDK
 
 [1]: https://github.com/w3c/webcodecs/blob/main/explainer.md#webcodecs-explainer
 [2]: https://cloud.tencent.com/developer/article/1968374
 [3]: https://hughfenghen.github.io/tag/WebAV/
+[4]: https://github.com/hughfenghen/WebAV
