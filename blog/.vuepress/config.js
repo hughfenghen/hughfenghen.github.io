@@ -5,11 +5,11 @@ module.exports = {
   theme: '@vuepress/blog',
   plugins: [
     ['copy-code1', {
-      showInMobile:true, 
-      selector: 'div[class*="language-"] pre', 
-      pure: true 
-    }], 
-    ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }], 
+      showInMobile: true,
+      selector: 'div[class*="language-"] pre',
+      pure: true
+    }],
+    ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }],
     ['feed', {
       canonical_base: 'https://hughfenghen.github.io',
       count: 5000,
