@@ -6,22 +6,22 @@ tags:
 date: 2023-10-06
 ---
 
-# Webcodecs 开启 Web 音视频新篇章 
+# WebCodecs 开启 Web 音视频新篇章 
 
-## Webcodecs 是什么
+## WebCodecs 是什么
 
 - WebCodecs 是一个 Web 规范，21 年 9 月份在 Chrome 94 中实现
-- WebCodecs 提供访问音视频帧的底层接口，可精细控制音视频数据
+- WebCodecs 提供访问编解码能力的接口，可精细控制音视频数据
 
 ### 解决什么问题
-音视频技术在 Web 平台上的应用非常广泛，已有许多 Web API 调用编解码器来实现特定功能  
+音视频技术在 Web 平台上的应用非常广泛，已有许多 Web API 间接调用了编解码器来实现特定功能  
 - 视频播放：MSE、HTMLMediaElement
 - 音频解码：WebAudio
 - 录制视频：MediaRecorder
 - 实时流媒体：WebRTC
   
 但没有方法可以灵活配置或直接访问编解码器，所以许多应用使用 JS 或 WASM （比如 ffmpeg.js）来实现编解码功能，尽管存在诸多缺陷或限制  
-- 降低了性能（Webcodecs 编码速度可达到 ffmpeg.js 的 20 倍）
+- 降低了性能（WebCodecs 编码速度可达到 ffmpeg.js 的 20 倍）
 - 增加功耗
 - 额外网络开销下载已内置的编解码器
 
@@ -29,7 +29,7 @@ date: 2023-10-06
 - WebAudio 只能解码完整的音频文件，但不支持数据流、不提供解码进度信息、更不支持编码
 - MediaRecorder 只能录制特定格式（WebM、MP4）的视频，无法控制编码速度、输出缓冲区等
 - WebRTC 与 MediaStream API 高度耦合，且不透明，仅能用于实时音视频通信
-- Video 标签、MSE 最常用于视频播放，但无法控制解码速率、缓冲区长度，且支持播放部分视频容器格式
+- Video 标签、MSE 最常用于视频播放，但无法控制解码速率、缓冲区长度，且只支持播放部分视频容器格式
 
 **总结**：在特定场景做到简单、够用，但无法实现高效且精细地控制  
 
@@ -46,20 +46,20 @@ date: 2023-10-06
 - 视频容器 封装/解封装 相关 API
 - 在 JS 或 WASM 中实现编解码器
 
-以上总结于[译 WebCodecs 说明][1]，让大家快速了解 WebCodecs API 的设计目的
+以上总结于[译 WebCodecs 说明][1]，让大家快速了解 WebCodecs API 的背景和目标
 
 <!-- PPT 配图 -->
 <!-- 二维码：WebCodecs 提案 说明， 原文、译文 -->
 
-## Webcodecs 能做什么
+## WebCodecs 能做什么
 
-### Webcodecs API 介绍
+### WebCodecs API 介绍
 
-先了解 Webcodecs API 在视频生产消费链路所处的位置  
+先了解 WebCodecs API 在视频生产消费链路所处的位置  
 
 ![](./media-workflow.png)
 
-由图可知 Webcodecs API  
+由图可知 WebCodecs API  
 **提供的能力**  
 - 控制编解码过程
 - 访问编解码前后的底层数据
@@ -70,7 +70,7 @@ date: 2023-10-06
 - `VideoFrame、EncodedVideoChunk` 对应编码前的源图像和编码后的压缩数据，两者均提供获取底层二进制数据的接口；  
 - `VideoEncoder、VideoDecoder` 用于 `VideoFrame、EncodedVideoChunk` 两者的类型转换
 - 这里可以看到编码、解码过程在 API 设计上的对称性
-- 图像编解码习得的知识，可以对称迁移到音频编解码
+- 图像编解码习得的知识，同样可以对称迁移到音频编解码
 
 ![](./audio-data-flow.png)  
 音频数据转换可与 Web Audio 配合，涉及的 API 比图像数据更多一些  
@@ -204,18 +204,18 @@ clip.tickInterceptor = async (_, tickRet) => {
 
 <!-- 二维码：WebAV、系列文章、花影项目 -->
 
-## WebCodecs 的优劣分析
+## WebCodecs 的优势与缺憾
 
 ### 优势
 WebCodecs 的优势在于 Web 平台  
 - Web 平台天然具有的优势
   - 跨平台
-  - 易访问
+  - 开放、易访问性
   - 迭代效率
 - Web 基建越来越完善，已具备构建大型、专业应用的条件
-  - WebGPU、OPFS、WebTransport、WASM
+  - WASM、WebGPU、OPFS、WebTransport
 
-### 劣势
+### 缺憾
 - 生态不成熟
   - 比如 缺少优秀的 封装/解封装 工具包，支持容器格式有限
   - 需要更多音视频、前端开发者参与共同推动
@@ -223,7 +223,7 @@ WebCodecs 的优势在于 Web 平台
   - Firefox、旧版本浏览器不支持 WebCodecs
   - to C 的产品需要做好降级
 - 受限于浏览器提供的编解码器
-  - 编解码的可控参数不够丰富（通用性不可避免的交换）
+  - 编解码的可控参数不够丰富（为了通用性不可避免的交换）
   - 暂无法自定义编解码器
 
 ## WebCodecs 会带来什么改变
@@ -262,13 +262,13 @@ Web 开放了几个核心 API，让大部分文字编辑转移到线上，产生
 - Range：文档片段
 
 ### 愿景
-- 一旦 Web 平台具备某个领域的基础能力，相关领域的产品不可避免的 Web 化；
+- 一旦 Web 平台具备某个领域的基础能力，相关产品不可避免的 Web 化；
 - WebCodecs 是 Web 平台音视频处理的基础；  
 - WebCodecs 将会像 HTML5 一样，促进音视频在 Web 平台的应用和发展。 
 
 
 ## 附录
-- [译 Webcodecs 说明][1]
+- [译 WebCodecs 说明][1]
 - [Web 音视频（零）概览][2]
 - [WebAV][3] 基于 WebCodecs 构建的音视频处理 SDK
 - [花影][4] 在浏览器中运行的视频录制工具
