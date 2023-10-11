@@ -14,6 +14,7 @@
     "lodash": "^4.17.10",
     "vuepress": "^1.9.9",
     "vuepress-plugin-copy-code1": "^1.31.0-beta.1",
-    "vuepress-plugin-feed": "^0.1.9"
+    "vuepress-plugin-feed": "^0.1.9",
+    "vuepress-plugin-google-analytics-4": "^0.1.1"
   }
 }
