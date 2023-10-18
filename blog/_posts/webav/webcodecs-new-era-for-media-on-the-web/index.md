@@ -13,14 +13,14 @@ date: 2023-10-06
 - WebCodecs 是一个 Web 规范，21 年 9 月份在 Chrome 94 中实现
 - WebCodecs 提供访问编解码能力的接口，可精细控制音视频数据
 
-### 解决什么问题
-音视频技术在 Web 平台上的应用非常广泛，已有许多 Web API 间接调用了编解码器来实现特定功能  
+### Web 音视频 API 存在什么问题
+音视频技术在 Web 平台上的应用非常广泛，已有许多 Web API 间接调用了编解码器来实现特定功能：  
 - 视频播放：MSE、HTMLMediaElement
 - 音频解码：WebAudio
 - 录制视频：MediaRecorder
 - 实时流媒体：WebRTC
   
-但没有方法可以灵活配置或直接访问编解码器，所以许多应用使用 JS 或 WASM （比如 ffmpeg.js）来实现编解码功能，尽管存在诸多缺陷或限制  
+但没有方法可以灵活配置或直接访问编解码器，所以许多应用使用 JS 或 WASM （比如 ffmpeg.js）来实现编解码功能，尽管存在诸多缺陷或限制：  
 - 降低了性能（WebCodecs 编码速度可达到 ffmpeg.js 的 20 倍）
 - 增加功耗
 - 额外网络开销下载已内置的编解码器
@@ -31,9 +31,9 @@ date: 2023-10-06
 - WebRTC 与 MediaStream API 高度耦合，且不透明，仅能用于实时音视频通信
 - Video 标签、MSE 最常用于视频播放，但无法控制解码速率、缓冲区长度，且只支持播放部分视频容器格式
 
-**总结**：在特定场景做到简单、够用，但无法实现高效且精细地控制  
+总结：**目前 API 在特定场景做到简单、够用，但无法实现高效且精细地控制**  
 
-### 设计目标
+### WebCodecs 设计目标
 
 - **流式传输**：对远程、磁盘资源进行流式输入输出
 - **效率**：充分利用设备硬件，在 Worker 中运行
@@ -42,11 +42,12 @@ date: 2023-10-06
 - **灵活性**：能适应各种场景(硬实时、软实时、非实时)，能在此之上实现类似 MSE 或 WebRTC 的功能
 - **对称性**：编码和解码具有相似的模式
 
-### 非目标
+
+### 非 WebCodecs 目标  
 - 视频容器 封装/解封装 相关 API
 - 在 JS 或 WASM 中实现编解码器
 
-以上总结于[译 WebCodecs 说明][1]，让大家快速了解 WebCodecs API 的背景和目标
+以上总结于 [译 WebCodecs 说明][1]，让大家快速了解 WebCodecs API 的背景和目标
 
 <!-- PPT 配图 -->
 <!-- 二维码：WebCodecs 提案 说明， 原文、译文 -->
@@ -59,25 +60,25 @@ date: 2023-10-06
 
 ![](./media-workflow.png)
 
-由图可知 WebCodecs API  
-**提供的能力**  
+由图可知 WebCodecs API **提供的能力**：  
 - 控制编解码过程
 - 访问编解码前后的底层数据
 
-![](./video-encodeing.png)
-![](./video-decoding.png)
+<img src="./video-encodeing.png" width="50%" /><img src="./video-decoding.png" width="50%" />
 
 - `VideoFrame、EncodedVideoChunk` 对应编码前的源图像和编码后的压缩数据，两者均提供获取底层二进制数据的接口；  
 - `VideoEncoder、VideoDecoder` 用于 `VideoFrame、EncodedVideoChunk` 两者的类型转换
 - 这里可以看到编码、解码过程在 API 设计上的对称性
 - 图像编解码习得的知识，同样可以对称迁移到音频编解码
 
-![](./audio-data-flow.png)  
+<img src="./audio-data-flow.png" style="max-width: 500px;" />  
+
 音频数据转换可与 Web Audio 配合，涉及的 API 比图像数据更多一些  
 
 以上就是 WebCodecs 提供的核心 API，新增 API 的数量非常少；  
 不过，设计的音视频背景知识、与之相互配合的 Web API 需要一定时间学习  
 
+#### 相关 Web API
 音视频生产消费链路中，WebCodecs **不涉及部分**由其他 Web API 提供  
 - 音视频数据的采集与渲染
   - 源：navigator.mediaDevices、Canvas、Web Audio ...
@@ -120,9 +121,9 @@ WebCodecs 能让更多的任务在本地运行，不仅降低了服务运营成�
 WebCodecs 是相对底层 API，实现产品功能需要编写大量的上层代码；  
 所以这里引用作者开源的 WebAV 来演示功能实现  
 
-WebAV 基于 WebCodecs，尝试提供简单易用的 API 在浏览器中处理音视频数据。  
+[WebAV][3] 基于 WebCodecs，**尝试提供简单易用的 API 在浏览器中处理音视频数据**  
 
-**快速解码**  
+**1. 快速解码**  
 以设备最快的速度解码一个 20s 的视频，并将视频帧绘制到 Canvas 上  
 
 <video style="width: 100%;" src="./decode-video-demo.mp4" controls></video>
@@ -152,7 +153,7 @@ while (true) {
 clip.destroy()
 ```
 
-**添加水印**  
+**2. 添加水印**  
 给视频添加随时间移动的半透明文字水印
 
 <video style="width: 100%;" src="./watermask-demo.mp4" controls></video>
@@ -175,7 +176,7 @@ await com.add(spr2, { offset: 0 })
 ```
 
 
-**绿幕抠图**  
+**3. 绿幕抠图**  
 带绿幕的数字人形象与背景图片合成视频，使用 WebGL 对每帧图像进行处理，将人物背景修改为透明效果  
 
 <video style="width: 100%;" src="./chromakey-demo.mp4" controls></video>
@@ -196,9 +197,9 @@ clip.tickInterceptor = async (_, tickRet) => {
 }
 ```
 
-**花影**  
+**4. 花影**  
 在浏览器中运行的视频录制工具，可用于视频课程制作、直播推流工作台  
-视频演示视频课程制作的基本操作，包含“添加摄像头、分享屏幕、修改素材层级、剪切视频片段、预览导出视频”五个步骤  
+视频演示视频课程制作的基本操作，包含 “**添加摄像头、分享屏幕、修改素材层级、剪切视频片段、预览导出视频**” 五个步骤  
 
 <video style="width: 100%;" src="./Bloom-Shadow-demo.mp4" controls></video>
 
@@ -243,7 +244,7 @@ WebCodecs 的优势在于 Web 平台
 
 分享两个例子
 
-**用户视频消费行为变化**  
+**1. 用户视频消费行为变化**  
 1. 荒芜 时代  
    Web 不支持流媒体，PC 硬件标配光驱，软件标配本地播放器  
    用户行为：下载电影然后离线观看  
@@ -257,17 +258,20 @@ WebCodecs 的优势在于 Web 平台
    补齐音视频编解码能力  
    用户行为：预计 WebCodecs 配合 AI 加多人协同，音视频剪辑、视频会议、直播推流等工具将逐渐 Web 化  
 
-**富文本编辑**  
+**2. 富文本编辑**  
 Web 开放了几个核心 API，让大部分文字编辑转移到线上，产生大量优秀的知识管理应用  
 借助 Web 的易访问性、搭配协同编辑，将生产沟通效率提升了一个等级　　
 - contenteditable：可编辑节点
 - Selection：选区
 - Range：文档片段
 
+还有大量产品案例：Notion、Figma、Web PhotoShop、VSCode、slack...
+
+总结：**一旦 Web 平台具备某个领域的基础能力，相关产品不可避免的 Web 化**  
+
 ### 愿景
-- 一旦 Web 平台具备某个领域的基础能力，相关产品不可避免的 Web 化；
-- WebCodecs 是 Web 平台音视频处理的基础；  
-- WebCodecs 将会像 HTML5 一样，促进音视频在 Web 平台的应用和发展。 
+- WebCodecs 成为 Web 平台音视频处理的基础；  
+- WebCodecs 像 HTML5 一样，促进音视频在 Web 平台的应用和发展。 
 
 
 ## 附录
