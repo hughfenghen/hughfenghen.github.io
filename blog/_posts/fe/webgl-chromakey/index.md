@@ -30,17 +30,118 @@ date: 2023-07-07
 *方法二参考：<https://juejin.cn/post/6885673542642302984>*  
 
 ## 绿幕抠图原理
-1. 定义一个范围（range），和一个目标颜色值
-2. 使用 WebGL（[片元着色器](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGLShader)） 逐个比对原像素与目标颜色的距离
-3. 根据颜色距离判断
-   - 超过range上限（颜色差距很大）则保留原像素  
-   - 低于range下限（颜色很相似）则移除像素  
-   - 处于range之中，原像素 - 目标像素 * 相似度系数
+1. 传入四个参数
+   1. 目标颜色，*期望抠除背景色，可以不是绿色*
+   2. 相似度阈值
+   3. 平滑度敏感系数
+   4. 颜色饱和度敏感系数
+2. 使用 WebGL（[片元着色器](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGLShader)） 逐个比对原像素与目标颜色
+3. 计算过程
+   1. 将颜色转换到 UV 空间，计算出当前像素的与目标颜色的距离
+   2. 将`距离 - 相似度阈值`，小于 0 则判定为绿幕，将像素点设置为全透明（alpha=0）
+   3. 与平滑度参数计算，将相似度转换成 alpha 通道值，越大越不透明
+   4. 计算出愿像素点的灰度值
+   5. 将相似度与饱和度参数计算，然后与原像素点的灰度值混合，越大越靠近原像素点，越小越就接近灰度  
+    （后两步为了移除前景边缘与绿幕反光，导致的前景像素点混合了绿幕背景颜色）
 
 ## 实现
-*需要先了解一下 [YUV](https://baike.baidu.com/item/YCrCb/10874556) 颜色编码*
+参考：[Production-ready green screen in the browser](https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/)
+
+*需要先了解一下 [YUV](https://baike.baidu.com/item/YUV/3430784) 颜色编码*
 
 **Shader代码**
+```glsl
+#version 300 es
+precision mediump float;
+out vec4 FragColor;
+in vec2 v_texCoord;
+
+uniform sampler2D frameTexture;
+uniform vec3 keyColor;
+
+// 色度的相似度阈值
+uniform float similarity;
+// 透明度的平滑度计算
+uniform float smoothness;
+// 降低绿幕饱和度，提高抠图准确度
+uniform float spill;
+
+vec2 RGBtoUV(vec3 rgb) {
+  return vec2(
+    rgb.r * -0.169 + rgb.g * -0.331 + rgb.b *  0.5    + 0.5,
+    rgb.r *  0.5   + rgb.g * -0.419 + rgb.b * -0.081  + 0.5
+  );
+}
+
+void main() {
+  // 获取当前像素的rgba值
+  vec4 rgba = texture(frameTexture, v_texCoord);
+  // 计算当前像素与绿幕像素的色度差值
+  vec2 chromaVec = RGBtoUV(rgba.rgb) - RGBtoUV(keyColor);
+  // 计算当前像素与绿幕像素的色度距离（向量长度）, 越相似则色度距离越小
+  float chromaDist = sqrt(dot(chromaVec, chromaVec));
+  // 设置了一个相似度阈值，baseMask < 0，则像素是绿幕，> 0 则像素点可能属于前景（比如人物）
+  float baseMask = chromaDist - similarity;
+  // 与平滑度参数计算，将 baseMask 转换成 alpha 通道值，越大越不透明
+  float fullMask = pow(clamp(baseMask / smoothness, 0., 1.), 1.5);
+  rgba.a = fullMask;
+  // 如果 baseMask < 0，spillVal 等于 0；baseMask 越小，像素点饱和度越低
+  float spillVal = pow(clamp(baseMask / spill, 0., 1.), 1.5);
+  // 计算当前像素的灰度值
+  float desat = clamp(rgba.r * 0.2126 + rgba.g * 0.7152 + rgba.b * 0.0722, 0., 1.); 
+  rgba.rgb = mix(vec3(desat, desat, desat), rgba.rgb, spillVal);
+  FragColor = rgba;
+}
+```
+
+*上面算法使用 CPU（纯js代码）也能实现，但性能会差很多*  
+
+除了上面分析的核心代码之外还有一些为了让Shader运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)  
+
+## 如何使用
+1. `import { createChromakey } from '@webav/av-cliper'` 或复制完整代码到项目中
+2. 参考以下示例
+```ts
+import { createChromakey } from '../src/chromakey'
+
+const cvs = document.querySelector('#canvas') as HTMLCanvasElement
+const ctx = cvs.getContext('2d', {
+  alpha: true
+})!
+
+;(async () => {
+  const img = new Image()
+  img.src = './public/img/green-dog.jpeg'
+  await new Promise(resolve => {
+    img.onload = resolve
+  })
+  const chromakey = createChromakey({
+    // 目标颜色不传，则取第一个像素点
+     similarity: 0.35,
+     smoothness: 0.05,
+     spill: 0.05,
+   })
+  ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height)
+})()
+```
+
+传入一张 720P 的图片给 `chromakey` 首次执行（包括初始化）大概耗时 20ms，后续每次执行基本在 1ms 之内；  
+所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 快速刷新即可  
+```js
+async function render() {
+  ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height)
+  requestAnimationFrame(render) // 注意：后台页面 requestAnimationFrame 停止执行
+}
+
+render()
+```
+
+## 其它实现
+
+以下是另一个实现抠图的 shader 的代码实现、使用相对简单；  
+但相对上面的实现，边缘可能会存在黑边。  
+
+
 ```glsl
 precision mediump float;
 uniform sampler2D u_texture;
@@ -79,42 +180,7 @@ void main() {
 }
 ```
 
-*上面算法使用 CPU（纯js代码）也能实现，但性能会差很多*  
-
-除了上面分析的核心代码之外还有一些为了让Shader运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)  
-
-## 如何使用
-1. `import { createChromakey } from '@webav/av-cliper'` 或复制完整代码到项目中
-2. 参考以下示例
-```ts
-import { createChromakey } from '../src/chromakey'
-
-const cvs = document.querySelector('#canvas') as HTMLCanvasElement
-const ctx = cvs.getContext('2d', {
-  alpha: true
-})!
-
-;(async () => {
-  const img = new Image()
-  img.src = './public/img/green-dog.jpeg'
-  await new Promise(resolve => {
-    img.onload = resolve
-  })
-  const chromakey = createChromakey({
-    // 不传默认取第一个像素值
-    keyColor: [65, 249, 0]
-  })
-  ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height)
-})()
-```
-
-传入一张 720P 的图片给 `chromakey` 首次执行（包括初始化）大概耗时 20ms，后续每次执行基本在 1ms 之内；  
-所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 快速刷新即可  
-```js
-async function render() {
-  ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height)
-  requestAnimationFrame(render) // 注意：后台页面 requestAnimationFrame 停止执行
-}
-
-render()
-```
+## 附录
+- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
+- [Production-ready green screen in the browser](https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/)
+- [YUV](https://baike.baidu.com/item/YUV/3430784) 颜色编码
