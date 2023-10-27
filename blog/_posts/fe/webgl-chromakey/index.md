@@ -25,7 +25,7 @@ date: 2023-07-07
 
 ## 效果演示
 静态图片抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/chromakey.html)**  
-配合 [@webav/av-cliper](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper) 进行视频抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/concat-media.html)**  
+配合 [@webav/av-cliper](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper) 进行视频抠图 **[DEMO][1]**  
 
 *方法二参考：<https://juejin.cn/post/6885673542642302984>*  
 
@@ -45,9 +45,9 @@ date: 2023-07-07
     （后两步为了移除前景边缘与绿幕反光，导致的前景像素点混合了绿幕背景颜色）
 
 ## 实现
-参考：[Production-ready green screen in the browser](https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/)
+参考：[Production-ready green screen in the browser][2]
 
-*需要先了解一下 [YUV](https://baike.baidu.com/item/YUV/3430784) 颜色编码*
+*需要先了解一下 [YUV][3] 颜色编码*
 
 **Shader代码**
 ```glsl
@@ -99,34 +99,43 @@ void main() {
 除了上面分析的核心代码之外还有一些为了让Shader运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)  
 
 ## 如何使用
-1. `import { createChromakey } from '@webav/av-cliper'` 或复制完整代码到项目中
-2. 参考以下示例
-```ts
-import { createChromakey } from '../src/chromakey'
+1. 静态图片抠图示例
+```ts {16}
+import { createChromakey } from '@webav/av-cliper'
 
 const cvs = document.querySelector('#canvas') as HTMLCanvasElement
-const ctx = cvs.getContext('2d', {
-  alpha: true
-})!
+const ctx = cvs.getContext('2d', { alpha: true })!
 
 ;(async () => {
   const img = new Image()
   img.src = './public/img/green-dog.jpeg'
-  await new Promise(resolve => {
-    img.onload = resolve
-  })
+  await new Promise(resolve => { img.onload = resolve })
   const chromakey = createChromakey({
-    // 目标颜色不传，则取第一个像素点
-     similarity: 0.35,
-     smoothness: 0.05,
-     spill: 0.05,
+    // 目标颜色不传，则取第一个像素点当做背景色
+    similarity: 0.35,
+    smoothness: 0.05,
+    spill: 0.05,
    })
   ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height)
 })()
 ```
+2. 使用 `@webav/av-cliper` 对 mp4 视频进行逐帧抠图，[体验 DEMO：mp4(chromakey)][1] 合成视频的效果
+```ts {8}
+import { createChromakey, MP4Clip } from '@webav/av-cliper'
+const chromakey = createChromakey({
+  similarity: 0.4,
+  smoothness: 0.1,
+  spill: 0.1,
+})
+const clip = new MP4Clip((await fetch('<mp4 url>')).body!)
+clip.tickInterceptor = async (_, tickRet) => {
+  if (tickRet.video == null) return tickRet
+  return { ...tickRet, video: await chromakey(tickRet.video) }
+}
+```
 
 传入一张 720P 的图片给 `chromakey` 首次执行（包括初始化）大概耗时 20ms，后续每次执行基本在 1ms 之内；  
-所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 快速刷新即可  
+所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 即可  
 ```js
 async function render() {
   ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height)
@@ -182,5 +191,11 @@ void main() {
 
 ## 附录
 - [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
-- [Production-ready green screen in the browser](https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/)
-- [YUV](https://baike.baidu.com/item/YUV/3430784) 颜色编码
+- [Production-ready green screen in the browser][2]
+- [YUV][3] 颜色编码
+- [体验视频抠图再合成 DEMO][1]
+
+
+[1]: https://hughfenghen.github.io/WebAV/demo/concat-media.html
+[2]: https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/
+[3]: https://baike.baidu.com/item/YUV/3430784
