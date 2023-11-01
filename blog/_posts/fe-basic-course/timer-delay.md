@@ -4,18 +4,38 @@ tags:
 date: 2023-06-15
 ---
 
-# JS 定时器延迟时长细节
+# JS 定时器时长控制细节
 
 ## 背景
-[实际延时比设定值更久的原因：最小延迟时间](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout#%E5%AE%9E%E9%99%85%E5%BB%B6%E6%97%B6%E6%AF%94%E8%AE%BE%E5%AE%9A%E5%80%BC%E6%9B%B4%E4%B9%85%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4)  
 
-## 最小延迟时长 >=4ms 场景
+JS 最常使用 `setTimeout`、`setInterval` 来延迟或定时循环执行函数，通常会传递第二个参数来控制延迟或间隔执行的时间。  
+
+但开发者必须意识到函数执行时间**并非精确**地符合预期，在以下场景中它会超出你的预期
+1. CPU 繁忙（主线程被长时间占用），JS 无法按开发者设定的预期时间延迟函数
+2. 定时器过于频繁地执行（第二个参数 < 4），达到一定条件后浏览器（或说 JS 执行引擎）会限制定时器执行频率
+3. 页面处于后台，浏览器为了降低 CPU 资源占用、电池消耗，会主动限制定时器的执行频率  
+   - 后文会介绍如何在并要的时候**绕过**这个限制
+
+总结以上的特征，定时器在你进行简单主动地检测时它往往符合预期，但经常会悄悄地偏离你的预期。  
+因为简单检测时，页面肯定处于前台，而且不会达到限制条件；你可以复制后文中设计好的代码来检测定时器的延迟特性。  
+
+## CPU 繁忙
+```js
+const t = performance.now()
+setTimeout(() => {
+  // 期望 100ms 后执行，实际因为 while 占用主线程，将在 1s 后执行
+  console.log(performance.now() - t)
+}, 100)
+while(performance.now() - t < 1000){}
+```
+
+## 最小延迟时长 >= 4ms
 > 在浏览器中，由于函数嵌套（嵌套层级达到一定深度），或者是由于已经执行的 setInterval 的回调函数阻塞导致 setTimeout()/setInterval() 的每调用一次定时器的最小间隔是 4ms。  
 
 尝试在不同浏览器分别执行以下两段代码，观察打印的间隔值。  
 前几次（不同浏览器有差异）间隔差不多1ms，后续间隔时长都大于4ms。  
 ```js
-var t = performance.now()
+let t = performance.now()
 setInterval(() => {
   console.log(performance.now() - t)
   t = performance.now()
@@ -23,7 +43,8 @@ setInterval(() => {
 ```
 
 ```js
-var t = performance.now()
+// setTimeout 构建循环
+let t = performance.now()
 function loop() {
   console.log(performance.now() - t)
   t = performance.now()
@@ -32,18 +53,19 @@ function loop() {
 }
 loop()
 ```
-也就是说：**小于 5ms 的异步循环任务** 期望的延迟时间是不靠谱的。  
-如果有小于 5ms 的异步循环任务，得小心了。   
+也就是说：**小于 4ms 的异步循环任务** 期望的延迟时间是不靠谱的。  
+如果有小于 4ms 的异步循环任务，得小心了，这个限制**无法绕过**。  
 
-## 后台页面 最小延迟>=1000ms
+## 后台页面 最小延迟 >= 1000ms
 > 为了优化后台 tab 的加载损耗（以及降低耗电量），在未被激活的 tab 中定时器的最小延时限制为 1000ms。  
 
 这经常导致一些看似正常工作的程序，后台运行一段时间后就出现 bug 了。  
 甚至导致需要常驻后台的主要功能无法正常工作。  
 
-解决方法：使用 **WebWorker** 中的 `setInterval`。  
+解决方法：使用 **WebWorker** 中的 `setInterval` 向主线程发送消息（postmessage），主线程会立即执行。  
+*理解浏览器限制的原因，如非必要不要随意使用该方法*  
 
-### 基于WebWorker的后台定时器
+### 基于 WebWorker 的后台定时器
 有了解决思路，但每次碰到需要后台的定时器，就创建一个WebWorker也不合适。  
 
 **一个极简、可以在后台页面定时运行任务的工具函数实现。**  
@@ -137,4 +159,8 @@ const stopTimer = timer16ByWorker(() => {
 - 方便计算间隔时长，比如 5s 一次的循环任务 `timer16ByWorker(() => {}, 5 * 60)`  
 
 有其他时间间隔的需要也可以修改 `let interval = 16.6` 的值。  
-注意参考前文，**值不能小于 5ms**。
+注意参考前文，**值不能小于 4ms**。
+
+## 附录
+- [MDN setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+- [MDN setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
