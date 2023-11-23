@@ -237,6 +237,14 @@ Demo 足够简单很容易推测到是这行代码导致的，发现 `imgStr` �
 danmakuContainer.style.webkitMaskImage = `url(${imgStr})`
 ```
 
+针对视频弹幕的应用场景，需要是人像的轮廓信息，对 Mask 图片的质量和尺寸要求很低，  
+所以，可以降低给推理模型的图像的分辨率，来大幅减少计算量，  
+对输出的 Mask 图片拉伸到原尺寸，再与弹幕层合成。  
+
+既可以大幅降低计算量，又不会损失体验。  
+
+![reduce-resolution](./reduce-resolution.png)
+
 **优化实现**
 ```ts
 // 拉伸 mask-image
