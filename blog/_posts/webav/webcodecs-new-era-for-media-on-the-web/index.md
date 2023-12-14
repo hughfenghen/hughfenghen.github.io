@@ -20,8 +20,8 @@ date: 2023-10-06
 - 录制视频：MediaRecorder
 - 实时流媒体：WebRTC
   
-但没有方法可以灵活配置或直接访问编解码器，所以许多应用使用 JS 或 WASM （比如 ffmpeg.js）来实现编解码功能，尽管**存在诸多缺陷或限制**：  
-- 低性能（WebCodecs 编码速度可达到 ffmpeg.js 的 20 倍）
+但没有方法可以灵活配置或直接访问编解码器，所以许多应用使用 JS 或 WASM （比如 ffmpeg.wasm）来实现编解码功能，尽管**存在诸多缺陷或限制**：  
+- 低性能（WebCodecs 编码速度可达到 ffmpeg.wasm 的 20 倍）
 - 高功耗
 - 额外网络开销（下载已内置的编解码器）  
 
@@ -266,9 +266,9 @@ Web 开放了几个核心 API，让大部分文字编辑转移到线上，产生
 
 #### 性能
 
-![vs FFmpeg.js](./vs-ffmpegjs.png)
-FFmpeg.js 最大的障碍就是性能问题，导致难以大规模应用，主要是因为它不能使用硬件加速所以编解码非常慢  
-测试简单的视频编码场景，WebCodecs 的性能是 FFmpeg.js 的 20 倍
+![vs ffmpeg.wasm](./vs-ffmpeg.png)  
+ffmpeg.wasm 最大的障碍就是性能问题，导致难以大规模应用，主要是因为它不能使用硬件加速所以编解码非常慢  
+测试简单的视频编码场景，WebCodecs 的性能是 ffmpeg.wasm 的 20 倍
 
 #### Web 平台
 Web 平台天然具有的优势：**跨平台、便捷性、迭代效率**  

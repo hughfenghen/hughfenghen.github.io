@@ -231,7 +231,7 @@ export function file2stream (
 
 以上步骤，就是在浏览器中创建视频文件的全过程。
 
-在 WebCodecs 之前，前端开发者只能在及其有限的场景使用 ffmpeg.js、MediaRecorder 创建视频文件。  
+在 WebCodecs 之前，前端开发者只能在及其有限的场景使用 ffmpeg.wasm、MediaRecorder 创建视频文件。  
 现在利用 WebCodecs 则可以快速创建视频文件，并进行非常细致的帧控制，为多样的产品功能提供底层技术支持。  
 
 ## WebAV 生成视频示例
