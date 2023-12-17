@@ -6,32 +6,37 @@ date: 2023-07-07
 
 # WebGL Chromakey 实时绿幕抠图
 
-**20行核心（shader）代码实现实时绿幕抠图**  
+**20 行核心（shader）代码实现实时绿幕抠图**
 
 ## 背景
-因为视频相关标准及浏览器的实现问题，很难在主流浏览器中顺利播放背景透明的视频。  
+
+因为视频相关标准及浏览器的实现问题，很难在主流浏览器中顺利播放背景透明的视频。
 
 有两种方法可以为最通用的视频格式（MP4,H264）移除背景，实现透明效果：
+
 1. 原视频配上绿幕，使用本文介绍方法移除背景绿幕
+
    - 优点：制作使用简单
    - 缺点：抠图可能不完美，导致偏色  
-<img src="./green-dog.jpeg" width="300">  
+     <img src="./green-dog.jpeg" width="300">
 
-2. 将视频中的alpha通道与画面并排放置，在客户端混合
+2. 将视频中的 alpha 通道与画面并排放置，在客户端混合
    - 优点：精确还原
-   - 缺点：分辨率增加，视频变大；可能适应场景小，原视频制作需要精确的alpha通道  
-<img src="./webgl-alpha2.png" width="300">
-<img src="./webgl-alpha1.png" width="300">
+   - 缺点：分辨率增加，视频变大；可能适应场景小，原视频制作需要精确的 alpha 通道  
+     <img src="./webgl-alpha2.png" width="300">
+     <img src="./webgl-alpha1.png" width="300">
 
 ## 效果演示
-静态图片抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/chromakey.html)**  
-配合 [@webav/av-cliper](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper) 进行视频抠图 **[DEMO][1]**  
 
-*方法二参考：<https://juejin.cn/post/6885673542642302984>*  
+静态图片抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/3_1-chromakey-image)**  
+配合 [@webav/av-cliper](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper) 进行视频抠图 **[DEMO][1]**
+
+_方法二参考：<https://juejin.cn/post/6885673542642302984>_
 
 ## 绿幕抠图原理
+
 1. 传入四个参数
-   1. 目标颜色，*期望抠除背景色，可以不是绿色*
+   1. 目标颜色，_期望抠除背景色，可以不是绿色_
    2. 相似度阈值
    3. 平滑度敏感系数
    4. 颜色饱和度敏感系数
@@ -42,14 +47,16 @@ date: 2023-07-07
    3. 与平滑度参数计算，将相似度转换成 alpha 通道值，越大越不透明
    4. 计算出愿像素点的灰度值
    5. 将相似度与饱和度参数计算，然后与原像素点的灰度值混合，越大越靠近原像素点，越小越就接近灰度  
-    （后两步为了移除前景边缘与绿幕反光，导致的前景像素点混合了绿幕背景颜色）
+      （后两步为了移除前景边缘与绿幕反光，导致的前景像素点混合了绿幕背景颜色）
 
 ## 实现
+
 参考：[Production-ready green screen in the browser][2]
 
-*需要先了解一下 [YUV][3] 颜色编码*
+_需要先了解一下 [YUV][3] 颜色编码_
 
-**Shader代码**
+**Shader 代码**
+
 ```glsl
 #version 300 es
 precision mediump float;
@@ -88,68 +95,73 @@ void main() {
   // 如果 baseMask < 0，spillVal 等于 0；baseMask 越小，像素点饱和度越低
   float spillVal = pow(clamp(baseMask / spill, 0., 1.), 1.5);
   // 计算当前像素的灰度值
-  float desat = clamp(rgba.r * 0.2126 + rgba.g * 0.7152 + rgba.b * 0.0722, 0., 1.); 
+  float desat = clamp(rgba.r * 0.2126 + rgba.g * 0.7152 + rgba.b * 0.0722, 0., 1.);
   rgba.rgb = mix(vec3(desat, desat, desat), rgba.rgb, spillVal);
   FragColor = rgba;
 }
 ```
 
-*上面算法使用 CPU（纯js代码）也能实现，但性能会差很多*  
+_上面算法使用 CPU（纯 js 代码）也能实现，但性能会差很多_
 
-除了上面分析的核心代码之外还有一些为了让Shader运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)  
+除了上面分析的核心代码之外还有一些为了让 Shader 运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)
 
 ## 如何使用
+
 1. 静态图片抠图示例
+
 ```ts {16}
-import { createChromakey } from '@webav/av-cliper'
+import { createChromakey } from '@webav/av-cliper';
 
-const cvs = document.querySelector('#canvas') as HTMLCanvasElement
-const ctx = cvs.getContext('2d', { alpha: true })!
-
-;(async () => {
-  const img = new Image()
-  img.src = './public/img/green-dog.jpeg'
-  await new Promise(resolve => { img.onload = resolve })
+const cvs = document.querySelector('#canvas') as HTMLCanvasElement;
+const ctx = cvs.getContext('2d', { alpha: true })!;
+(async () => {
+  const img = new Image();
+  img.src = './public/img/green-dog.jpeg';
+  await new Promise((resolve) => {
+    img.onload = resolve;
+  });
   const chromakey = createChromakey({
     // 目标颜色不传，则取第一个像素点当做背景色
     similarity: 0.35,
     smoothness: 0.05,
     spill: 0.05,
-   })
-  ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height)
-})()
+  });
+  ctx.drawImage(await chromakey(img), 0, 0, cvs.width, cvs.height);
+})();
 ```
+
 2. 使用 `@webav/av-cliper` 对 mp4 视频进行逐帧抠图，[体验 DEMO：mp4(chromakey)][1] 合成视频的效果
+
 ```ts {8}
-import { createChromakey, MP4Clip } from '@webav/av-cliper'
+import { createChromakey, MP4Clip } from '@webav/av-cliper';
 const chromakey = createChromakey({
   similarity: 0.4,
   smoothness: 0.1,
   spill: 0.1,
-})
-const clip = new MP4Clip((await fetch('<mp4 url>')).body!)
+});
+const clip = new MP4Clip((await fetch('<mp4 url>')).body!);
 clip.tickInterceptor = async (_, tickRet) => {
-  if (tickRet.video == null) return tickRet
-  return { ...tickRet, video: await chromakey(tickRet.video) }
-}
+  if (tickRet.video == null) return tickRet;
+  return { ...tickRet, video: await chromakey(tickRet.video) };
+};
 ```
 
 传入一张 720P 的图片给 `chromakey` 首次执行（包括初始化）大概耗时 20ms，后续每次执行基本在 1ms 之内；  
-所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 即可  
+所以性能方面实现视频实时抠图没有压力，将 Video 标签传给 chromakey 即可
+
 ```js
 async function render() {
-  ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height)
-  requestAnimationFrame(render) // 注意：后台页面 requestAnimationFrame 停止执行
+  ctx.drawImage(await chromakey(videoElement), 0, 0, cvs.width, cvs.height);
+  requestAnimationFrame(render); // 注意：后台页面 requestAnimationFrame 停止执行
 }
 
-render()
+render();
 ```
 
 ## 其它实现
 
 以下是另一个实现抠图的 shader 的代码实现、使用相对简单；  
-但相对上面的实现，边缘可能会存在黑边。  
-
+但相对上面的实现，边缘可能会存在黑边。
 
 ```glsl
 precision mediump float;
@@ -190,12 +202,12 @@ void main() {
 ```
 
 ## 附录
+
 - [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 - [Production-ready green screen in the browser][2]
 - [YUV][3] 颜色编码
 - [体验视频抠图再合成 DEMO][1]
 
-
-[1]: https://hughfenghen.github.io/WebAV/demo/concat-media.html
+[1]: https://hughfenghen.github.io/WebAV/demo/3_2-chromakey-video
 [2]: https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/
 [3]: https://baike.baidu.com/item/YUV/3430784

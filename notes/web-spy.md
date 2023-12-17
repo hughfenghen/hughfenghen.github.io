@@ -1,7 +1,7 @@
 ---
 tags:
   - Web
-date: 2023-07-11
+date: 2023-12-17
 ---
 
 # Web 终极拦截技巧（全是骚操作）
@@ -10,7 +10,7 @@ date: 2023-07-11
 
 > 计算机科学领域的任何问题都可以通过增加一个中间层来解决。 ——— Butler Lampson
 
-如果系统的控制权、代码完全被掌控，添加中间层的层本会低很多；  
+如果系统的控制权、代码完全被掌控，很容易添加中间层；  
 现实情况我们往往无法控制系统的所有细节，所以需要使用一些 **“非常规”（拦截）** 手段来**增加中间层**。
 
 常见的场景有
@@ -74,7 +74,7 @@ await fetch('//example.com');
 
 浏览器也会提供一些具备拦截性质的 API，允许开发者实现特定功能。
 
-一个 DOM 元素经常会绑定许多事件，如果你想让特定的事件回掉函数先执行，以便做一些前置逻辑或取消后续事件的执行；  
+一个 DOM 元素经常会绑定许多事件，如果你想让特定的事件回调函数先执行，以便添加一些前置逻辑或取消后续事件的执行；  
 可以了解 [addEventListener#usecapture][1] 的用法。
 
 ```js
@@ -90,7 +90,7 @@ divElemet.addEventListener(
 ```
 
 许多 DOM 元素都是在运行时动态创建的，如果需要修改动态创建的 DOM 元素可使用 [MutationObserver][2]  
-比如，拦截所有超链接（A 标签），给目标链接添加 `_source` 参数
+比如，拦截所有超链接（`a` 标签），给目标链接添加 `_source` 参数
 
 ```js
 const observer = new MutationObserver((mutationsList) => {
@@ -111,6 +111,56 @@ observer.observe(document.body, {
 });
 ```
 
+::: tip
+`MutationObserver` 同样适应于修改 `iframe, img` 的链接，或其它任意 DOM 元素的属性
+:::
+
+### 调试小技巧
+
+如果你的页面因未知代码（http 302 属于非代码页面跳转）陷入了快速刷新的死循环，可在项目中添加以下以下代码；  
+页面刷新前会进入 debug 状态，在 devtools 中查看调用堆栈（call stack）即可了解刷新的原因
+
+```js
+window.addEventListener('beforeunload', () => {
+  debugger;
+});
+```
+
+当调试第三方代码时，需要监听某个不符合期望的对象属性值
+
+```js
+// debug 状态下任意可访问对象
+const obj = { prop: 1 };
+
+// 在 devtools -> console 中执行以下代码
+_obj_prop = obj.prop;
+Object.defineProperty(obj, 'prop', {
+  set: (v) => {
+    _obj_prop = v;
+    // 每次赋值都会进入 debug 状态
+    debugger;
+  },
+  get: () => _obj_prop,
+});
+// 后续可在 console 中随时访问 _obj_prop 的当前值
+```
+
+### ServiceWorker
+
+### 沙箱
+
+new Function
+
+### 服务器
+
+如果你掌握了真正的服务控制权，配置服务器和内网 DNS 域名的权限（公司内的工程效率团队），再配合前面介绍的浏览器拦截技巧，将大幅增加可玩性。
+
+你可以读取到：
+
+- HTTP 请求所有信息
+  - Header、Cookie、Body
+  - 可以修改 host 注入任何内容 分发请求
+
 ## 附录
 
 - [addEventListener#usecapture][1]
@@ -119,13 +169,13 @@ observer.observe(document.body, {
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#usecapture
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
 
-运行时、动态创建的元素
-
-调试、沙箱、服务器
-
 ## 如何注入代码
 
+构建、推送、加载、运行时（项目种子代码、devtool console 面板、浏览器插件）
+
 ## 实践案例
+
+### 前端微应用
 
 ff-dev， ff-env
 
