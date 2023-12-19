@@ -86,7 +86,8 @@ _解封装过程不会消耗过多的计算资源，一般使用 js 处理也不
 不同的视频需要对应的解封装程序，解封装得到的数据（如 MP4 Sample）可转换为 WebCodecs 中提供的 `EncodedVideoChunk` 或 `EncodedAudioChunk`，然后分别由 `VideoDecoder` 或 `AudioDecoder` 进行解码（解压）。  
 使用解码器之前需要初始化配置（`decoder.configure`），必填参数 `codec` 可以在解封装时拿到（onReady）。
 
-<div style="width: 70%;">![](./video-decoding.png)</div>  
+<img src="./video-decoding.png" style="width: 70%">
+
 ```js
 const videoDecoder = new VideoDecoder({
   output: (videoFrame) => {
@@ -94,8 +95,9 @@ const videoDecoder = new VideoDecoder({
   },
   error: console.error,
 });
-videoDecoder.configure({ codec: '<视频数据对应的编码格式>' })
+videoDecoder.configure({ codec: '<视频数据对应的编码格式>' });
 ```
+
 解码视频数据得到多个 `VideoFrame, AudioData` 对象，这两个对象包含了对应帧视频、音频的原始数据，可通过其实例的 `copyTo` 方法将原始数据 copy 到 ArrayBuffer 中。
 
 ::: tip
