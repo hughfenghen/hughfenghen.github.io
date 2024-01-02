@@ -13,13 +13,7 @@ date: 2023-12-23
 如果系统的控制权、代码完全被掌控，很容易添加中间层；  
 现实情况我们往往无法控制系统的所有细节，所以需要使用一些 **“非常规”（拦截）** 手段来**增加中间层**。
 
-常见的场景有
-
-- 自动上报未捕获的错误，进行错误监控
-- 拦截网络请求（fetch、xhr）进行接口性能统计、统一错误码处理、远程 debug 接口
-- 构造执行第三方代码、微应用必须的沙盒环境
-
-## 拦截方法
+## 拦截的方法
 
 ### 拦截/覆写浏览器 API
 
@@ -177,7 +171,7 @@ const obj2 = new Proxy(obj, {
 
 ### ServiceWorker 拦截
 
-前端可能会使用 ServiceWorker 来实现离线可用、缓存资源、加速页面访问等功能。
+前端开发者可能会使用 ServiceWorker 来实现离线可用、缓存资源、加速页面访问等功能。
 
 ```js
 // 安装时缓存资源
@@ -198,7 +192,7 @@ self.addEventListener('fetch', (event) => {
 });
 ```
 
-ServiceWorker 是前端页面到服务器之间的中间层，**它能拦截同域名下的所有请求**，缓存或篡改请求结果，能实现的功能远不止离线或加速访问这么简单。  
+ServiceWorker 不仅是一个具备拦截性质的 API，它还是独立 js 运行环境，是前端页面到服务器之间的中间层，**它能拦截同域名下的所有请求**，缓存或篡改请求结果，能实现的功能远不止离线或加速访问这么简单。  
 后文会从 WebContainer 原理分析 ServiceWorker 的高端玩法。
 
 ### 服务器拦截
@@ -217,9 +211,35 @@ ServiceWorker 是前端页面到服务器之间的中间层，**它能拦截同�
    3. 实现业务层无感知注入代码
    4. 动态篡改数据，实现 Mock 功能
 
+#### 拦截篡改 HTTP Response
+
+Nginx 修改 html Response body，注入一个脚本 `ff-sdk.js`
+
+```shell
+sub_filter <head> "<head><script src='/ff-sdk.js'></script>";
+```
+
+::: tip
+
+- 注入到 head 标签后，确保脚本优先执行
+- 可通过脚本实现任意功能
+  :::
+
 ## 如何注入代码
 
-前文介绍的客户端拦截技巧都需要**在浏览器中注入代码**，以下列举注入代码的方式，根据目的和能获取的权限决定采用哪种方式。
+前文介绍的客户端拦截技巧都需要**向浏览器中注入代码**，原理是修改 html 或 js 资源的内容。
+
+有以下方式让注入代码中浏览器环境中运行
+
+- 向 html 中添加一个 script 标签，src 指向特定的 js 地址（前文的 `/ff-sdk.js`）
+  - 简单易维护，**优先使用该方法**
+- 向 html 注入一个完整的 script 标签
+  - `sub_filter <head> "<head><script>alert('注入成功')</script>"`
+- 修改 js 资源内容，在开始位置插入代码
+  - `';(function(){ alert('注入成功') })();' + <js file body>`
+  - 注入代码包裹在自执行函数中，注意前后加上*分号*
+
+以下列举注入代码的时机，根据目的和能获取的权限决定中哪个阶段注入
 
 1. 源码注入
    - 如果你有源码控制权，那你可以对项目做任何事情，确保拦截代码优先执行即可
@@ -228,7 +248,7 @@ ServiceWorker 是前端页面到服务器之间的中间层，**它能拦截同�
    - 工程团队提供构建、推送服务，可编写脚本在构建产物中注入代码（比如 html 中添加 script 标签）
    - 优点：业务无感知，通用性好；缺点：不一定有权限
 3. 网关注入
-   - Nginx 向 html 中注入 script 也很简单
+   - Nginx 向 html 中注入 script 也很简单（参考前文 _拦截篡改 HTTP Response_）
    - 优点同上，一般限于在开发、测试环境，不会上生产环境
 4. 浏览器插件、devtools 注入
    - 如果你啥权限都没有（普通用户），又想干一些“坏事”，则可选择使用插件注入代码，或临时在 devtools 的 console 面板直接写代码
@@ -301,8 +321,15 @@ safeExec(`window.open('//danger.com')`);
 如果使用真实域名来转发请求到开发环境（`https://ff-dev.bilibili.com?_ip_=192.168.0.1&_port_=8080`），能解决一些常见的问题：
 
 - 轻易实现共享域名（`bilibili.com`）的登录态 cookie
-- 懒得配置 Web 服务的 https 证书
-  - 在手机上使用 https 协议访问开发服务，避免 http 协议导致许多 Web API 不可用（比如 剪切板）
+- 无需配置 Web 服务的 https 证书
+  - 在手机上使用 https 协议访问开发服务，避免 http 协议导致许多 Web API 不可用
+    - [仅限于安全上下文的特性][9]
+- 该服务是一个天然的中间层，可无感注入代码实现效率工具，比如：
+  - 远程网络抓包、Mock
+  - 移动端控制台（eruda）
+  - 远程代码调试（chii）
+  - 切换后端接口环境、接口染色
+  - ![ff-sdk-ui](./ff-sdk-ui.png)
 
 真实域名转发请求，能解决部分场景的问题，也会带来一些新问题需要解决：
 
@@ -341,10 +368,18 @@ safeExec(`window.open('//danger.com')`);
 
 ### 应用**中间层**思路的经验
 
-- “**添加一个中间层**”是一种解决问题有效且通用的思路
+- “**添加一个中间层**”是一种有效且通用的解决问题的思路
 - 根据需要解决的问题，思考中间层的位置、以及一个能**注入代码时机**，并让代码尽早执行
-- js 的动态特性、Web 提供的具有拦截性质的 API，让开发者有非常大的可操作空间
-- 多种拦截技巧灵活搭配，获得更强的力量
+  - 源码注入脚本
+  - 构建、推送服务注入
+  - 网关注入
+  - 浏览器插件、devtools 注入
+- Web 技术栈拥有非常大的可操作空间
+  - 利用 js 的动态特性，覆写系统 API 实现拦截
+  - 灵活使用具有拦截性质的 API
+  - ServiceWorker
+  - 了解 HTTP 请求的构成（Header、Cookie、Body），以及它流转的节点
+- 多种拦截技巧灵活搭配，释放更强大的力量
 - 能力越强（拦截范围越大）、责任越大，**注意安全**
 
 ### 安全边界
@@ -373,6 +408,7 @@ Web 平台中的所有技巧策略都必须符合安全规则；
 - [WebContainer 原理分析][3]
 - [浏览器的同源策略][7]
 - [内容安全策略（CSP）][8]
+- [仅限于安全上下文的特性][9]
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#usecapture
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
@@ -382,3 +418,4 @@ Web 平台中的所有技巧策略都必须符合安全规则；
 [6]: https://webcontainers.io/
 [7]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy
 [8]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
+[9]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts
