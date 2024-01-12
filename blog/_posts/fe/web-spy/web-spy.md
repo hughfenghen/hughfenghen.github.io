@@ -321,8 +321,9 @@ safeExec(`window.open('//danger.com')`);
 如果使用真实域名来转发请求到开发环境（`https://ff-dev.bilibili.com?_ip_=192.168.0.1&_port_=8080`），能解决一些常见的问题：
 
 - 轻易实现共享域名（`bilibili.com`）的登录态 cookie
+- 在远程设备（手机、测试设备）调试本地开发中服务
 - 无需配置 Web 服务的 https 证书
-  - 在手机上使用 https 协议访问开发服务，避免 http 协议导致许多 Web API 不可用
+  - 使用 https 协议访问开发服务，避免 http 协议导致许多 Web API 不可用
     - [仅限于安全上下文的特性][9]
 - 该服务是一个天然的中间层，可无感注入代码实现效率工具，比如：
   - 远程网络抓包、Mock
