@@ -320,8 +320,8 @@ Web 平台天然具有的优势：**跨平台、便捷性、迭代效率**
 - [译 WebCodecs 说明][1]
 - [Web 音视频（零）概览][2]
 - [WebAV][3] 基于 WebCodecs 构建的音视频处理 SDK
+- [WebAV DEMO][6] 体验在浏览器中处理音视频数据
 - [花影][4] 在浏览器中运行的视频录制工具
-- [WebAV DEMO][6]
 
 [1]: /posts/2023/10/02/webcodecs-explainer/
 [2]: /posts/2023/07/16/webav-0-overview/
