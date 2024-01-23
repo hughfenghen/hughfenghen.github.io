@@ -8,6 +8,11 @@ date: 2023-07-07
 
 **20 行核心（shader）代码实现实时绿幕抠图**
 
+**先体验 DEMO**，基于 [WebAV][5] 实现
+
+- [移除图片背景][4]
+- [移除视频背景][1]
+
 ## 背景
 
 因为视频相关标准及浏览器的实现问题，很难在主流浏览器中顺利播放背景透明的视频。
@@ -25,11 +30,6 @@ date: 2023-07-07
    - 缺点：分辨率增加，视频变大；可能适应场景小，原视频制作需要精确的 alpha 通道  
      <img src="./webgl-alpha2.png" width="300">
      <img src="./webgl-alpha1.png" width="300">
-
-## 效果演示
-
-静态图片抠图 **[DEMO](https://hughfenghen.github.io/WebAV/demo/3_1-chromakey-image)**  
-配合 [@webav/av-cliper](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper) 进行视频抠图 **[DEMO][1]**
 
 _方法二参考：<https://juejin.cn/post/6885673542642302984>_
 
@@ -109,7 +109,7 @@ _上面算法使用 CPU（纯 js 代码）也能实现，但性能会差很多_
 
 1. 静态图片抠图示例
 
-```ts {16}
+```ts {11}
 import { createChromakey } from '@webav/av-cliper';
 
 const cvs = document.querySelector('#canvas') as HTMLCanvasElement;
@@ -211,3 +211,5 @@ void main() {
 [1]: https://hughfenghen.github.io/WebAV/demo/3_2-chromakey-video
 [2]: https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/
 [3]: https://baike.baidu.com/item/YUV/3430784
+[4]: https://hughfenghen.github.io/WebAV/demo/3_1-chromakey-image
+[5]: https://github.com/hughfenghen/WebAV/
