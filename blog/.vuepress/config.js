@@ -9,8 +9,8 @@ module.exports = {
       selector: 'div[class*="language-"] pre',
       pure: true
     }],
-    ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }],
-    // ['google-analytics-4', { gtag: '393174895' }],
+    // ['@vuepress/google-analytics', { ga: 'UA-118782515-1' }],
+    ['google-analytics-4', { gtag: 'G-MC335K4KV6' }],
     ['feed', {
       canonical_base: 'https://hughfenghen.github.io',
       count: 5000,
