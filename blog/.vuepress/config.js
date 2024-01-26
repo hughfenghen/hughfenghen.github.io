@@ -75,11 +75,11 @@ module.exports = {
       {
         text: "Github",
         link: "https://github.com/hughfenghen"
-      }, {
-        text: "RSS 订阅",
-        link: "https://hughfenghen.github.io/rss.xml"
       }
     ],
+    feed: {
+      canonical_base: 'https://hughfenghen.github.io/',
+    },
     comment: process.env.NODE_ENV === 'development' ? null : {
       service: "vssue",
       autoCreateIssue: true,
