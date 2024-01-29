@@ -15,7 +15,7 @@ date: 2023-12-23
 
 ## 拦截的方法
 
-### 拦截/覆写浏览器 API
+### 拦截/覆写 浏览器 API
 
 最常见的场景有通过拦截 `console` 实现错误上报。
 
@@ -64,7 +64,7 @@ await fetch('//example.com');
   - 禁止 js 访问摄像头 `navigator.mediaDevices.getDisplayMedia = null`
   - 禁止 p2p 连接 `window.RTCPeerConnection = null`
 
-### 事件、DOM 元素
+### 拦截/篡改 事件、DOM 元素
 
 浏览器也会提供一些具备拦截性质的 API，允许开发者实现特定功能。
 
@@ -225,16 +225,16 @@ sub_filter <head> "<head><script src='/ff-sdk.js'></script>";
 - 可通过脚本实现任意功能
   :::
 
-## 如何注入代码
+## 如何注入拦截代码
 
 前文介绍的客户端拦截技巧都需要**向浏览器中注入代码**，原理是修改 html 或 js 资源的内容。
 
-有以下方式让注入代码中浏览器环境中运行
+有以下方式注入代码在浏览器环境中运行
 
 - 向 html 中添加一个 script 标签，src 指向特定的 js 地址（前文的 `/ff-sdk.js`）
   - 简单易维护，**优先使用该方法**
 - 向 html 注入一个完整的 script 标签
-  - `sub_filter <head> "<head><script>alert('注入成功')</script>"`
+  - 如 Nginx 注入 `sub_filter <head> "<head><script>alert('注入成功')</script>"`
 - 修改 js 资源内容，在开始位置插入代码
   - `';(function(){ alert('注入成功') })();' + <js file body>`
   - 注入代码包裹在自执行函数中，注意前后加上*分号*
@@ -396,7 +396,7 @@ Web 平台中的所有技巧策略都必须符合安全规则；
 ### 太骚了，接受不了？
 
 从《通用域名服务》章节的原理来看，似乎有点过于“骚操作”了；  
-从效率角度出发，不要在乎骚不骚、脏不脏，有价值就干。
+个人观点：从效率角度出发，不要在乎骚不骚、脏不脏，有价值就干。
 
 解决清真与效率的冲突：隔离脏代码，不拉低系统整体代码质量。
 
