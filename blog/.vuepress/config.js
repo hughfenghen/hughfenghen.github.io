@@ -3,6 +3,13 @@ module.exports = {
   title: '风痕 · 術&思',
   description: '个人思考、Web技术',
   theme: '@vuepress/blog',
+  head: [['script', {}, `
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "kudfzh7lis");
+  `]],
   plugins: [
     ['copy-code1', {
       showInMobile: true,
