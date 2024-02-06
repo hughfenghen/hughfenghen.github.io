@@ -1,5 +1,5 @@
-<div style="display: flex;">
-  <div class="avatar" style="width: 200px; margin-right: 40px; text-align: center;">
+<div style="display: flex; max-width: 800px;">
+  <div class="avatar" style="width: 200px; margin-right: 60px; text-align: center;">
 
 <a href="https://github.com/hughfenghen" style="display: block; height: 203px;">
   <img src="https://avatars.githubusercontent.com/u/3307051?v=4" style="border-radius: 100%;" alt="我的 Github">
@@ -30,7 +30,7 @@
 
 [WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件  
 
-[opfs-tools](https://github.com/hughfenghen/opfs-tools/): 提供简单、高性能、完备的文件系统 API，在浏览器中运行
+[opfs-tools](https://github.com/hughfenghen/opfs-tools/): 简单、高性能、完备的文件系统 API，在浏览器中运行
 
 [ts-brpc](https://hughfenghen.github.io/ts-rpc): 以 RPC 风格调用 TypeScript 编写的服务端接口  
 
