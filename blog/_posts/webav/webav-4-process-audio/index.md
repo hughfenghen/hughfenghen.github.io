@@ -277,7 +277,7 @@ file.addSample(audioTrackId, audioSample.data, audioSample);
 ```
 
 :::
-限于篇幅，上述代码以来的 [createESDSBox 的源码][7]在这里
+限于篇幅，上述代码依赖的 [createESDSBox 的源码][7]在这里
 
 如果你需要自己写代码实现音频封装逻辑，需要注意：
 
