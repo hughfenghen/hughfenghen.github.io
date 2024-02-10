@@ -39,7 +39,8 @@
 
 ---
 
-*本博客托管在 [Github仓库](https://github.com/hughfenghen/hughfenghen.github.io)，若有兴趣可 Star 收藏，或[订阅 RSS](https://hughfenghen.github.io/rss.xml)*  
+若对本博客的内容感兴趣可[订阅 RSS](https://hughfenghen.github.io/rss.xml)或关注公众号，以接收更新  
+<img src="./qrcode.png" width="200">
 
 ---
 
