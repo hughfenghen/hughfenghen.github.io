@@ -153,10 +153,12 @@ function add (a: number, b: number): number {
   return a + b
 }
 
-const currAdd = curry(1)
+const currAdd = curry(add)
 
 currAdd(1)(2) // 3
 ```
+
+*柯里化的 js 实现、用法参考 [lodash.curry](https://lodash.com/docs/4.17.15#curry)*
 
 ### 获取 readonly 字段
 ```ts
