@@ -6,7 +6,11 @@ date: 2024-02-17
 
 # 一句话总结：TS 何时选择 interface 或 type
 
-用 interface 描述类型的**结构**，用 type 描述类型**关系**。  
+---
+
+<span style="font-size: 24px">用 `interface` 描述类型的**结构**，用 `type` 描述类型**关系**。</span>  
+
+---
 
 *有点编程基础中**数据结构**与**算法**的味道。*
 
