@@ -32,6 +32,11 @@
     }
 }
 
+.content__default:not(.custom) > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 #header {
     position: static;
 }
@@ -40,5 +45,10 @@
 @media only screen and (max-width: 700px) {
     .avatar {
         display: none;
+    }
+
+    .vuepress-blog-theme-content {
+        padding-left: 0 !important; 
+        padding-right: 0 !important; 
     }
 }
