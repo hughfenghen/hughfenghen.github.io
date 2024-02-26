@@ -3,7 +3,12 @@ module.exports = {
   title: '风痕 · 術&思',
   description: '个人思考、Web技术',
   theme: '@vuepress/blog',
-  head: [['script', {}, `
+  head: [[
+    'link', {
+      href: 'https://fonts.loli.net/css?family=Noto+Sans',
+      rel: 'stylesheet'
+    }
+  ],['script', {}, `
   (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
