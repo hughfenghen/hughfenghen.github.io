@@ -8,7 +8,7 @@ date: 2024-03-14
 
 文件系统是往往是构建大型软件的基石之一，很长一段时间 Web 平台因缺失成熟的文件系统成为构建大型软件的阻碍，如今 [OPFS][1] 可弥补这一缺憾。
 
-本文介绍 OPFS 背景和基本使用方法，及如何配合笔者开源的 [opfs-tools][5]、[opfs-tools-explorer][6] 两个项目，充分发挥 OPFS 的性能与开发效率。
+本文介绍 OPFS 背景和基本使用方法、使用过程中的注意事项，及如何配合笔者开源的 [opfs-tools][5]、[opfs-tools-explorer][6] 两个项目，充分发挥 OPFS 的性能与开发效率。
 
 ## Web 存储 API
 
@@ -137,7 +137,7 @@ opfs-tools 借鉴 Unix，使用 `/` 符号分隔目录，单个字符 `/` 表示
 前文提到 OPFS 必须在 WebWorker 中同步读写，才能发挥最佳性能。
 
 经测试，在主线程通过 WebWorker 代理读写操作，即便多一层中转仍比在主线程中直接读写更快；  
-**高频读写场景能提升 3 ～ 5 倍的性能**，_[跑一下性能对比测试][4]试试_。
+**高频读写场景能提升 3 ～ 6 倍的性能**，_[跑一下性能对比测试][4]试试_。
 
 ![](./vs.png)
 
@@ -174,7 +174,7 @@ opfs-tools 借鉴 Unix，使用 `/` 符号分隔目录，单个字符 `/` 表示
 ## 附录
 
 - [opfs-tools][5] 简洁高效的文件系统 API
-- [opfs-tools-explorer][6] 可视化管理 OPFS 资源
+- [opfs-tools-explorer][6] 可视化管理 OPFS 资源，提升开发调试效率
 - [OPFS Benchmark][4]
 - [MDN OPFS][1](Origin Private File System)，私有源文件系统
 - [Web.dev OPFS][2]
