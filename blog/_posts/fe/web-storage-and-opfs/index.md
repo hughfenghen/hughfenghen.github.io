@@ -143,6 +143,21 @@ opfs-tools 借鉴 Unix，使用 `/` 符号分隔目录，单个字符 `/` 表示
 
 所以，opfs-tools 会**自动启动 WebWorker**，将读写操作代理到 Worker **以提升性能**，这对使用者来说是无感的。
 
+这里需要提一下 [Transferable object][9]，`ArrayBuffer` 实现了 `Transferable` 接口，因此在主线程、Worker 线程间转移的成本非常小；  
+这就是 opfs-tools 比主线程读写性能更优的**原理：`ArrayBuffer` 在线程间低成本转移，然后在 Worker 中同步读写**；
+
+因转移以后的对象在原线程中就不可用了，所以使用 **opfs-tools 写入**数据有一个**注意事项**。
+
+```js
+const ab = new Uint8Array([1, 1, 1, 1, 1]);
+console.log(ab.byteLength); // => 5
+await write('/test', ab);
+console.log(ab.byteLength); // => 0, ab 被转移到 Worker 线程，数据被清除
+
+// 如果原线程后续仍需要访问 ab 对象，可写入 clone 对象
+await write('/test', ab.slice(0));
+```
+
 ## opfs-tools-explorer（白衣骑士的剑）
 
 如果你的 Web 应用需要进行文件操作，开发测试阶段最好能直观地看见文件内容。
@@ -179,6 +194,7 @@ opfs-tools 借鉴 Unix，使用 `/` 符号分隔目录，单个字符 `/` 表示
 - [MDN OPFS][1](Origin Private File System)，私有源文件系统
 - [Web.dev OPFS][2]
 - [Web 永久存储权限][8]
+- [Transferable object][9]
 
 [1]: https://developer.mozilla.org/zh-CN/docs/Web/API/File_System_API/Origin_private_file_system
 [2]: https://web.dev/articles/origin-private-file-system
@@ -188,3 +204,4 @@ opfs-tools 借鉴 Unix，使用 `/` 符号分隔目录，单个字符 `/` 表示
 [6]: https://github.com/hughfenghen/opfs-tools-explorer
 [7]: https://hughfenghen.github.io/opfs-tools-explorer/
 [8]: https://web.dev/articles/persistent-storage?hl=zh-cn#request_persistent_storage
+[9]: https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Transferable_objects
