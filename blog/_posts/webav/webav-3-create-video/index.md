@@ -15,7 +15,7 @@ date: 2023-07-31
 在 WebCodecs 之前，由于编解码能力的缺失，几乎无法在纯浏览器中编辑、创建视频。  
 WebCodecs 补齐了编解码能力，相当于在浏览器中提供了视频创作能力。
 
-预计 WebCodecs 将会像 HTML5 技术（Video、Audio、MSE...）一样对音视频工具的用户带来巨大改变，HTML5 作用于视频消费端，WebCodecs 作用于视频生产端。
+预计 WebCodecs 将会像 HTML5 技术（Video、Audio、MSE...）一样对用户习惯带来巨大改变，HTML5 作用于视频消费端，WebCodecs 作用于视频生产端。
 
 本章介绍如何在浏览器中创建视频，如何解析视频请阅读[上一章](../webav-2-parse-video/)
 
