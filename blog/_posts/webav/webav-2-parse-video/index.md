@@ -98,7 +98,12 @@ const videoDecoder = new VideoDecoder({
 videoDecoder.configure({ codec: '<视频数据对应的编码格式>' });
 ```
 
-解码视频数据得到多个 `VideoFrame, AudioData` 对象，这两个对象包含了对应帧视频、音频的原始数据，可通过其实例的 `copyTo` 方法将原始数据 copy 到 ArrayBuffer 中。
+:::tip
+`videoDecoder.configure` 方法需要的参数请查看 [MDN 文档][7]  
+其中 `description` 是必要的参数，但资料很少，请参考笔者的 [avcC box 内容解析][8]
+:::
+
+解码视频数据得到多个 `VideoFrame, AudioData` 对象，这两个对象包含了对应帧视频、音频的原始数据，可通过其实例的 `copyTo` 方法将原始数据 copy 到 ArrayBuffer 中，处理过程中需注意：
 
 ::: tip
 
@@ -109,12 +114,12 @@ videoDecoder.configure({ codec: '<视频数据对应的编码格式>' });
 
 ## 视频帧处理
 
-在浏览器中一般配合使用 `Canvas` 对 `VideoFrame` 进行处理，如：
+在浏览器中一般配合使用 `canvas` 对 `VideoFrame` 进行处理，如：
 
 - 降低视频分辨率
-  1. 绘制 `VideoFrame` 到 `Canvas`， `ctx.draw(videoFrame, 0, 0)`
-  2. 创建新的 `VideoFrame`， `new VideoFrame(canvas, {...})`
-- 裁剪视频；使用 `ctx.draw` 后面的定位参数，绘制 `VideoFrame` 指定区域
+  1. 绘制 `VideoFrame` 到一个低分辨率 `canvas`， `ctx.draw(videoFrame, 0, 0)`
+  2. 再创建新的 `VideoFrame`， `new VideoFrame(canvas, {...})`
+- 裁剪视频画面；使用 `ctx.draw` 后面的定位参数，绘制 `VideoFrame` 指定区域
 - 叠加视频、图片、文字等；先绘制 `VideoFrame` 再绘制其他元素
 - 降低帧率，平均抽取丢掉多余帧；如 60FPS -> 30FPS，大概每两帧丢掉一帧不绘制
 - 滤镜、抠图、特效等复杂图形处理；使用 WebGL 或 WebGPU
@@ -170,6 +175,8 @@ clip.destroy();
 - [WebAV 解码 DEMO][5]
 - [mp4box.js][1] 能在浏览器中运行的 MP4 封装、解封装工具
 - [mp4box.js filereader][2] MP4 文件可视化工具，基于 mp4box.js 构建
+- [MDN VideoDecoder 文档][7]
+- [MP4 的 avcC box 内容解析与 VideoDecorder 初始化][8]
 
 [1]: https://gpac.github.io/mp4box.js
 [2]: https://gpac.github.io/mp4box.js/test/filereader.html
@@ -177,3 +184,5 @@ clip.destroy();
 [4]: https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/mp4-utils.ts#L380
 [5]: https://hughfenghen.github.io/WebAV/demo/1_1-decode-video
 [6]: https://hughfenghen.github.io/WebAV/demo/2_1-concat-video
+[7]: https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/VideoDecoder
+[8]: https://github.com/hughfenghen/hughfenghen.github.io/issues/198
