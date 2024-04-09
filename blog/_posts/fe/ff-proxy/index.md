@@ -140,7 +140,7 @@ SDK 拦截 HTTP 请求转到代理服务，然后还原再转到目标服务，�
 支持对 HTTP 请求内容的基本修改（添加、删除、替换），即可满足绝大部分 Mock 诉求；  
 HTTP 请求内容指
 
-- **Requst**: URL、Header、Body,
+- **Request**: URL、Header、Body,
 - **Response**: StatusCode、Header、Body
 
 ![mock rules](./mock-rules.png)
