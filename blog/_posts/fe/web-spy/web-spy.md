@@ -365,6 +365,8 @@ safeExec(`window.open('//danger.com')`);
 - 拦截 a 标签
 - 覆写 API：open，WebSocket
 
+_另外，还有笔者使用类似原理实现的[自集成式代理方案][10]，该代理方案最大特点是**零安装、零配置**，以降低门槛、提升效率。_
+
 ## 总结
 
 ### 应用**中间层**思路的经验
@@ -410,6 +412,7 @@ Web 平台中的所有技巧策略都必须符合安全规则；
 - [浏览器的同源策略][7]
 - [内容安全策略（CSP）][8]
 - [仅限于安全上下文的特性][9]
+- [自集成式代理方案][10]
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#usecapture
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
@@ -420,3 +423,4 @@ Web 平台中的所有技巧策略都必须符合安全规则；
 [7]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy
 [8]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
 [9]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts
+[10]: https://hughfenghen.github.io/posts/2024/05/08/ff-proxy/
