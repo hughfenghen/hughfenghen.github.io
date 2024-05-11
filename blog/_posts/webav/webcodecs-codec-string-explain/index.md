@@ -24,7 +24,7 @@ date: 2024-05-11
 > 约束集标志字节由一位布尔标志组成，最高有效位称为标志 0（或在某些资源中为 constraint_set0_flag ），并且每个连续位的编号较高。目前，仅使用标志 0 到 2；其他五位必须为零。标志的含义根据所使用的配置文件而有所不同。
 
 > The level is a fixed-point number, so a value of 14 (decimal 20) means level 2.0 while a value of 3D (decimal 61) means level 6.1. Generally speaking, the higher the level number, the more bandwidth the stream will use and the higher the maximum video dimensions are supported.
-> 级别是定点数，因此值 14 （十进制 20）表示级别 2.0，而值 3D （十进制 61）表示级别 6.1。一般来说，级别数越高，流将使用的带宽就越多，支持的最大视频尺寸就越高。
+> Level 是定点数，因此值 14 （十进制 20）表示级别 2.0，而值 3D （十进制 61）表示级别 6.1。一般来说，级别数越高，流将使用的带宽就越多，支持的最大视频尺寸就越高。
 
 以 `avc1.4d002a` 为例
 
@@ -34,7 +34,7 @@ date: 2024-05-11
 
 3. `2a` Level 值对应 `4.2`(`2a` 转 10 进制等于 42，再除以 10 等于 `4.2`)，它对视频参数的限制参考 [wiki][3]
    > As the term is used in the standard, a "level" is a specified set of constraints that indicate a degree of required decoder performance for a profile. For example, a level of support within a profile specifies the maximum picture resolution, frame rate, and bit rate that a decoder may use. A decoder that conforms to a given level must be able to decode all bitstreams encoded for that level and all lower levels.
-   > 正如标准中使用的术语，“Level”是一组指定的约束，指示配置文件所需的解码器性能的程度。例如，配置文件内的支持级别指定解码器可以使用的最大图片分辨率、帧速率和比特率。符合给定级别的解码器必须能够解码为该级别和所有较低级别编码的所有比特流。
+   > 在标准中，"Level"是指一组指定的约束条件，用于指示配置文件所需的解码器性能水平。例如，在一个配置文件中，支持的级别指定了解码器可以使用的最大图像分辨率、帧率和比特率。符合特定级别的解码器必须能够解码该级别及所有较低级别编码器输出的数据。
    > ![](./level.png)
 
 从以上分析可以 `avc1.4d002a` 支持的最大分辨率是 `2,048×1,080`，如果使用此规格初始化编码器，试图编码超过最大分辨率的图像就会抛出错误；  
