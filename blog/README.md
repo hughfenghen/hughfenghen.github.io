@@ -28,17 +28,15 @@
 
 我的项目
 
-[WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件  
+[WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件
 
 [opfs-tools](https://github.com/hughfenghen/opfs-tools/): 简单、高性能、完备的文件系统 API，在浏览器中运行
 
-[ts-brpc](https://hughfenghen.github.io/ts-rpc): 以 RPC 风格调用 TypeScript 编写的服务端接口  
+[ts-brpc](https://hughfenghen.github.io/ts-rpc): 以 RPC 风格调用 TypeScript 编写的服务端接口
 
-[Erra](https://hughfenghen.github.io/erra/): HTTP接口 Mock、Debug工具   
-  
 ---
 
-*转载需征得作者同意*  &copy; 2024 风痕
+_转载需征得作者同意_ &copy; 2024 风痕
 
   </div>
 </div>
