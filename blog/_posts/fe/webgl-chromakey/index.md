@@ -103,7 +103,7 @@ void main() {
 
 _上面算法使用 CPU（纯 js 代码）也能实现，但性能会差很多_
 
-除了上面分析的核心代码之外还有一些为了让 Shader 运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)
+除了上面分析的核心代码之外还有一些为了让 Shader 运行起来的辅助代码，属于 WebGL 的基础知识，查看[完整代码](https://github.com/bilibili/WebAV/blob/main/packages/av-cliper/src/chromakey.ts)
 
 ## 如何使用
 
@@ -203,13 +203,13 @@ void main() {
 
 ## 附录
 
-- [WebAV](https://github.com/hughfenghen/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
+- [WebAV](https://github.com/bilibili/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 - [Production-ready green screen in the browser][2]
 - [YUV][3] 颜色编码
 - [体验视频抠图再合成 DEMO][1]
 
-[1]: https://hughfenghen.github.io/WebAV/demo/3_2-chromakey-video
+[1]: https://bilibili.github.io/WebAV/demo/3_2-chromakey-video
 [2]: https://jameshfisher.com/2020/08/11/production-ready-green-screen-in-the-browser/
 [3]: https://baike.baidu.com/item/YUV/3430784
-[4]: https://hughfenghen.github.io/WebAV/demo/3_1-chromakey-image
-[5]: https://github.com/hughfenghen/WebAV/
+[4]: https://bilibili.github.io/WebAV/demo/3_1-chromakey-image
+[5]: https://github.com/bilibili/WebAV/

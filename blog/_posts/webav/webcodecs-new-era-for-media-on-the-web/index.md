@@ -325,7 +325,7 @@ Web 平台天然具有的优势：**跨平台、便捷性、迭代效率**
 
 [1]: /posts/2023/10/02/webcodecs-explainer/
 [2]: /posts/2023/07/16/webav-0-overview/
-[3]: https://github.com/hughfenghen/WebAV
+[3]: https://github.com/bilibili/WebAV
 [4]: https://github.com/hughfenghen/bloom-shadow
 [5]: /posts/2023/07/07/webgl-chromakey/
-[6]: https://hughfenghen.github.io/WebAV/demo
+[6]: https://bilibili.github.io/WebAV/demo

@@ -28,7 +28,7 @@
 
 我的项目
 
-[WebAV](https://github.com/hughfenghen/WebAV/): 在浏览器中创建、编辑音视频文件
+[WebAV](https://github.com/bilibili/WebAV/): 在浏览器中创建、编辑音视频文件
 
 [opfs-tools](https://github.com/hughfenghen/opfs-tools/): 简单、高性能、完备的文件系统 API，在浏览器中运行
 

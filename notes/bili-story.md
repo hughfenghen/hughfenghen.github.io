@@ -216,7 +216,7 @@ _等下一位轮回之人_ ：）
 - [MSE API][5]
 - [自集成式代理方案][8]
 
-[1]: https://github.com/hughfenghen/WebAV
+[1]: https://github.com/bilibili/WebAV
 [2]: https://xqq.im/2017/01/01/goodbye-2016/
 [3]: https://hughfenghen.github.io/tag/WebAV/
 [4]: https://developer.mozilla.org/en-US/docs/Web/API/WebCodecs_API

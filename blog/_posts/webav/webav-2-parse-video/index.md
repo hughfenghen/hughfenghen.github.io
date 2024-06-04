@@ -180,9 +180,9 @@ clip.destroy();
 
 [1]: https://gpac.github.io/mp4box.js
 [2]: https://gpac.github.io/mp4box.js/test/filereader.html
-[3]: https://github.com/hughfenghen/WebAV
-[4]: https://github.com/hughfenghen/WebAV/blob/main/packages/av-cliper/src/mp4-utils.ts#L380
-[5]: https://hughfenghen.github.io/WebAV/demo/1_1-decode-video
-[6]: https://hughfenghen.github.io/WebAV/demo/2_1-concat-video
+[3]: https://github.com/bilibili/WebAV
+[4]: https://github.com/bilibili/WebAV/blob/main/packages/av-cliper/src/mp4-utils.ts#L380
+[5]: https://bilibili.github.io/WebAV/demo/1_1-decode-video
+[6]: https://bilibili.github.io/WebAV/demo/2_1-concat-video
 [7]: https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/VideoDecoder
 [8]: https://github.com/hughfenghen/hughfenghen.github.io/issues/198
