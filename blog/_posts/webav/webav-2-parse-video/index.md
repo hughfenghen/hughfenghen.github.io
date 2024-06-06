@@ -29,9 +29,9 @@ Fragment MP4 把音视频数据切成一个个小片段管理，非常方便直�
 ![MP4](./mp4-overview.png)
 
 MP4 使用 Box 的抽象概念来描述管理数据，不同的数据抽象成不同的 Box，允许多层嵌套 Box；  
-下图是一个普通 MP4 文件的可视化，该文件视频分辨率存储在 `moov box -> trak box -> ... -> avc1 box` 中，已编码（压缩）的音视频数据则存储在 `mdata box` 中
+下图是一个普通 MP4 文件的可视化，该文件视频分辨率存储在 `moov box -> trak box -> ... -> avc1 box` 中，已编码（压缩）的音视频数据则存储在 `mdat box` 中
 
-<div style="width: 500px;">![mp4-box](./mp4-box.png)</div>
+<img src="./mp4-box.png" width="500" alt="mp4 file box"/>
 
 _你可以访问 [mp4box.js filereader][2] 来可视化 MP4 文件_
 
