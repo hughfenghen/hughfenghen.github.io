@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>风痕 · 術&amp;思</title>
+        <link>https://hughfenghen.github.io</link>
+        <description>个人思考、Web技术</description>
+        <lastBuildDate>Wed, 17 Jul 2024 02:35:18 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
+        <atom:link href="https://hughfenghen.github.io/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[HTTPS加密原理简介]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/13/https-brief/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/13/https-brief/</guid>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[https相关的资料已经非常多，本文尽量以最简洁的图文介绍大致原理，不涉及细节。
+
+本文开始前，读者需要先了解对称加密、非对称加密、hash算法相关知识。
+
+HTTPS如何保证传输数据安全？
+服务器将公钥（非对称加密）发送给客户端
+客户端生成随机密钥（对称加密），通过公钥加密后发送给服务端，这样双方都拥有了对称加密的密钥 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./http-1.jpg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[cljs中普通与瞬态数据结构性能对比]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/13/cljs-transient-performance/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/13/cljs-transient-performance/</guid>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[chrome 67；
+CPU：2.2 GHz Intel Core i7
+内存：16 GB 1600 MHz DDR3
+
+官方的例子:
+
+(defn vrange [n]
+  (loop [i 0 v []]
+    (if (< i n)
+      (recur (inc i) (conj v i))
+      v)))
+
+(defn vrange2 [n]
+  (loo ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[shadow-cljs项目 在 proto repl 切换namespace]]></title>
+            <link>https://hughfenghen.github.io/posts/2022/08/21/shadow-cljs-proto-repl/</link>
+            <guid>https://hughfenghen.github.io/posts/2022/08/21/shadow-cljs-proto-repl/</guid>
+            <pubDate>Sun, 21 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[按官方文档中的说明已经能正常连接proto-repl，但是repl中不能切换到源码所在的namespace，不能在开发期间执行业务代码
+
+查看官方文档操作，下面列出简单步骤，加粗为注意事项
+https://shadow-cljs.github.io/docs/UsersGuide.html#protorepl_atom
+
+添加 proto-repl 依赖
+
+watch启动，**并在 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[JS数据处理]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/29/js-data-process/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/29/js-data-process/</guid>
+            <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[[[toc]]
+
+分享目标
+JS数据处理技巧速成
+让你感叹：JS还可以这样写
+
+基础
+
+实践原则
+数据处理时，尽量避免创建临时变量（特别是let）、修改参数、改变外部引用、for、if 等
+分离 数据处理 与 副作用（DOM操作、存储、网络请求等）代码
+
+数据处理指：数值计算和数据结构变换。
+
+第一点：如何避免？
+**1 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./pipe.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[ClojureScript + node + hotreload]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/13/cljs-node-hotreload/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/13/cljs-node-hotreload/</guid>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[假设你已经创建了项目，并安装了shadow-cljs相关依赖，若未完成请参考文档创建项目：https://shadow-cljs.github.io/docs/UsersGuide.html
+
+*本文示例采用shadow-cljs打包构建，详细资料参考[官方文档](https://shadow-cljs.github.io/docs/UsersGuide.html#target-node- ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[JS 多线程并发]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/03/27/js-concurrent/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/03/27/js-concurrent/</guid>
+            <pubDate>Mon, 27 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[[[toc]]
+
+为什么需要并发
+我们常听说 JS 是单线程模型，即所有代码都在主线程中执行的。
+如果某些任务计算量较大，将阻塞主线程，UI 界面轻则掉帧、重则卡死。
+
+// 提示：本文所有代理均可复制到浏览器控制台中执行，验证效果
+
+// ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[JS语言历史及基本特性介绍]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/29/js-lang-history-and-basic/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/29/js-lang-history-and-basic/</guid>
+            <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[JS历史
+
+1994年，网景公司（Netscape）发布了Navigator浏览器0.9版。
+   网景公司急需一种网页脚本语言，使得浏览器可以与网页互动。
+   评：初始设计目标。
+1995年5月，网景公司做出决策，未来的网页脚本语言必须"看上去与Java足够相似"，但是比Java简单，使得非专业的网页作者也能很快上手。
+   评：划重点 “非专业也能很快上 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[JS优缺点]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/09/20/js-pros-and-cons/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/09/20/js-pros-and-cons/</guid>
+            <pubDate>Sun, 20 Sep 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[回顾上两期
+
+优点（简单）
+
+对象
+链（原型链 & 作用域链）
+
+一切都是对象（包括函数），构建世界的原料，越少越简单、灵活。
+jimu
+
+观察者模式，例：
+class Observer {
+  constructor() {
+    this.subscribe ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./jimu.jpg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[JS 正则表达式基础]]></title>
+            <link>https://hughfenghen.github.io/posts/2022/12/19/js-regex-basic/</link>
+            <guid>https://hughfenghen.github.io/posts/2022/12/19/js-regex-basic/</guid>
+            <pubDate>Mon, 19 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[前言
+个人经验，正则是一个前期少量投入，回报超高的技能点。
+
+其适用范围非常广泛，如批量文本处理、源码替换、程序中逻辑判断等等。
+本文只介绍常用的基础知识、技巧，让初学者快速掌握大部分日常所需的正则知识。目标是5分钟内可逐字读完，10分钟内可把例子都动手实践一遍。 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./repalce-log.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[compilerOptions字段详解]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/01/03/ts-compiler/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/01/03/ts-compiler/</guid>
+            <pubDate>Tue, 03 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[{
+  "compilerOptions": {
+
+    /* 基本选项 */
+    "target": "es5",                       // 指定 ECMAScript 目标版本: 'ES3' (default), 'ES5', 'ES6'/'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'
+    "module": ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[跨域（Options）请求介绍及解决方法]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/03/22/options-request/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/03/22/options-request/</guid>
+            <pubDate>Wed, 22 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[介绍
+OPTIONS请求指method为OPTIONS的http请求。
+通俗来说：它的作用是用于WEB服务器是否支持某些 header，也可以叫做预检请求(顾名思义：预先检测)。
+程序员：跨域发送 http get { headers { xxx: abc } }
+浏览器：等等，你这个请求有点奇怪，我去跟服务器确认下
+浏览器：发送 http options ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[JS 定时器时长控制细节]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/06/15/timer-delay/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/06/15/timer-delay/</guid>
+            <pubDate>Thu, 15 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[背景
+
+JS 最常使用 setTimeout、setInterval 来延迟或定时循环执行函数，通常会传递第二个参数来控制延迟或间隔执行的时间。
+
+但开发者必须意识到函数执行时间并非精确地符合预期，在以下场景中它会超出你的预期
+CPU 繁忙（主线程被长时间占用），JS 无法按开发者设定的预期时间延迟函数
+定时器过于频繁地执行（第二个参数 < 4），达到一定 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[系统化学习 TS 类型系统]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/03/27/ts-types-system/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/03/27/ts-types-system/</guid>
+            <pubDate>Mon, 27 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[目的：快速、系统性的入门 TS 类型系统
+
+[[toc]]
+
+前言
+TS 是什么？
+TS 是 JS 的超集，
+TS = JS + 类型系统
+
+为了描述如此复杂（由于 JS 语言的灵活性/复杂性）的类型信息，类型系统表现出非常明显的编程语言特性。
+以学习编程语言的方式，来学习 TS 类型系统
+
+关键字/符号
+类型: boolean, number, stri ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[单测（Unit Test）技巧]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/01/10/unit-test/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/01/10/unit-test/</guid>
+            <pubDate>Tue, 10 Jan 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[前言
+本文目的是提高编写单测的效率，适合于有一定单测编写经验，但被单测困扰的同学。
+后文的示例都在 unit-test-examples 仓库中。
+
+单测的意义与价值
+单测本质：将测试行为及结果固化下来，自动检查被测试代码的运行结果是否符合期望。
+
+单测是一 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./snapshot-error.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 端实时防挡脸弹幕（基于机器学习）]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/06/21/body-mask-danmaku/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/06/21/body-mask-danmaku/</guid>
+            <pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[W3C 分享视频版
+
+防档弹幕，即大量弹幕飘过，但不会遮挡视频画面中的人物，看起来像是从人物背后飘过去的。
+
+前言
+
+![mediapipe 示例](./mediapipe.gif ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./mediapipe.gif">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[一句话总结：TS 何时选择 interface 或 type]]></title>
+            <link>https://hughfenghen.github.io/posts/2024/02/17/ts-choose-interface-type/</link>
+            <guid>https://hughfenghen.github.io/posts/2024/02/17/ts-choose-interface-type/</guid>
+            <pubDate>Sat, 17 Feb 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[用 interface 描述类型的结构，用 type 描述类型关系。
+
+有点编程基础中数据结构与算法的味道。
+
+结构即是类型的属性集合
+// 如 Point3D 的属性集合： x, y, z。
+interface Po ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[BUG: Safari10 Cannot declare a let variable twice: 'e'.]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/13/bug1-safari10/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/13/bug1-safari10/</guid>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[上线后，吃饭、午休、会议，查看线上错误日志，吓一跳，300+个错误
+SyntaxError: Cannot declare a let variable twice: 'e'.
+于是拉上小伙伴（我刚接手C端业务）退出会议，着手定位问题。
+
+解决方法
+bug详情
+// 修 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Mini Canvas Lib 核心交互实现原理]]></title>
+            <link>https://hughfenghen.github.io/posts/2022/05/02/canvas-lib/</link>
+            <guid>https://hughfenghen.github.io/posts/2022/05/02/canvas-lib/</guid>
+            <pubDate>Mon, 02 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[背景
+需要使用 Canvas 实现添加图片、文字、摄像头画面，并且支持拖拽、缩放、旋转等功能。
+但成熟 Canvas 库（比如 Sprite.js Fabric.js ）一般都比较庞大（300kb+），所以自己实现精简版本，减少体积。
+
+DEMO
+[核 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./canvas-sprite.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[调试鼠标悬浮（hover）元素的css技巧]]></title>
+            <link>https://hughfenghen.github.io/posts/2021/05/14/debug-hover-element/</link>
+            <guid>https://hughfenghen.github.io/posts/2021/05/14/debug-hover-element/</guid>
+            <pubDate>Fri, 14 May 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[有两种方式实现元素的鼠标悬浮交互：
+css；使用伪类.foo:hover{ /* 悬浮时样式 */ }
+js；通过监听元素的mouseenter、mouseleave事件，控制元素的样式
+
+方法一
+使用 chrome devtools 提供的样式调试工具
+
+比如修改悬浮时文字的背景色， [Demo](https://www.w3school.com ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./debug-hover-1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[自集成式 HTTP 代理方案]]></title>
+            <link>https://hughfenghen.github.io/posts/2024/05/08/ff-proxy/</link>
+            <guid>https://hughfenghen.github.io/posts/2024/05/08/ff-proxy/</guid>
+            <pubDate>Wed, 08 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[前言
+
+大部分程序员，想必都有会一个常用的抓包代理工具；
+但在座的各位，可曾见过这样一款集成在 Web 应用中的代理工具？
+
+它是明显区别于传统代理工具的，有以下特性：
+
+零安装，零配置，Web 点击即用、APP 扫码即用；_（不 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./overview-0.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[前端模块化设计]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/10/07/modularization/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/10/07/modularization/</guid>
+            <pubDate>Wed, 07 Oct 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[本方案是一个预研项目的产出，只做出了DEMO，后因非技术原因，方案没有落地实践。
+
+背景
+某些页面展示逻辑复杂，比如点评APP首页，用户看到的页面结构是动态的，与所选城市、地理位置、APP版本相关。
+即使web端发版迅速，没有Native类似的兼容问题，如果所有逻辑代码维护成本也会越来越大。
+
+目标
+设计一套方案，使web页面支持根据配置动态化，配置变化 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./image1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[JS 检测设备性能]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/04/03/js-perf-detect/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/04/03/js-perf-detect/</guid>
+            <pubDate>Mon, 03 Apr 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[性能检测包括
+检测当前运行时的性能（繁忙度）
+检测设备硬件所反映的性能水平
+
+[[toc]]
+
+运行时性能
+首先，在 JS 中并不能直接获取 CPU 占用率、内存使用信息。
+但可以统计一些性能相关的数值来间接评估主线程当前的繁忙度。
+注意是[主线程](https://developer.mozilla.org/zh-CN/docs/Glossa ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[在Termux中运行web项目]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/13/run-web-project-in-termux/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/13/run-web-project-in-termux/</guid>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Termux是什么
+官网
+> Termux is an Android terminal emulator and Linux environment app that works directly with no rooting or setup required. A minimal base system is installed au ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[小程序的思考]]></title>
+            <link>https://hughfenghen.github.io/posts/2019/01/01/thinking-miniprogram/</link>
+            <guid>https://hughfenghen.github.io/posts/2019/01/01/thinking-miniprogram/</guid>
+            <pubDate>Tue, 01 Jan 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[出现的原因
+
+因国内移动互联网的特殊环境：用户时间被巨头APP分割，移动浏览器流量反而较少。
+
+用户需要的服务非常多样化，而APP太重，且很多服务提供商底线太低。
+
+厂商出于私利，推出的类web环境和私有API，期望圈住开发者和服务提供商。
+
+用户视角
+
+便捷，对用户来说，服务更容易获取。
+
+清爽，平台厂商制定规范限制服务提供商，使得吃相不至于太难看（APP无脑推 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[同构项目 Service Worker 离线化实践]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/10/07/sw-ssr/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/10/07/sw-ssr/</guid>
+            <pubDate>Wed, 07 Oct 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[阅读本文需要相关知识储备：  Service Worker 生命周期、Workbox、前端同构渲染
+
+背景 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./ssr-design.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[React Hooks 的思考]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/10/07/react-hooks/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/10/07/react-hooks/</guid>
+            <pubDate>Wed, 07 Oct 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[前言
+听说 Hooks 有一段时间了，一直没去看文档。最近终于想起这事儿，浏览一遍文档后，立即燃起了一种“兴奋感”。
+这种“兴奋感”犹如当初看见“箭头函数”、“async/await”一样。
+所以，即使在有很多分析文章的情况下，仍想再写一些个人的思考和感受。
+[react hooks官方文档](https://reactjs.org/docs/hooks-intro.html ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./comp.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[个人 VSCode 高频快捷键总结]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/03/29/vscode-shortcut/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/03/29/vscode-shortcut/</guid>
+            <pubDate>Wed, 29 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[vscode 默认快捷键
+
+|按键|描述|提示|
+|---|---|---|
+|cmd+shift+p|命令搜索|一切命令、指令的入口，不常用或没有快捷键的指令，可以搜索名称然后触发，尝试搜索 open |
+|tab控制|
+|cmd+n|新建tab页|常用于记录临时信息|
+|cmd+w|关闭tab页|关闭临时tab会有是否保存确认，Mac下cmd+d不保存（d ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[opfs-tools (文件系统 API) 项目介绍]]></title>
+            <link>https://hughfenghen.github.io/posts/2024/03/06/opfs-tools-tweet/</link>
+            <guid>https://hughfenghen.github.io/posts/2024/03/06/opfs-tools-tweet/</guid>
+            <pubDate>Wed, 06 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[文件系统是许多领域程序的基石，所有通用编程语言都会内置完备的文件系统 API。
+
+Web 很长一段时间没有提供完善的访问文件系统的规范，使得需要高频读写文件、大文件处理软件在 Web 端都会受到一些限制，比如音视频剪辑、游戏、数据库等等。
+
+之前在浏览器中实现视频裁剪、截帧等相关功能时，发现缺少基本的操作文件的 API，比如读写、移动、复制文件。
+
+而 [OPFS] ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./opfs-tools-explorer.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[VuePress 集成第三方评论模块]]></title>
+            <link>https://hughfenghen.github.io/posts/2018/05/06/vuepress-gitment/</link>
+            <guid>https://hughfenghen.github.io/posts/2018/05/06/vuepress-gitment/</guid>
+            <pubDate>Sun, 06 May 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[VuePress 是一个 Vue 驱动的静态网站生成器，用来写文档的体验很好，本站就是基于VuePress的。
+
+VuePress官方正在开发针对博客的优化功能Blog Support roadmap，已经有人在喊建议集成disqus（ps ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[基于vue directive实现声明式埋点方案]]></title>
+            <link>https://hughfenghen.github.io/posts/2018/05/01/vue-directive-track/</link>
+            <guid>https://hughfenghen.github.io/posts/2018/05/01/vue-directive-track/</guid>
+            <pubDate>Tue, 01 May 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[注：本方案依赖vue、lazysizes(曝光事件：lazybeforeunveil)
+
+传统埋点 vs 声明式埋点
+
+正文开始前，对比展示一下效果，方便读者判断是否有兴趣 :）
+
+传统埋点
+]]></description>
+            <enclosure url="https://hughfenghen.github.io/./assets/mge1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 文件系统（OPFS 及工具）介绍]]></title>
+            <link>https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/</link>
+            <guid>https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/</guid>
+            <pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[文件系统是往往是构建大型软件的基石之一，很长一段时间 Web 平台因缺失成熟的文件系统成为构建大型软件的阻碍，如今 OPFS 可弥补这一缺憾。
+
+本文介绍 OPFS 背景和基本使用方法、使用过程中的注意事项，及如何配合笔者开源的 opfs-tools、opfs-tools-explorer 两个项目，充分发挥 OPFS 的性能与开发效率。
+
+Web 存储 A ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./vs.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[WebContainer 原理分析]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/03/29/webcontainer/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/03/29/webcontainer/</guid>
+            <pubDate>Wed, 29 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[WebContainer 是一种基于浏览器的运行时，可完全在浏览器标签页内执行 Node.js 应用程序和操作系统命令。
+
+惊艳的地方有两点：
+
+能在浏览器中运行 Node 服务，居然还能启动 DevServer “监听端口”
+离线后 IDE 开发中的页面也能正常开发
+
+大致原理
+
+以 ]]></description>
+            <enclosure url="https://hughfenghen.github.io/./webcontainer.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[WebGL Chromakey 实时绿幕抠图]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/07/webgl-chromakey/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/07/webgl-chromakey/</guid>
+            <pubDate>Fri, 07 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[20 行核心（shader）代码实现实时绿幕抠图
+
+先体验 DEMO，基于 WebAV 实现
+
+移除图片背景
+移除视频背景
+
+背景
+
+因为视频相关标准及浏览器的实现问题，很难在主流浏览器中顺利播放背景透明的视频。
+
+有两种方法可以为最通用的视频格式（MP4,H264）移除背景，实现透明效果：
+
+原视频配上绿幕，使用本文介绍方法移 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./green-dog.jpeg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[JS 解析 SRT 字幕]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/10/srt-parser/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/10/srt-parser/</guid>
+            <pubDate>Mon, 10 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[SRT字幕格式介绍
+
+copy 以下代码可在控制台测试效果
+function srtTimeToSeconds (time) {
+  const match = time.match(/(\d{2}):(\d{2}):(\d{2}),(\d{3})/)
+ ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[DIY 游戏掌机]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/06/21/diy-handheld-game/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/06/21/diy-handheld-game/</guid>
+            <pubDate>Wed, 21 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[前言
+对比分析了市场上的掌机，发现有些缺陷在当前是无解的。
+所以想通过 mini主机 串流 手机 来扬长避短。
+
+方案总结分析
+
+优点
+性能更强
+自由度、可玩性更高
+  不受掌机平台限制
+  win主机游戏更多，也不限于只玩游戏
+屏幕观感更舒服；分辨率、帧率、色彩吊打掌机
+续航6小时以上（四年旧手机
+无散热压力：零噪音，不烫手
+...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[侠客行 / 三叠]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/29/%E4%BE%A0%E5%AE%A2/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/29/%E4%BE%A0%E5%AE%A2/</guid>
+            <pubDate>Sat, 29 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[侠客行
+> 作者：李白
+
+赵客缦胡缨 吴钩霜雪明
+
+银鞍照白马 飒沓如流星
+
+十步杀一人 千里不留行
+
+事了拂衣去 深藏身与名
+
+闲过信陵饮 脱剑膝前横
+
+将炙啖朱亥 持觞劝侯嬴
+
+三杯吐然诺 五岳倒为轻
+
+眼花耳热后 意气素霓生
+
+救赵挥金槌 邯郸先震惊
+
+千秋二壮士 烜赫大梁城
+
+纵死侠骨香 不惭世上英
+
+谁能书阁下 白首太玄经
+
+三叠
+> 作者：天下有雪 / 沧月改
+ ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Web 终极拦截技巧（全是骚操作）]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/12/23/web-spy/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/12/23/web-spy/</guid>
+            <pubDate>Sat, 23 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[拦截的价值
+
+> 计算机科学领域的任何问题都可以通过增加一个中间层来解决。 —— Butler Lampson
+
+如果系统的控制权、代码完全被掌控，很容易添加中间层；
+现实情况我们往往无法控制系统的所有环节，所以需要使用一些 “非常规”（拦截） 手段来增加中间层。
+
+拦截的方法
+
+拦截/覆写 浏览器 API
+
+最常见的场景有通过拦截 console ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./server.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[解决 Edge 117 浏览器视频变色]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/09/19/edge117-amd-hevc-bugfix/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/09/19/edge117-amd-hevc-bugfix/</guid>
+            <pubDate>Tue, 19 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[仔细观察颜色，“变色”其实是“反色”效果
+
+Bug 触发条件：Win10 系统 + Edge 117 浏览器 + AMD 集成显卡 + HEVC 视频流
+
+Edge 117 如果使用 AMD 集成显卡，观看视频时可能出现视频反色现象，在 bilibili（哔哩哔哩） 直播中发现。
+
+通过以下设置，配置 Edge 使用英伟达独立显卡，可解决反色问题。
+
+如 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./setting.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[书评笔记]]></title>
+            <link>https://hughfenghen.github.io/posts/2022/08/12/book-review/</link>
+            <guid>https://hughfenghen.github.io/posts/2022/08/12/book-review/</guid>
+            <pubDate>Fri, 12 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[社会学
+
+当代中国的中央地方关系
+分税制改革断了地方政府的财路。
+
+我记得96年左右我们那里的政府似乎特别困难，“人头税”涨得很快，农民都交不起了，甚至听说zf组织地痞流氓上门抢钱粮。我印象深刻是因为我家也被强行开仓放粮了，当时很小五六岁左右，比较害怕。不知道跟分税制改革有没有关系。
+
+没想到呀，土地财政救了地方政府，也算是人口红利的一部分。这也理解了为啥中央一直喊要控制 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[生存空间]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/10/07/biosphere/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/10/07/biosphere/</guid>
+            <pubDate>Wed, 07 Oct 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[存在即合理。 —— 黑格尔
+
+一
+我很久前曾多次纳闷：苍蝇，存在的意义是什么？
+不像蚊子，咬人痛痒，它飞来飞去让人厌烦，飞得还快打不着，打着了又让人恶心。
+总之，它不那么坏，整天飞来飞去惹人厌烦外，不能理解其存在的意义。
+
+现在看来，当时的思考内容略显幼稚。
+但人总是受限于自己的主观经验，难以理解很多事物存在的“理”。
+
+二
+然，大道至简。
+足够“简 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./tree.jpeg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[技术面试中的“运气”指什么]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/29/interview/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/29/interview/</guid>
+            <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[常说面试过程中出了真实实力，运气也很重要。我并不满意与“运气”这个含义过于模糊的词，决定深究一下，并不是面试技巧或指导。
+当局者迷，以下是我对一年前面试经历的回顾。
+
+隐含的，可控的非“运气”成分
+
+除了相貌、性格、口音等影响结果的客观因素外，还有形象（我曾穿着拖鞋去应聘...）、精神状态等可控的，但可能被忽略的因素。
+此类因素容易被面试官/应聘者忽略，但却能直接影响结果，也 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[天道]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/07/13/dao/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/07/13/dao/</guid>
+            <pubDate>Mon, 13 Jul 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[一个细菌与一个人之间有什么区别？（这问题很傻，听了都不想回答）
+脑海中第一个词——意识。
+
+一个细菌与一个人体细胞有什么区别？
+从生物学细节上来说，区别太多了，但本质上来说好像区别不大。
+二者都是无意识的，需要或适应环境，然后复制自身。
+最大区别可能是细菌只要环境允许则无限复制而；人体正常细胞则在环境控制下复制一定次数后就停止复制，自然死亡。从这方面看，人体最像细菌的细胞 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[菩萨蛮]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/29/%E8%8F%A9%E8%90%A8%E8%9B%AE/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/29/%E8%8F%A9%E8%90%A8%E8%9B%AE/</guid>
+            <pubDate>Sat, 29 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[人人尽说江南好
+>作者：韦庄
+
+人人尽说江南好 游人只合江南老
+
+春水碧于天 画船听雨眠
+
+垆边人似月 皓腕凝霜雪
+
+未老莫还乡 还乡须断肠 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[为何是秦灭六国，统一天下]]></title>
+            <link>https://hughfenghen.github.io/posts/2020/10/07/qin/</link>
+            <guid>https://hughfenghen.github.io/posts/2020/10/07/qin/</guid>
+            <pubDate>Wed, 07 Oct 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[*刚刚与网友谈到这个话题。
+史书总是把王朝兴衰全归因于“人”，我更愿意相信其主因是“天”。
+所以，我更“青睐”把王朝更替与气候变化关联起来的相关学说。*
+
+以下为爱好者臆测“为何是秦灭六国，一统天下”的原因（由于是爱好者，并不打算详细论证^_^）
+
+天
+春秋战国时期大降温（看图）。
+
+[来源链接](http://w ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./chronology.jpeg">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[善-恶]]></title>
+            <link>https://hughfenghen.github.io/posts/2022/08/22/shan-e/</link>
+            <guid>https://hughfenghen.github.io/posts/2022/08/22/shan-e/</guid>
+            <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[春节在家走亲戚，听说有人从事的行业实为“间接诈骗”，并且也看不出周围的人对此行为有什么鄙视之情，大家更关注的似乎是能赚多少。
+
+我没想到“恶”，离我如此之近，不由得更深入地去理解思考————“善恶”。
+
+为什么会存在“善恶”这样的抽象概念？
+其本质是什么？
+“恶”是否可以消除？
+消除“恶”会有什么影响呢？
+
+-- 虽然没人直接告诉我们“善-恶”这个概念的定义，但我们很小 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[【转】我在 20 年的软件工程师生涯中学到的事情]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/08/18/twenty-things-software-engineer/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/08/18/twenty-things-software-engineer/</guid>
+            <pubDate>Fri, 18 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[原文
+阮一峰翻译
+
+*我一般不太喜欢看这种经验之谈，在阮一峰周刊中看到， ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（一）基础知识]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/19/webav-1-basic/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/19/webav-1-basic/</guid>
+            <pubDate>Wed, 19 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+阅读后续文章或开始使用 WebAV 处理音视频数据之前，需要一点点背景知识。
+
+本篇主要简单介绍音视频最基础的知识，以及 WebCodecs 的核心 API。
+
+视频结构
+
+视频文件可以理解为容器包含了元数据和编码数据（压缩的音频或视频）；
+不同的容器格式有各种区别，比如用不同方式组织管理元数据和编码数据。
+![视频结 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./video-struct.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[2024，做个“前端网红”吧]]></title>
+            <link>https://hughfenghen.github.io/posts/2024/01/01/wechat-subscribe/</link>
+            <guid>https://hughfenghen.github.io/posts/2024/01/01/wechat-subscribe/</guid>
+            <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[​写博客好多年了，以前是随缘更新，无所谓有没有人看。
+
+23 年有些意外、有些机缘，写了不少代码和文章。
+
+github contributions
+
+收到了一些正向反馈，github 新增 500+ star，博客站点日 PV 300 左右。
+
+所以想博客也许可以作为一个业余项目，正经运营起来。
+
+作为 Web 开发者，自然不喜欢 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./github-contributions.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（二）在浏览器中解析视频]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/23/webav-2-parse-video/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/23/webav-2-parse-video/</guid>
+            <pubDate>Sun, 23 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+浏览器中已经能直接播放视频，为什么还需要手动写代码解析？
+因为，某些场景需要对视频进行更细致的处理，比如截取关键帧、提取视频中的文字、人物打码、极低延时播放视频等等。
+
+总之，除了最单纯的视频播放外，对视频数据的一切处理都需要从解析开始。
+
+_你可以跳过原理介绍，直接查看 [WebAV 解析 MP4 示例](#webav-视频解 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./mp4-overview.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（五）在浏览器中合成视频]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/08/12/webav-5-combine/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/08/12/webav-5-combine/</guid>
+            <pubDate>Sat, 12 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+经过前序章节的介绍，读者能大致了解如何在播放器中解析、创建视频；
+本章介绍何在浏览器中合成视频，这是视频编辑中最基础的功能。
+
+你可以跳过原理介绍，直接查看 WebAV 合成视频示例
+
+在视频上叠加素材
+
+常见的素材有：视频、音频、图片、文字
+
+[在浏览器中创建视频](/posts/2 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（四）在浏览器中处理音频]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/08/05/webav-4-process-audio/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/08/05/webav-4-process-audio/</guid>
+            <pubDate>Sat, 05 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+为什么单独介绍音频处理?
+
+网络上缺乏音频处理的资料，绝大多数示例都是针对视频而略过音频，很多人在网上寻找音频处理的示例
+对前端开发者来说，音频处理相对视频略微复杂一些
+
+所以，本文专门针对音频数据，汇总讲解采集-处理-编码-封装全过程，帮助初学者入门。
+
+![audio-data-flow](./audio ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./audio-data-flow.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（三）在浏览器中创建视频]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/31/webav-3-create-video/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/31/webav-3-create-video/</guid>
+            <pubDate>Mon, 31 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+音视频工作流程
+
+在 WebCodecs 之前，由于编解码能力的缺失，几乎无法在纯浏览器中编辑、创建视频。
+WebCodecs 补齐了编解码能力，相当于在浏览器中提供了视频创作能力。
+
+预计 WebCodecs 将会像 HTML5 技术（Video、Audio、MSE...）一样 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./media-workflow.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[WebCodecs 编码字符串（codec）介绍]]></title>
+            <link>https://hughfenghen.github.io/posts/2024/05/11/webcodecs-codec-string-explain/</link>
+            <guid>https://hughfenghen.github.io/posts/2024/05/11/webcodecs-codec-string-explain/</guid>
+            <pubDate>Sat, 11 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[笔者的 Web 音视频系列文章
+
+视频播放经常会看到这样的字符串 video/mp4; codecs="avc1.4d002a"，WebCodecs 编解码器初始化也需要配置 codec 参数，本文尝试简单介绍编码字符串含义。
+
+视频编码分许多种类，每个种类还分多个版本，不同种类、版本对应的编解码算法、支持的能力（分辨率上限、色深等等）不同 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./4d00.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（零）概览]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/07/16/webav-0-overview/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/07/16/webav-0-overview/</guid>
+            <pubDate>Sun, 16 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+WebCodecs API 已经发布一段时间（chrome 94），在浏览器中处理音视频文件或实时视频流已经可行。
+计划开一个系列介绍 Web 音视频基础知识，及如何在浏览器中处理视频文件（或视频流）。
+
+作者也是音视频领域的新手，本系列文章也算是个人的学习总结，若发现错误内容可在评论区留言
+_本系列适合有一定经验的前端 ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./media-workflow.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（七）中期回顾]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/08/19/webav-7-mid-review/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/08/19/webav-7-mid-review/</guid>
+            <pubDate>Sat, 19 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+个人回顾
+
+本系列更新至今，持续了一个月时间，内容可以总结为音频、视频数据的 解析 - 处理 - 合成，在浏览器中比较粗粒度地实现音视频编辑的主要环节，差不多是把 WebAV 项目的原理讲完了。
+
+讲解的知识非常浅，目标读者是准备在 Web 平台进行音视频开发的新手；
+这是我第一次进行高频率技术写作，将一 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[WebCodecs 开启 Web 音视频新篇章]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/10/06/webcodecs-new-era-for-media-on-the-web/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/10/06/webcodecs-new-era-for-media-on-the-web/</guid>
+            <pubDate>Fri, 06 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[你可以先略过下面的无聊文字，体验一番 WebCodecs 的实力
+
+WebCodecs 是什么
+
+WebCodecs 是一个 Web 规范，21 年 9 月份在 Chrome 94 中实现
+WebCodecs 提供访问编解码能力的接口，可精细控制音视频数据
+
+Web 音视频 API 存在什么问题
+
+音视频技术在 Web 平台上的应用非常广泛，已有许多 Web ...]]></description>
+            <enclosure url="https://hughfenghen.github.io/./media-workflow.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[Web 音视频（六）图像素材处理]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/08/19/webav-6-process-image/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/08/19/webav-6-process-image/</guid>
+            <pubDate>Sat, 19 Aug 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Web 音视频目录
+
+前序章节介绍了如何在浏览器中解析、创建视频，以及给视频添加一些自定义素材（图片、音频、文字...）；
+本章介绍如何给图像素材加特效、加动画，实现转场、移动水印、图像滤镜美化等功能。
+
+你可以跳过原理介绍，直接查看 WebAV 示例
+
+素材动画
+
+在视频制作中实现动画跟其他场景略有不同，因为视频 ...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[【译】WebCodecs 说明]]></title>
+            <link>https://hughfenghen.github.io/posts/2023/10/02/webcodecs-explainer/</link>
+            <guid>https://hughfenghen.github.io/posts/2023/10/02/webcodecs-explainer/</guid>
+            <pubDate>Mon, 02 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[本文翻译至 WebCodecs Explainer
+
+问题与动机
+
+已有许多 Web API 在内部使用媒体编解码器来支持特定用途，比如:
+
+HTMLMediaElement and Media Source Extensions
+WebAudio (decodeAudioData)
+MediaRecorder
+WebRTC
+
+但是还没有一种通用的方式来灵活 ...]]></description>
+        </item>
+    </channel>
+</rss>
