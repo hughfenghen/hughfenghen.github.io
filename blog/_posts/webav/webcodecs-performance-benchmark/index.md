@@ -21,10 +21,9 @@ _注：WebAV 是基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑�
 
 ## 环境信息
 
-测试资源：bunny_avc_frag.mp4，1080P，10min，AVC 编码；  
+测试资源：bunny_avc_frag.mp4 (fMP4)，1080P，10min，AVC 编码；  
 输出： 10min，3M 码率，30 FPS  
-方法：在视频中央绘制一个最简单的文本，合成导出视频  
-设备：MacOS M1 芯片（2020）
+方法：在视频中央绘制一个最简单的文本，合成导出视频
 
 ## WebCodecs 性能表现
 
