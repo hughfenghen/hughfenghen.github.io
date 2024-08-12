@@ -15,7 +15,7 @@ date: 2024-07-27
 
 相信刚接触 WebCodecs 的读者也非常关心它的性能表现如何。
 
-如今 [WebAV][1] 已经稳定下来，v1.0 即将发布，于是做了一次简单的性能测试，~~**结果是乐观的 ：）**~~
+如今 [WebAV][1] 已经稳定下来，v1.0 即将发布，于是做了一些简单的性能测试，**结果还算乐观 ：）**
 
 _注：WebAV 是基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑视频文件**_
 
@@ -25,6 +25,13 @@ _注：WebAV 是基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑�
 输出： 10min，3M 码率，30 FPS  
 方法：在视频中央绘制一个最简单的文本，合成导出视频
 
+## 设备
+
+1. 设备 1：MacBook Pro, M1（2020）, 16 GB
+1. 设备 2：AMD Ryzen 7 5800 8-core，RTX 3080, 32 GB
+1. 设备 3：Intel i9-9900k, RTX 2070, 32 GB
+1. 设备 4：Intel i5-8265U, UHD Graphics 620, 8 GB
+
 ## WebCodecs 性能表现
 
 数字是合成视频消耗的时间，单位 s  
@@ -33,15 +40,22 @@ _注：WebAV 是基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑�
 _注 1：本地合成（WebAV、ffmpeg、剪映 APP），跟设备的硬件配置强相关；云端合成（剪映 Web），跟服务资源分配的资源强相关_  
 _注 2：剪映 APP 是由官方下载器自动安装的，有个 4.1.0 版本很奇怪，我也不知道原因_
 
+**2024.08.12 更新 WebAV v0.14.6 优化后数据**
+
+![benckmark-240812](./benckmark-240812.png)
+
 若读者有兴趣可自行对比或在评论区讨论，WebAV 性能测试代码[在这里][2]，其它工具请自行安装。
 
 ### 总结
 
-1. 结果**只在 MacOS 下是乐观的**，与 Native APP 性能表现在同一水准
-2. WebCodecs API 能利用硬件加速，但在 Windows 设备下仍有一定差距
-3. 设备性能越差，WebAV 性能劣化越快
+1. 结果**在 MacBook Pro、高性能设备上是乐观的**，与 Native APP 性能表现在同一水准
+2. WebCodecs API 能利用硬件加速，与中低性能的 Win 设备有一定差距
+3. 设备性能越差，WebAV 性能表现劣化越快
+4. WebAV（WebCodecs） 还存在优化空间
 
-接下来需要重点分析低性能设备下，WebAV 有多大的优化空间，结果会在这里更新，感兴趣的读者请可以[订阅](/subscribe.html)博客。
+关注 WebAV（WebCodecs） 性能优化数据的同学，可以订阅该 [文章评论对应的 issue](https://github.com/hughfenghen/hughfenghen.github.io/issues/205) 以接收更新。
+
+![image](https://github.com/user-attachments/assets/498d2a3f-d45c-434e-8244-67a8e624503e)
 
 ## 性能优化思路
 
