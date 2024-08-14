@@ -20,7 +20,7 @@
 
 ---
 
-我正在积极维护的开源项目，欢迎 star、follow me
+我正在积极维护的开源项目，欢迎 star、follow me ：）
 
 - <a href="https://github.com/bilibili/WebAV/">WebAV</a>  
   基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑视频文件**

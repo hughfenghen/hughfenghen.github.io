@@ -86,7 +86,7 @@ module.exports = {
         text: "Github",
         link: "https://github.com/hughfenghen"
       }, {
-        text: "订阅",
+        text: "订阅/赞助",
         link: "/subscribe.html"
       }
     ],
