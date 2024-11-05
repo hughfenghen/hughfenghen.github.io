@@ -3,7 +3,7 @@ name: Deploy demo to GitHub Pages
 on:
   push:
     branches:
-      - blog # 或者您要触发部署的分支名称
+      - main # 或者您要触发部署的分支名称
 
     # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
