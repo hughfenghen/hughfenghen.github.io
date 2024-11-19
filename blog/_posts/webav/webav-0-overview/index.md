@@ -92,7 +92,7 @@ WebAV 尝试提供简单易用的 API 在浏览器中处理音视频数据。
 <img src="../../assets/wechatpay-qcode.png" width="200" alt="微信" />
 
 Star 或 Watch [WebAV 项目](https://github.com/bilibili/WebAV)来跟进项目进展、体验 DEMO、查阅示例代码；  
-Star 或 Watch [本博客站点](https://github.com/hughfenghen/hughfenghen.github.io) 以接收本系列文章更新。
+可通过[公众号或 RSS 订阅](https://hughfenghen.github.io/subscribe.html)本博客站点，以接收本系列文章更新。
 
 ## Web 音视频相关 API
 
