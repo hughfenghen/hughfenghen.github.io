@@ -31,6 +31,9 @@
 - <a href="https://github.com/hughfenghen/opfs-tools/">opfs-tools</a>  
   简单、高性能、完备的**文件系统 API**，在浏览器中运行
 
+- <a href="https://github.com/hughfenghen/opfs-finder/">opfs-finder</a>  
+  使用 AI + OPFS 在浏览器中实现 MacOS Finder (文件管理器)
+
 - <a href="https://github.com/hughfenghen/opfs-tools-explorer">opfs-tools-explorer</a>  
   基于 opfs-tools 实现的浏览器文件管理 UI
 
