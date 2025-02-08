@@ -1,10 +1,13 @@
 # 从 React 看前端代码范式革命
 
 前言
-本来打算写的主题是“我为什么讨厌 React“，然后展开聊聊“小甜甜”是如何变成“牛夫人”的。  
+本来打算写的主题是“我为什么讨厌 React“，再展开聊聊“小甜甜”是如何变成“牛夫人”的。  
 没想到越写越严肃。。。
 
-从设计角度分析 react
+**什么是范式？**
+
+本文从 React 视角出发聊点前端历史，只讨论 Web UI 代码的最**基础表现形式**，不涉及框架的用法、特性介绍或对比。  
+_所以本文内容没有门槛、没有干货，有点虚；放心食用，不费脑。_
 
 最开始并不是这样的，遥想十年前第一次见面时：  
 ![alt text](image.png)
@@ -37,6 +40,7 @@
       3. 有机会聊聊基本的、通用的、普世原则之一 —— 亲密性原则
          1. 就像隐藏在自然规则之下原始神格，是 React 两次革命背后的推手
 
+<!--
 ## 前端代码范式演进
 
 **html**
@@ -45,9 +49,7 @@
 
 **jsx: 函数组件**
 
-<!-- 放到后面 -->
-
-**未来期望**
+**未来期望** -->
 
 ## 往事云烟
 
@@ -123,16 +125,16 @@ class Component {
   constructor() {
     this.state = {
       // 其他状态...
-      inputText: '',
+      count: 0,
       // 其他状态...
     };
   }
 
   // 其他方法 ...
 
-  onInput = (evt) => {
+  handleClick = (evt) => {
     this.setState({
-      inputText: evt.target.value,
+      count: this.state.count + 1,
     });
   };
 
@@ -142,7 +144,9 @@ class Component {
     return (
       <div>
         {/* 其他节点 */}
-        <input value={this.state.inputText} onInput={this.onInput}></input>
+        <button onClick={this.handleClick}>
+          Clicked {this.state.count} times
+        </button>
         {/* 其他节点 */}
       </div>
     );
@@ -168,17 +172,17 @@ React 的工程师们，天才般地发明（或引入）了**外观**清新脱�
 
 ```jsx
 function Component() {
-  const [inputText, setInputText] = useState('');
-  function onInput() {
-    setInputText(evt.target.value);
+  const [count, setCount] = useState(0);
+  function handleClick() {
+    setCount(count + 1);
   }
-  return <input value={inputText} onInput={onInput}></input>;
+  return <button onClick={handleClick}>Clicked {count} times</button>;
 }
 ```
 
 React 的领导者地位，加上其他 UI 框架纷纷效仿，Hooks API 及其衍生（signal、composition API）形式迅速流行扩散至每一个角落，函数式组件终于成为新范式。
 
-Hooks API 之所以优美，是因为它**在 js 语法限制下**，发现了维持状态的**最简化描述形式**；  
+Hooks API 之所以优美，是因为它**在 js 语法限制下**，发现了维持状态的**最简化描述形式**，它将状态由 js 对象切割成最基础的原始值；  
 Hooks API 维护的状态是函数内、细粒度、局部状态，与类组件的巨型状态截然相反；  
 因为函数本身鼓励拆分、局部对象的特性，所以能与 Hooks API 如此自然地融合，两个字：般配！
 
@@ -191,10 +195,10 @@ Hooks API 维护的状态是函数内、细粒度、局部状态，与类组件�
 待时日渐长，你会发现她的内在 —— 简直是魔鬼！
 
 声明：本人前文对 Hooks API 的所有赞美，仅限于她的外表。  
-_但...男人...你懂的，只要长得好看，管她是鬼是蛇_
+_但...男人...你懂的，只要对上了 👀，管她是鬼是蛇_
 
-Hooks API **万恶之源**在于她超级简单的运行机制 —— 任何状态变更即**重复运行组件函数**，然后使用已有的虚拟 DOM diff 算法，计算需要出更新的 DOM。  
-_前面说简单即美，为什么“简单的运行”机制却不美了？_  
+Hooks API **万恶之源**在于她超级简单的运行机制 —— 任何状态变更即**重复运行组件函数**，再使用虚拟 DOM diff 算法计算需要出更新的 DOM。  
+_前面说简单即美，为什么“简单的运行机制”却不美了？_  
 _这是一个哲学问题，有机会再聊[doge]_
 
 该运行机制带来的缺点总结：
@@ -205,6 +209,8 @@ _这是一个哲学问题，有机会再聊[doge]_
 4. setState 不是同步的（对新手增加一点理解成本吧）
 
 _这是 AI 生成的 hooks 缺点的示例代码_
+
+代码警告 - 展开
 
 ```jsx
 import React, { useState, useEffect, useCallback } from 'react';
@@ -227,7 +233,6 @@ function ExampleComponent({ fetchData }) {
     }, 3000);
   };
 
-  // 必须使用 useCallback 优化性能
   const increment = useCallback(() => {
     setCount((prevCount) => prevCount + 1);
   }, []); // 如果不使用 useCallback，可能导致子组件不必要的重新渲染
@@ -251,9 +256,9 @@ function ExampleComponent({ fetchData }) {
 }
 ```
 
-另外，到最新的 React@19 版本，居然内置了 18 个 Hooks API（180 斤的刘亦菲.jpg）。。。
+_另外，到最新的 React@19 版本，已经内置了 19 个 useXXX（190 斤的刘亦菲.jpg）。_
 
-## 它山之石，进行中的变革
+## 它山之石，进行中的改良
 
 React Hooks API 出现时，她的上述缺点就已经存在了，现在要解决的不是累积的矛盾，而是是开发者累积的不满(￣ヘ￣)。
 
@@ -278,12 +283,12 @@ function Counter() {
 ```
 
 那代价是什么呢？  
-状态值变成了函数，所有使用它的地方都要要加一个括号 `count()`。
+状态值变成了函数，所有使用它的地方都要要加一个括号 `count()`，这点确实 Hooks API 直接使用原始值那么美。
 
 **Vue.js**
 
-Vue 一开始选择的方向跟 React 就有明显差异，仍然参考 Hooks API 设计了组合式 API，可以证明 Hooks API 的形式美无可辩驳；  
-即使 React 如日中天时，Vue 也发展出庞大用户群体，所以的他设计肯定值得学习。
+Vue 一开始选择的方向跟 React 就有明显差异，但仍然参考 Hooks API 设计了组合式 API，可以证明 Hooks API 的形式美无可辩驳；  
+即使 React 如日中天，Vue 也发展出庞大用户群体，所以的他设计肯定值得学习。
 
 Vue.js 使用 Proxy 来实现依赖收集、状态变更更新监测。
 
@@ -305,7 +310,7 @@ console.log(obj.count); // 3
 console.log(count.value); // 3
 ```
 
-## 理想化 UI 范式
+## 当前理想化的 UI 范式
 
 我不知道 React 的工程师们在设计 Hooks API 时，是否有考虑过 `createSignal` 返回函数而不是值的设计方案。
 
@@ -313,11 +318,68 @@ console.log(count.value); // 3
 也许他们觉得自动依赖收集、局部 DOM 更新繁琐而不够优雅。
 
 能肯定的是，他们低估了重复运行组件函数对开发者带来的伤害；  
-如果在 2019 年首次发布 Hooks API 时，就采用了 `createSignal` 返回函数而不是值的设计，前端开发的生活将会更美好。
+如果在 2019 年首次发布 Hooks API 时，付出两个括号的代价 `count()`，采用 Solid.js 返回函数而不是值的设计，前端开发的生活将会更美好。
+
+**那 Solid.js 就是完美的状态最简表现形式吗？**
+
+来看一段 Svelte 代码。  
+Svelte 扩展 `$state` 符文（runes）将一个 js 变量标记为状态，状态变更就是变量赋值 `count += 1`。
+
+不需要解构元组，`const [] = createSignal()`；  
+不需要变更函数，`setCount(n)`；  
+不需要多余的括号，状态就是变量（`count`），不是函数（`count()`）。
+
+```svelte
+<script>
+	let count = $state(0);
+
+	function handleClick() {
+		count += 1;
+	}
+</script>
+
+<button onclick={handleClick}> Clicked {count} times </button>
+```
+
+**如果参考 svelte 再次扩展一点点 jsx 语法，函数组件是否有更简洁优美的表达形式？**
+
+```jsx
+// 假想，不可运行的代码
+function Component() {
+  let count = $state(0);
+  function handleClick() {
+    count += 1;
+  }
+  return <button onClick={handleClick}>Clicked {count} times</button>;
+}
+```
+
+如何能检测到原始值的变更 `count += 1`？  
+这是 Svelte 的魔法，在编译期分析状态依赖，插入变更标记，然后在运行时按需更新 DOM。  
+_值得一提的是，它还打破了 React 植入的 `虚拟DOM = 高性能` 的思想钢印_
+
+讲了这么久总结一下，我只想要两个东西：
+
+1. 将变量标记为组件状态，类似 `$state` 符文
+2. 避免重复运行组件函数体，类型 Svelte 基于编译器的响应式系统
+
+## 未来的革命
+
+react sql 讲起
+
+消除 BS 状态同步代码
+remix 是一个探索者
+
+未来是否会发生，取决于需求有多强
+
+关注点分离没有错，vue、svelte
+被 React（jsx） 丢掉的 css
+
+挖坑：亲密性原则
+
+## 附录
 
 <!-- ----------------------- -->
-
-如果突破 js 语法限制，就像 jsx 一样稍微扩展 js 语法，是否有更简洁优美的表达形式？
 
 <!-- 它的缺陷可以从 React 早期的广告标签中反向体现出来 -->
 
