@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress dev blog",
-    "push-baidu": "curl -H 'Content-Type:text/plain' --data-binary @'./blog/.vuepress/public/site-map.xml'  'http://data.zz.baidu.com/urls?site=fenghen.xyz&token=nqqbIIvUQ0XppZCk'",
+    "push-baidu": "curl -H 'Content-Type:text/plain' --data-binary @'./blog/.vuepress/public/sitemap.xml'  'http://data.zz.baidu.com/urls?site=fenghen.xyz&token=nqqbIIvUQ0XppZCk'",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && vuepress build blog",
     "deploy-github": "pnpm build && ./blog/deploy-github.sh",
     "deploy-gitee": "VP_DEPLOY_ENV=gitee pnpm build && ./blog/deploy-gitee.sh",

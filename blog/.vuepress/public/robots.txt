@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hughfenghen.github.io/site-map.xml
+Sitemap: https://hughfenghen.github.io/sitemap.xml
