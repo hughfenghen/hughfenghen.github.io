@@ -15,15 +15,17 @@ style: |
     height: 100%;
   }
   .name {
-    text-align: center;
     margin-top: 32px;
+  }
+  .txt-center {
+      text-align: center;
   }
 ---
 
 <div class="title">
   <div>
     <h1>从 React 看前端 UI 代码范式革命</h1>
-    <div class="name">风痕</div>
+    <div class="name txt-center">风痕</div>
   </div>
 </div>
 
@@ -114,6 +116,8 @@ _无限自由，就是鼓励混乱_
 </ul>
 ```
 
+_JSX 的**代价**是引入了编译阶段，增加了前端**工程复杂度**_
+
 ## 2013 ～ 2019
 
 - React 创造了繁荣的社区
@@ -169,9 +173,11 @@ class Component {
 - 创建类组件的成本较高（模式化代码较多）
 - 类（class）本身就有鼓励副作用方法（method）的特性
 - **类组件范式，鼓励巨型组件**，而不是拆分组件
--
-- 理想：**UI = f(state)**
-- 实际：**UI = class { LargeState, render, ...methods }**
+
+总结
+
+- 理想：`UI = f(state)`
+- 实际：`UI = class { LargeState, render, ...methods }`
 
 ## 第二次函数组件革命
 
@@ -197,9 +203,11 @@ function Counter() {
 }
 ```
 
+_(刘亦菲.jpg)_
+
 ## Hooks API
 
-**简单即美** _(刘亦菲.jpg)_
+**简单即美**
 
 - Hooks API **在 js 语法限制下**，发现了维持状态的**最简化描述形式**
 - Hooks API 细粒度状态与类组件的巨型状态截然相反
@@ -282,15 +290,11 @@ function ExampleComponent({ fetchData }) {
 
 ## Solid.js
 
-两个括号的代价（`count` -> `count()`）
-解决函数组件重复运行
+两个括号的代价（`count` -> `count()`） 避免函数组件重复运行
 
 ```jsx
 function Counter() {
   const [count, setCount] = createSignal(0);
-  createEffect(() => {
-    console.log('The count is now', count());
-  });
 
   return <button onClick={() => setCount(count() + 1)}>Click Me</button>;
 }
@@ -441,3 +445,13 @@ Vue 继承了 html/js/css 的模式，保持关注点分离又跟上了时代的
 - 为实现共同目标的代码应该放在一起
 - 相互合作的代码就应该让它们的物理距离（代码位置）更接近
 - 融合亲密代码，而不是按属性拆分
+
+---
+
+<div class="title">
+  <div>
+    <h1 class="txt-center">Thanks ~</h1>
+    <p><img src="./image-4.png"></p>
+    <p class="txt-center">订阅</p>
+  </div>
+</div>
