@@ -142,4 +142,4 @@ MSE 已被广泛用于低延迟流媒体。 但也存在一些问题：
 [1]: https://github.com/w3c/webcodecs/blob/main/explainer.md#webcodecs-explainer
 [2]: https://cloud.tencent.com/developer/article/1968374
 [3]: https://hughfenghen.github.io/tag/WebAV/
-[4]: https://github.com/bilibili/WebAV
+[4]: https://github.com/WebAV-Tech/WebAV

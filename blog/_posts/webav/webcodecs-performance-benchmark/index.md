@@ -53,7 +53,7 @@ _注 2：剪映 APP 是由官方下载器自动安装的，有个 4.1.0 版本�
 
 WebCodecs 能利用硬件加速进行编解码，经过三次优化 WebAV 的性能表现有明显进步；  
 跟 Native 方案在部分设备上还有一些差距，虽然还有优化空间，但个人感觉性能不再是方案选择的主要考量因素了；  
-所以，接下来主要优化 SDK 的稳定性，以及准备发布 [v1.0 版本](https://github.com/bilibili/WebAV/issues/122)。
+所以，接下来主要优化 SDK 的稳定性，以及准备发布 [v1.0 版本](https://github.com/WebAV-Tech/WebAV/issues/122)。
 
 也说不定未来还会再次优化性能，关注 WebAV（WebCodecs）性能优化数据的同学，可以订阅该 [文章评论对应的 issue](https://github.com/hughfenghen/hughfenghen.github.io/issues/205) 以接收更新。
 
@@ -121,8 +121,8 @@ _**注意** resize、transfer 的兼容性，启用 SharedArrayBuffer 的条件_
 - [js 多线程并发][7]
 - [SharedArrayBuffer][8]
 
-[1]: https://github.com/bilibili/WebAV/
-[2]: https://github.com/bilibili/WebAV/blob/0f1ed722032057d3efdb56c19209964739adef8a/packages/av-cliper/demo/performance.demo.ts#L14
+[1]: https://github.com/WebAV-Tech/WebAV/
+[2]: https://github.com/WebAV-Tech/WebAV/blob/0f1ed722032057d3efdb56c19209964739adef8a/packages/av-cliper/demo/performance.demo.ts#L14
 [3]: https://github.com/hughfenghen/opfs-tools
 [4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/subarray
 [5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/transfer

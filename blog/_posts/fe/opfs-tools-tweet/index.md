@@ -39,7 +39,7 @@ Web 很长一段时间没有提供完善的访问文件系统的规范，使得�
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system
 [2]: https://github.com/hughfenghen/opfs-tools
 [3]: https://github.com/hughfenghen/opfs-tools-explorer
-[4]: https://bilibili.github.io/WebAV/demo/1_4-mp4-previewer
+[4]: https://webav-tech.github.io/WebAV/demo/1_4-mp4-previewer
 [5]: https://github.com/hughfenghen/bloom-shadow
 [6]: https://sqlite.org/wasm/doc/trunk/persistence.md#vfs-opfs
 [7]: https://hughfenghen.github.io/opfs-tools-explorer/

@@ -96,7 +96,7 @@ Here are some common pitfalls that newcomers should be aware of:
 
 ## Appendix
 
-- [WebAV](https://github.com/bilibili/WebAV) Audio & video processing SDK built on WebCodecs
+- [WebAV](https://github.com/WebAV-Tech/WebAV) Audio & video processing SDK built on WebCodecs
 - [VideoFrame][1], [AudioData][2]
 - [VideoEncoder][3], [VideoDecoder][4]
 - [AudioEncoder][6], [AudioDecoder][8]

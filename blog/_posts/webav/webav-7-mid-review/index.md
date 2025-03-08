@@ -57,6 +57,6 @@ Figma 是一个完美案例：设计师在线（跨平台）协同（互联）�
 - [scenery.video][2]多人协同网页视频剪辑产品
 - 我维护的 [B 站直播网页推流应用][3]
 
-[1]: https://github.com/bilibili/WebAV
+[1]: https://github.com/WebAV-Tech/WebAV
 [2]: https://scenery.video/hello
 [3]: https://live.bilibili.com/p/html/web-hime/index.html

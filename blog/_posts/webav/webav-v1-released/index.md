@@ -79,7 +79,7 @@ WebCodecs 能利用硬件加速进行编解码，WebAV 经过一系列性能优�
 
 ## 最后
 
-感谢已参与到 WebAV 的勇士 <a href="https://github.com/bilibili/WebAV/graphs/contributors"><img src="https://img.shields.io/github/contributors/bilibili/WebAV
+感谢已参与到 WebAV 的勇士 <a href="https://github.com/WebAV-Tech/WebAV/graphs/contributors"><img src="https://img.shields.io/github/contributors/WebAV-Tech/WebAV
 "/></a>，及请我喝奶茶的小伙伴。
 
 也欢迎大家将 WebAV 项目分享给关注、从事 Web 音视频领域的小伙伴，给项目提供向前的动力  
@@ -95,9 +95,9 @@ WebCodecs 能利用硬件加速进行编解码，WebAV 经过一系列性能优�
 - [贡献指南][6]
 - [迁移至 v1 版本][7]
 
-[1]: https://github.com/bilibili/WebAV
-[2]: https://bilibili.github.io/WebAV/demo
-[3]: https://bilibili.github.io/WebAV/api
+[1]: https://github.com/WebAV-Tech/WebAV
+[2]: https://webav-tech.github.io/WebAV/demo
+[3]: https://webav-tech.github.io/WebAV/api
 [4]: https://hughfenghen.github.io/posts/2024/07/27/webcodecs-performance-benchmark/
 [5]: https://hughfenghen.github.io/tag/WebAV/
 [6]: http://localhost:8000/guide/contribution

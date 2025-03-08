@@ -96,7 +96,7 @@ _MP4 封装 AVC（视频编码）、AAC（音频编码）是兼容性最优的�
 
 ## 附录
 
-- [WebAV](https://github.com/bilibili/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
+- [WebAV](https://github.com/WebAV-Tech/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 - [VideoFrame][1] 、 [AudioData][2]
 - [VideoEncoder][3] 、 [VideoDecoder][4]
 - [AudioEncoder][6] 、 [AudioDecoder][8]

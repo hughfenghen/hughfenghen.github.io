@@ -10,8 +10,8 @@ date: 2022-05-02
 需要使用 Canvas 实现添加图片、文字、摄像头画面，并且支持**拖拽、缩放、旋转**等功能。  
 但成熟 Canvas 库（比如 Sprite.js Fabric.js ）一般都比较庞大（300kb+），所以自己实现精简版本，减少体积。
 
-[DEMO](https://bilibili.github.io/WebAV/demo/6_4-video-editor)  
-[核心代码](https://github.com/bilibili/WebAV/blob/main/packages/av-canvas/src/sprites/sprite-op.ts)
+[DEMO](https://webav-tech.github.io/WebAV/demo/6_4-video-editor)  
+[核心代码](https://github.com/WebAV-Tech/WebAV/blob/main/packages/av-canvas/src/sprites/sprite-op.ts)
 
 ## 零
 
@@ -22,7 +22,7 @@ date: 2022-05-02
 - 旋转元素
 - 元素内容可以是：图片、文字、摄像头
 
-画布中的元素（也可称为 Sprite），每个元素的的位置信息由 IRect 描述，可点击[DEMO](https://bilibili.github.io/WebAV/demo/6_4-video-editor)进行体验。
+画布中的元素（也可称为 Sprite），每个元素的的位置信息由 IRect 描述，可点击[DEMO](https://webav-tech.github.io/WebAV/demo/6_4-video-editor)进行体验。
 
 ```ts
 interface IRect {

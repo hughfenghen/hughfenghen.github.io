@@ -64,7 +64,7 @@ _没忍住又搞了一个 OPFS 项目，我太喜欢（Web 太需要）这个文
 - [Web 文件系统（OPFS 及工具）介绍][3]
 - [OPFS(Origin private file system)][4] MDN 文档
 
-[1]: https://github.com/bilibili/WebAV
+[1]: https://github.com/WebAV-Tech/WebAV
 [2]: https://github.com/hughfenghen/opfs-tools
 [3]: https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/
 [4]: https://developer.mozilla.org/zh-CN/docs/Web/API/File_System_API/Origin_private_file_system

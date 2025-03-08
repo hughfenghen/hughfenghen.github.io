@@ -53,7 +53,7 @@ Interested readers can compare results or discuss in comments. WebAV performance
 
 WebCodecs leverages hardware acceleration for encoding/decoding. After three optimization rounds, WebAV shows significant performance improvements.  
 While some performance gaps remain compared to Native solutions on certain devices, I believe performance is no longer a primary consideration in solution selection.  
-Moving forward, we'll focus on SDK stability and preparing for [v1.0 release](https://github.com/bilibili/WebAV/issues/122).
+Moving forward, we'll focus on SDK stability and preparing for [v1.0 release](https://github.com/WebAV-Tech/WebAV/issues/122).
 
 Future performance optimizations are possible. To stay updated on WebAV (WebCodecs) performance optimization data, subscribe to this [article's comment issue](https://github.com/hughfenghen/hughfenghen.github.io/issues/205).
 
@@ -121,8 +121,8 @@ Monitor [VideoEncoder encodeQueueSize][11]; pause new frame creation when queue 
 - [JS Concurrency][7]
 - [SharedArrayBuffer][8]
 
-[1]: https://github.com/bilibili/WebAV/
-[2]: https://github.com/bilibili/WebAV/blob/0f1ed722032057d3efdb56c19209964739adef8a/packages/av-cliper/demo/performance.demo.ts#L14
+[1]: https://github.com/WebAV-Tech/WebAV/
+[2]: https://github.com/WebAV-Tech/WebAV/blob/0f1ed722032057d3efdb56c19209964739adef8a/packages/av-cliper/demo/performance.demo.ts#L14
 [3]: https://github.com/hughfenghen/opfs-tools
 [4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/subarray
 [5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/transfer

@@ -57,6 +57,6 @@ This involves shifting some computational load to clients to reduce costs while 
 - [scenery.video][2] Collaborative web-based video editing product
 - My maintained [Bilibili Live Web Streaming Application][3]
 
-[1]: https://github.com/bilibili/WebAV
+[1]: https://github.com/WebAV-Tech/WebAV
 [2]: https://scenery.video/hello
 [3]: https://live.bilibili.com/p/html/web-hime/index.html

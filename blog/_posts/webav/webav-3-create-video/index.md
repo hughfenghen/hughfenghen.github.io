@@ -296,7 +296,7 @@ const { stream } = file2stream(muxer.mp4file, 500)
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackProcessor
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
 [3]: https://gpac.github.io/mp4box.js
-[4]: https://github.com/bilibili/WebAV
+[4]: https://github.com/WebAV-Tech/WebAV
 [5]: https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder
-[6]: https://bilibili.github.io/WebAV/demo/2_1-concat-video
-[7]: https://github.com/bilibili/WebAV/blob/main/packages/av-cliper/src/combinator.ts#L118
+[6]: https://webav-tech.github.io/WebAV/demo/2_1-concat-video
+[7]: https://github.com/WebAV-Tech/WebAV/blob/main/packages/av-cliper/src/combinator.ts#L118

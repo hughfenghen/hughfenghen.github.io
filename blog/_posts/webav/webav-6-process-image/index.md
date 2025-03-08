@@ -170,5 +170,5 @@ com.ouput()
 
 [1]: https://juejin.cn/post/6844903667435307021
 [2]: https://hughfenghen.github.io/posts/2023/07/07/webgl-chromakey/
-[3]: https://github.com/bilibili/WebAV
-[4]: https://bilibili.github.io/WebAV/demo/2_1-concat-video
+[3]: https://github.com/WebAV-Tech/WebAV
+[4]: https://webav-tech.github.io/WebAV/demo/2_1-concat-video

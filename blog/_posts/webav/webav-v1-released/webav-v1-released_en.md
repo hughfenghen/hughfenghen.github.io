@@ -79,7 +79,7 @@ The entry barrier for frontend developers is low - just review our [introductory
 
 ## Final Words
 
-Thanks to all WebAV contributors <a href="https://github.com/bilibili/WebAV/graphs/contributors"><img src="https://img.shields.io/github/contributors/bilibili/WebAV
+Thanks to all WebAV contributors <a href="https://github.com/WebAV-Tech/WebAV/graphs/contributors"><img src="https://img.shields.io/github/contributors/WebAV-Tech/WebAV
 "/></a> and supporters.
 
 Please share WebAV with others interested in Web audio/video development to help drive the project forward.  
@@ -95,9 +95,9 @@ Please share WebAV with others interested in Web audio/video development to help
 - [Contribution Guidelines][6]
 - [Migrating to v1][7]
 
-[1]: https://github.com/bilibili/WebAV
-[2]: https://bilibili.github.io/WebAV/demo
-[3]: https://bilibili.github.io/WebAV/api
+[1]: https://github.com/WebAV-Tech/WebAV
+[2]: https://webav-tech.github.io/WebAV/demo
+[3]: https://webav-tech.github.io/WebAV/api
 [4]: https://hughfenghen.github.io/posts/2024/07/27/webcodecs-performance-benchmark/
 [5]: https://hughfenghen.github.io/tag/WebAV_EN/
 [6]: http://localhost:8000/guide/contribution

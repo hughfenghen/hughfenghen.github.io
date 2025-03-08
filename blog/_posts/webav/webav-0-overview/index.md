@@ -84,14 +84,14 @@ _这就是本系列文章的写作动机。_
 
 点击 [WebAV 标签](/tag/WebAV/) 可以查看本系列目录
 
-本系列的素材、案例来源于 [WebAV 项目](https://github.com/bilibili/WebAV)；  
+本系列的素材、案例来源于 [WebAV 项目](https://github.com/WebAV-Tech/WebAV)；  
 WebAV 尝试提供简单易用的 API 在浏览器中处理音视频数据。
 
 你可以扫码打赏，给作者提供更新动力（压力 ：）  
 <img src="../../assets/alipay-qcode.png" width="200" alt="支付宝" />
 <img src="../../assets/wechatpay-qcode.png" width="200" alt="微信" />
 
-Star 或 Watch [WebAV 项目](https://github.com/bilibili/WebAV)来跟进项目进展、体验 DEMO、查阅示例代码；  
+Star 或 Watch [WebAV 项目](https://github.com/WebAV-Tech/WebAV)来跟进项目进展、体验 DEMO、查阅示例代码；  
 可通过[公众号或 RSS 订阅](https://hughfenghen.github.io/subscribe.html)本博客站点，以接收本系列文章更新。
 
 ## Web 音视频相关 API
@@ -115,7 +115,7 @@ Star 或 Watch [WebAV 项目](https://github.com/bilibili/WebAV)来跟进项目�
 
 ## 附录
 
-- [WebAV](https://github.com/bilibili/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
+- [WebAV](https://github.com/WebAV-Tech/WebAV) 基于 WebCodecs 构建的音视频处理 SDK
 - [WebCodecs Explainer](https://github.com/w3c/webcodecs/blob/main/explainer.md)
 - [Video processing with WebCodecs](https://developer.chrome.com/articles/webcodecs/)
 - [【译】WebCodecs 说明][1]

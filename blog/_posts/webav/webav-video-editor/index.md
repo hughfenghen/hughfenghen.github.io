@@ -185,4 +185,4 @@ WebGL Shader 代码在 GPU 中运行，能高效并发处理每帧图像中的�
 [5]: https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/
 [6]: https://www.cnblogs.com/yongdaimi/p/10676309.html
 [7]: https://hughfenghen.github.io/posts/2024/07/27/webcodecs-performance-benchmark/
-[8]: https://github.com/bilibili/WebAV
+[8]: https://github.com/WebAV-Tech/WebAV

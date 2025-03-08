@@ -84,14 +84,14 @@ If you haven't worked with WebCodecs before, it's recommended to read [WebCodecs
 
 Click [WebAV Tag](/tag/WebAV_EN/) to view the series table of contents
 
-The materials and examples in this series come from the [WebAV Project](https://github.com/bilibili/WebAV);  
+The materials and examples in this series come from the [WebAV Project](https://github.com/WebAV-Tech/WebAV);  
 WebAV attempts to provide simple and easy-to-use APIs for processing audio and video data in browsers.
 
 You can scan the QR code to donate and provide motivation (pressure :) for the author  
 <img src="../../assets/alipay-qcode.png" width="200" alt="Alipay" />
 <img src="../../assets/wechatpay-qcode.png" width="200" alt="WeChat Pay" />
 
-Star or Watch the [WebAV Project](https://github.com/bilibili/WebAV) to follow project progress, experience demos, and review example code;  
+Star or Watch the [WebAV Project](https://github.com/WebAV-Tech/WebAV) to follow project progress, experience demos, and review example code;  
 You can subscribe to this blog site through [Official Account or RSS](https://hughfenghen.github.io/subscribe.html) to receive updates on this series.
 
 ## Web Audio & Video Related APIs
@@ -115,7 +115,7 @@ You can subscribe to this blog site through [Official Account or RSS](https://hu
 
 ## Appendix
 
-- [WebAV](https://github.com/bilibili/WebAV) Audio & video processing SDK built on WebCodecs
+- [WebAV](https://github.com/WebAV-Tech/WebAV) Audio & video processing SDK built on WebCodecs
 - [WebCodecs Explainer](https://github.com/w3c/webcodecs/blob/main/explainer.md)
 - [Video processing with WebCodecs](https://developer.chrome.com/articles/webcodecs/)
 - [WebCodecs Explainer][1]

@@ -81,6 +81,6 @@ WebCodecs、OPFS 都是相对底层的 API，应用场景肯定不只是音视�
 - [Web 端实时防挡脸弹幕（基于机器学习）][2]
 - [WebCodecs API][3]
 
-[1]: https://github.com/bilibili/WebAV/
+[1]: https://github.com/WebAV-Tech/WebAV/
 [2]: https://hughfenghen.github.io/posts/2023/06/21/body-mask-danmaku/
 [3]: https://developer.mozilla.org/zh-CN/docs/Web/API/WebCodecs_API

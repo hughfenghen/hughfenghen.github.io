@@ -325,7 +325,7 @@ The main challenge is browser-provided codecs lagging behind native implementati
 
 [1]: /posts/2023/10/02/webcodecs-explainer/
 [2]: /posts/2023/07/16/webav-0-overview/
-[3]: https://github.com/bilibili/WebAV
+[3]: https://github.com/WebAV-Tech/WebAV
 [4]: https://github.com/hughfenghen/bloom-shadow
 [5]: /posts/2023/07/07/webgl-chromakey/
-[6]: https://bilibili.github.io/WebAV/demo
+[6]: https://webav-tech.github.io/WebAV/demo
