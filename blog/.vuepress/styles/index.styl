@@ -16,9 +16,13 @@
     .blog-tag:hover
         text-decoration: none
     
-    padding: 60px 15px
+    padding: 2rem 1rem
     max-width: 800px
-        
+
+// 覆盖插件生成的异常节点，margin 占用高度，修复文章详情页异常
+.post-title {
+    display: none;
+}
 
 .vuepress-blog-theme-content {
     font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "MicrosoftYaHei", sans-serif !important;
@@ -40,6 +44,11 @@
 #header {
     position: static;
     width: 100%;
+}
+
+// 修复移动版异常偏移
+#mobile-header {
+    height: 64px;
 }
 
 .content-wrapper .vuepress-toc {
@@ -67,22 +76,31 @@
     }
 }
 
-// 手机版隐藏 首页的左侧介绍
+// 覆盖文章容器样式，优化边距
+.vuepress-blog-theme-content {
+    padding: 1rem 1.5rem !important;
+    margin: 0 !important;
+}
+
 @media only screen and (max-width: 700px) {
+    // 定制移动版首页样式
     #home {
         width: 100%;
         margin-left: 0px;
         flex-direction: column;
 
         .avatar {
-            margin: 20px 0;
+            margin: 0 0 20px 0;
             width: 100%;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);;
         }
     }
 
+    // 优化移动版边距
     .vuepress-blog-theme-content {
-        padding-left: 0 !important; 
-        padding-right: 0 !important; 
+        padding: 0 !important;
+    }
+    .content-wrapper {
+        padding: 2rem 10px;
     }
 }

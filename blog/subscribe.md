@@ -1,3 +1,6 @@
+<!-- div 包裹一层，避免收插件奇怪样式影响 -->
+<div>
+
 ## 订阅
 
 本博客持续更新前端工程效率、Web 音视频相关文章  
@@ -15,3 +18,5 @@
 <img src="./_posts/assets/wechatpay-qcode.png" width="200" alt="微信" />
 
 [Paypal.me](https://paypal.me/hughfenghen)
+
+</div>
