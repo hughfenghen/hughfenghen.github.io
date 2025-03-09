@@ -1,7 +1,7 @@
-<div style="display: flex; width: 900px; margin-left: -100px;">
-  <div class="avatar" style="width: 300px; margin-right: 60px; text-align: center;     flex-shrink: 0;">
+<div id="home" style="display: flex;">
+  <div class="avatar" style="">
 
-<a href="https://github.com/hughfenghen" style="display: block; height: 203px;">
+<a href="https://github.com/hughfenghen" target="_blank" style="display: block; height: 203px;">
   <img src="https://avatars.githubusercontent.com/u/3307051?v=4" style="width: 200px; border-radius: 100%;" alt="我的 Github">
 </a>
 
