@@ -7,7 +7,7 @@ date: 2023-06-21
 
 # Web 端实时防挡脸弹幕（基于机器学习）
 
-[_W3C 分享视频版_](https://www.bilibili.com/video/BV12P411p7He/)
+[_W3C 分享视频版_](https://www.bilibili.com/video/BV12P411p7He/)、[_与 Chrome 团队合作版_](https://web.dev/case-studies/bilibili-web-ai-improvements)
 
 **防档弹幕**，即大量弹幕飘过，但不会遮挡视频画面中的人物，看起来像是从人物背后飘过去的。  
 <img src="./bili-mask-danmaku.jpeg" width="400">
@@ -57,7 +57,7 @@ date: 2023-06-21
 
 ---
 
------------------------------- 正片开始，以下是调优过程 ------------------------------
+------------------------- 正片开始，以下是调优过程 -------------------------
 
 ---
 
