@@ -47,13 +47,13 @@
 **关于我**，叫我风痕就好（已经习惯花名
 
 - 擅长领域：Web 音视频、Web 前沿、工程效率
-- 工作经历：哔哩哔哩、美团、平安
+- 工作经历：哔哩哔哩（当前）、美团、平安
 - 讲师经历
   - [Web 端实时防挡脸弹幕（基于机器学习）](https://hughfenghen.github.io/posts/2023/06/21/body-mask-danmaku/)（W3C）
   - [Google IO 分享 WebCodecs、OPFS](https://hughfenghen.github.io/posts/2024/08/13/google-io-webcodecs-opfs/) （Google IO）
   - [WebCodecs 开启 Web 音视频新篇章](https://hughfenghen.github.io/posts/2023/10/06/webcodecs-new-era-for-media-on-the-web/) （LiveVideoStack）
 - 喜欢的书籍
-  - 百年孤独、红楼梦、精灵宝钻、冰与火之歌、哈利波特...
+  - 百年孤独、红楼梦、精灵宝钻、史记、冰与火之歌、哈利波特...
   - 人类简史、枪炮病菌与钢铁、动物庄园...
   - 十万个为什么、时间简史、黑洞和宇宙...
 
