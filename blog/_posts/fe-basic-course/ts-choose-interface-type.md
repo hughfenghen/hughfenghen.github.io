@@ -8,13 +8,14 @@ date: 2024-02-17
 
 ---
 
-<span style="font-size: 24px">用 `interface` 描述类型的**结构**，用 `type` 描述类型**关系**。</span>  
+<span style="font-size: 24px">用 `interface` 描述类型的**结构**，用 `type` 描述类型**关系**。</span>
 
 ---
 
-*有点编程基础中**数据结构**与**算法**的味道。*
+_有点编程基础中**数据结构**与**算法**的味道。_
 
 **结构**即是类型的**属性集合**
+
 ```ts
 // 如 `Point3D` 的属性集合： `x, y, z`。
 interface Point3D {
@@ -29,11 +30,11 @@ interface Point3D {
 ```ts
 // 求子集算法
 type Pick<T, K extends keyof T> = {
-    [P in K]: T[P];
+  [P in K]: T[P];
 };
 
 // type 描述关系：Point2D 是 Point3D 的子集
-type Point2D = Pick<Point3D, 'x' | 'y'>
+type Point2D = Pick<Point3D, 'x' | 'y'>;
 ```
 
 interface、type 两者能描述很多相同的场景，所以有时会陷入选择困难；  
@@ -42,10 +43,10 @@ interface、type 两者能描述很多相同的场景，所以有时会陷入选
 了解两者的细节区别也**是有必要的**，若有兴趣可继续阅读 [interface 与 type 区别介绍][2]
 
 > interface 和 type 很像，很多场景两者都能使用，但也有细微的差别
+>
 > - 类型：对象、函数两者都适用，但是 type 可以用于基础类型、联合类型、元组。
 > - 同名合并：interface 支持，type 不支持。
 > - 计算属性：type 支持, interface 不支持。
-
 
 以**编程语言模型**来理解 TS，可以阅读作者的另一篇文章[系统化学习 TS 类型系统][1]
 
@@ -67,8 +68,8 @@ interface Point3D extends Point2D {
 }
 
 // 并集
-type Point3D = Point2D & { z: number }
+type Point3D = Point2D & { z: number };
 ```
 
-[1]: https://hughfenghen.github.io/posts/2023/03/27/ts-types-system/
+[1]: https://fenghen.me/posts/2023/03/27/ts-types-system/
 [2]: https://juejin.cn/post/6844904114925600776

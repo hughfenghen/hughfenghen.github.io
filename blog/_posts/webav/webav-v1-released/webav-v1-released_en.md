@@ -98,7 +98,7 @@ Please share WebAV with others interested in Web audio/video development to help
 [1]: https://github.com/WebAV-Tech/WebAV
 [2]: https://webav-tech.github.io/WebAV/demo
 [3]: https://webav-tech.github.io/WebAV/api
-[4]: https://hughfenghen.github.io/posts/2024/07/27/webcodecs-performance-benchmark/
-[5]: https://hughfenghen.github.io/tag/WebAV_EN/
+[4]: https://fenghen.me/posts/2024/07/27/webcodecs-performance-benchmark/
+[5]: https://fenghen.me/tag/WebAV_EN/
 [6]: http://localhost:8000/guide/contribution
 [7]: http://localhost:8000/guide/migrate-to-v1

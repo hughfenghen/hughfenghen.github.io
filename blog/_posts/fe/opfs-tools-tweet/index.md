@@ -42,4 +42,4 @@ Web 很长一段时间没有提供完善的访问文件系统的规范，使得�
 [4]: https://webav-tech.github.io/WebAV/demo/1_4-mp4-previewer
 [5]: https://github.com/hughfenghen/bloom-shadow
 [6]: https://sqlite.org/wasm/doc/trunk/persistence.md#vfs-opfs
-[7]: https://hughfenghen.github.io/opfs-tools-explorer/
+[7]: https://fenghen.me/opfs-tools-explorer/

@@ -306,7 +306,7 @@ _例子来源于：[Pointfree 编程风格指南](https://www.ruanyifeng.com/blo
 
 #### 复杂示例
 
-从 Vuepress Sidebar 中 抽取数据，生成当前博客的 [sitemap](https://hughfenghen.github.io/sitemap.txt) 文件
+从 Vuepress Sidebar 中 抽取数据，生成当前博客的 [sitemap](https://fenghen.me/sitemap.txt) 文件
 
 ```js
 const { tap, pipe, flatten, values, map, get, add } = require('lodash/fp');
@@ -337,7 +337,7 @@ const siteMap = pipe(
   flatten,
   // 单独 md 没有 .html 结尾，vuepress 会有一次重定向，导致 Google 拒绝收录
   map((v) => (v.endsWith('/') ? v : v + '.html')),
-  map(add('https://hughfenghen.github.io'))
+  map(add('https://fenghen.me'))
 )(vpCfg);
 ```
 

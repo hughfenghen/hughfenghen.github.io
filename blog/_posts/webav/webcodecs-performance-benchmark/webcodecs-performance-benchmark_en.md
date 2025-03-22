@@ -127,7 +127,7 @@ Monitor [VideoEncoder encodeQueueSize][11]; pause new frame creation when queue 
 [4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/subarray
 [5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/transfer
 [6]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects
-[7]: https://hughfenghen.github.io/posts/2023/03/27/js-concurrent/
+[7]: https://fenghen.me/posts/2023/03/27/js-concurrent/
 [8]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer
 [9]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/resize
 [10]: https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame

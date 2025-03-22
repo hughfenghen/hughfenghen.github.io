@@ -202,6 +202,6 @@ const stream = fastConcatMP4(
 [3]: https://github.com/hughfenghen/WebAV/blob/49bed37798412d29a1ec51ef5f7d45cd7682b218/packages/av-cliper/src/combinator.ts#L151
 [4]: https://github.com/hughfenghen/WebAV/blob/49bed37798412d29a1ec51ef5f7d45cd7682b218/packages/av-cliper/src/mp4-utils.ts#L646
 [5]: https://github.com/hughfenghen/WebAV
-[6]: https://hughfenghen.github.io/WebAV/demo/2_1-concat-video
-[7]: https://hughfenghen.github.io/WebAV/demo/2_5-video-compsite-and-concat
+[6]: https://fenghen.me/WebAV/demo/2_1-concat-video
+[7]: https://fenghen.me/WebAV/demo/2_5-video-compsite-and-concat
 [8]: https://github.com/hughfenghen/WebAV/blob/49bed37798412d29a1ec51ef5f7d45cd7682b218/packages/av-cliper/src/dom-utils.ts#L36

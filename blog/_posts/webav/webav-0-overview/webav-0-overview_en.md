@@ -92,7 +92,7 @@ You can scan the QR code to donate and provide motivation (pressure :) for the a
 <img src="../../assets/wechatpay-qcode.png" width="200" alt="WeChat Pay" />
 
 Star or Watch the [WebAV Project](https://github.com/WebAV-Tech/WebAV) to follow project progress, experience demos, and review example code;  
-You can subscribe to this blog site through [Official Account or RSS](https://hughfenghen.github.io/subscribe.html) to receive updates on this series.
+You can subscribe to this blog site through [Official Account or RSS](https://fenghen.me/subscribe.html) to receive updates on this series.
 
 ## Web Audio & Video Related APIs
 

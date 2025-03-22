@@ -179,10 +179,10 @@ WebGL Shader 代码在 GPU 中运行，能高效并发处理每帧图像中的�
 - [Web 文件系统（OPFS 及工具）介绍][5]
 - [I 帧、P 帧、B 帧、GOP、IDR 和 PTS, DTS 之间的关系][6]
 
-[1]: https://hughfenghen.github.io/tag/WebAV/
-[3]: https://hughfenghen.github.io/posts/2023/07/23/webav-2-parse-video/
+[1]: https://fenghen.me/tag/WebAV/
+[3]: https://fenghen.me/posts/2023/07/23/webav-2-parse-video/
 [4]: https://www.bilibili.com/read/cv30358687/
-[5]: https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/
+[5]: https://fenghen.me/posts/2024/03/14/web-storage-and-opfs/
 [6]: https://www.cnblogs.com/yongdaimi/p/10676309.html
-[7]: https://hughfenghen.github.io/posts/2024/07/27/webcodecs-performance-benchmark/
+[7]: https://fenghen.me/posts/2024/07/27/webcodecs-performance-benchmark/
 [8]: https://github.com/WebAV-Tech/WebAV

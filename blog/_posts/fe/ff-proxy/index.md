@@ -218,5 +218,5 @@ HTTP 请求内容指
 
 [1]: https://github.com/hughfenghen/erra
 [2]: https://github.com/avwo/whistle
-[3]: https://hughfenghen.github.io/posts/2023/12/23/web-spy/
+[3]: https://fenghen.me/posts/2023/12/23/web-spy/
 [4]: https://github.com/peggyjs/peggy

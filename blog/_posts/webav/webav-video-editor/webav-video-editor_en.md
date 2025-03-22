@@ -179,10 +179,10 @@ When assets support spatial and temporal properties, we can not only programmati
 - [Web File System (OPFS and Tools) Introduction][5]
 - [Relationship Between I-frames, P-frames, B-frames, GOP, IDR, and PTS, DTS][6]
 
-[1]: https://hughfenghen.github.io/tag/WebAV_EN/
-[3]: https://hughfenghen.github.io/posts/2023/07/23/webav-2-parse-video/
+[1]: https://fenghen.me/tag/WebAV_EN/
+[3]: https://fenghen.me/posts/2023/07/23/webav-2-parse-video/
 [4]: https://www.bilibili.com/read/cv30358687/
-[5]: https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/
+[5]: https://fenghen.me/posts/2024/03/14/web-storage-and-opfs/
 [6]: https://www.cnblogs.com/yongdaimi/p/10676309.html
-[7]: https://hughfenghen.github.io/posts/2024/07/27/webcodecs-performance-benchmark/
+[7]: https://fenghen.me/posts/2024/07/27/webcodecs-performance-benchmark/
 [8]: https://github.com/WebAV-Tech/WebAV

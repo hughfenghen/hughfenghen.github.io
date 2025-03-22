@@ -204,9 +204,9 @@ await write('/test', ab.slice(0));
 [1]: https://developer.mozilla.org/zh-CN/docs/Web/API/File_System_API/Origin_private_file_system
 [2]: https://web.dev/articles/origin-private-file-system
 [3]: https://developer.mozilla.org/zh-CN/docs/Web/API/File
-[4]: https://hughfenghen.github.io/opfs-tools/demo/benchmark.html
+[4]: https://fenghen.me/opfs-tools/demo/benchmark.html
 [5]: https://github.com/hughfenghen/opfs-tools
 [6]: https://github.com/hughfenghen/opfs-tools-explorer
-[7]: https://hughfenghen.github.io/opfs-tools-explorer/
+[7]: https://fenghen.me/opfs-tools-explorer/
 [8]: https://web.dev/articles/persistent-storage?hl=zh-cn#request_persistent_storage
 [9]: https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Transferable_objects

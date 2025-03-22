@@ -416,11 +416,11 @@ Web 平台中的所有技巧策略都必须符合安全规则；
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#usecapture
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
-[3]: https://hughfenghen.github.io/posts/2023/03/29/webcontainer/
+[3]: https://fenghen.me/posts/2023/03/29/webcontainer/
 [4]: https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorker
 [5]: https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo
 [6]: https://webcontainers.io/
 [7]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy
 [8]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP
 [9]: https://developer.mozilla.org/zh-CN/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts
-[10]: https://hughfenghen.github.io/posts/2024/05/08/ff-proxy/
+[10]: https://fenghen.me/posts/2024/05/08/ff-proxy/

@@ -13,7 +13,7 @@ _没忍住又搞了一个 OPFS 项目，我太喜欢（Web 太需要）这个文
 ![preview img](./preview.png)
 
 项目链接：<https://github.com/hughfenghen/opfs-finder>  
-立即体验：<https://hughfenghen.github.io/opfs-finder>
+立即体验：<https://fenghen.me/opfs-finder>
 
 ## 简介
 
@@ -66,6 +66,6 @@ _没忍住又搞了一个 OPFS 项目，我太喜欢（Web 太需要）这个文
 
 [1]: https://github.com/WebAV-Tech/WebAV
 [2]: https://github.com/hughfenghen/opfs-tools
-[3]: https://hughfenghen.github.io/posts/2024/03/14/web-storage-and-opfs/
+[3]: https://fenghen.me/posts/2024/03/14/web-storage-and-opfs/
 [4]: https://developer.mozilla.org/zh-CN/docs/Web/API/File_System_API/Origin_private_file_system
 [5]: https://github.com/hughfenghen/opfs-finder
