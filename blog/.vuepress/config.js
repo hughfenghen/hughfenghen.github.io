@@ -128,7 +128,7 @@ module.exports = {
             autoCreateIssue: true,
             prefix: '[Post]',
             owner: 'hughfenghen',
-            repo: 'fenghen.me',
+            repo: 'hughfenghen.github.io',
             clientId: '8a03da926cf95085e3cc',
             clientSecret: '1b9a0256e3ac0a88ff287df6582d06c7806d017a',
           },
