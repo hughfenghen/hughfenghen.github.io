@@ -6,9 +6,10 @@
 本博客持续更新前端工程效率、Web 音视频相关文章  
 若你对本博客的内容感兴趣，可通过以下途径接收更新通知
 
-- 订阅 RSS <https://fenghen.me/rss.xml>
+- 当前博客订阅 RSS <https://fenghen.me/rss.xml>
 - 微信扫码关注公众号 “风痕 Web 栈”  
   <img src="./qrcode.png" width="200">
+- 关注我的哔哩哔哩账号 [风痕 di-didi--](https://space.bilibili.com/386916237)
 
 ## 恰饭
 
