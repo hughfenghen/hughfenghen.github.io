@@ -21,4 +21,6 @@
 
 [Paypal.me](https://paypal.me/hughfenghen)
 
+*若需技术交流，打赏时备注微信昵称，我会加你*
+
 </div>
