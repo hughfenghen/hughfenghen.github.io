@@ -49,7 +49,7 @@
 **关于我**，叫我风痕就好（已经习惯花名
 
 - 擅长领域：Web 音视频、Web 前沿、工程效率
-- 工作经历：哔哩哔哩（当前）、美团、平安
+- 工作经历：[_待业中 (2025 裸辞计划)_](https://fenghen.me/posts/2025/03/29/_2025-plan/)、哔哩哔哩、美团、平安
 - 讲师经历
   - [Web 端实时防挡脸弹幕（基于机器学习）](https://fenghen.me/posts/2023/06/21/body-mask-danmaku/)（W3C）
   - [Google IO 分享 WebCodecs、OPFS](https://fenghen.me/posts/2024/08/13/google-io-webcodecs-opfs/) （Google IO）
