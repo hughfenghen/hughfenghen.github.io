@@ -1,6 +1,6 @@
 module.exports = {
   title: '风痕 · 術&思',
-  description: '个人思考、Web技术',
+  description: 'Web 音视频、Web 前沿、工程效率、个人思考',
   theme: '@vuepress/blog',
   head: [
     [

@@ -14,6 +14,10 @@
 <a href="https://github.com/hughfenghen" target="_blank">我的 Github</a><br>
 <a href="https://space.bilibili.com/386916237" target="_blank">我的 哔哩哔哩</a><br>
 
+<a href="https://fenghen.me/posts/2025/04/11/business-cooperation/" target="_blank" style="display: flex; flex-flow: column;">
+  <span>商务合作</span><span style="font-size: 12px;">(帅气博主在线接单)</span>
+</a>
+
 <!-- <a href="https://t.zsxq.com/GlrxC" target="_blank">知识星球</a>（技术问答） -->
 
 </p>
@@ -35,8 +39,6 @@
 
 - <a href="https://github.com/WebAV-Tech/WebAV/">WebAV</a> <a href="https://github.com/WebAV-Tech/WebAV/"><img src="https://camo.githubusercontent.com/3bdb7ccd274b9c8cb3b351dbe63e794a2c48ad22b6265f4e65b6e78828e38a9c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f57656241562d546563682f5765624156" alt="GitHub Repo stars" data-canonical-src="https://img.shields.io/github/stars/WebAV-Tech/WebAV" style="max-width: 100%; vertical-align: text-bottom;"></a>  
   基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑视频文件**
-- <a href="https://github.com/WebAV-Tech/WebAV-Pro/">WebAV-Pro</a>  
-  基于 WebAV 的**商业版 SDK**
 - <a href="https://github.com/hughfenghen/WebAV-KnowledgeGraph">Web 音视频知识图谱</a> <a href="https://github.com/hughfenghen/WebAV-KnowledgeGraph"><img src="https://camo.githubusercontent.com/6df38b87b28e83f2584c4da5e030ecfa6df61b3f33fef307d6d2e166fb3768c9/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6875676866656e6768656e2f57656241562d4b6e6f776c656467654772617068" alt="GitHub Repo stars" data-canonical-src="https://img.shields.io/github/stars/hughfenghen/WebAV-KnowledgeGraph" style="max-width: 100%; vertical-align: text-bottom;"></a>  
   整理 Web 音视频相关资料，帮助前端开发者入门/进阶音视频领域
 - <a href="https://github.com/hughfenghen/opfs-tools/">opfs-tools</a> <a href="https://github.com/hughfenghen/opfs-tools/"><img src="https://camo.githubusercontent.com/5e7c8da8fa93887f658b81ac2fe4fcf5b69db136a10cb88a267e37f60d29270f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6875676866656e6768656e2f6f7066732d746f6f6c73" alt="GitHub Repo stars" data-canonical-src="https://img.shields.io/github/stars/hughfenghen/opfs-tools" style="max-width: 100%; vertical-align: text-bottom;"></a>  
