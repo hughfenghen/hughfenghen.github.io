@@ -8,8 +8,12 @@ date: 2025-04-11
 
 接下来尝试做自由开发者，我擅长的领域是 **Web 音视频、Web 前沿、工程效率**。
 
-我现在主线任务是开发 [**WebAV Pro 版**](https://github.com/WebAV-Tech/WebAV-Pro)，这是 [WebAV 开源项目](https://github.com/WebAV-Tech/WebAV)（在浏览器中编辑视频文件）的商业版；  
+---
+
+我现在主线任务是开发 [**WebAV Pro 版**](https://github.com/WebAV-Tech/WebAV-Pro)，这是我的 [WebAV 开源项目](https://github.com/WebAV-Tech/WebAV)（在浏览器中编辑视频文件）的商业版；  
 最重要的特点是可组合、可定制化，用户可以基于这些功能或模块，快速组合出定制化的解决方案，会优先满足 Web 平台上 **AI 视频领域**的需求。
+
+---
 
 除 WebAV Pro 方向的合作外，我也接受**技术咨询、方案设计、培训面试、项目外包**等各种合作方式。
 
