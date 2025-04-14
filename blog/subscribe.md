@@ -11,6 +11,7 @@
   <img src="./qrcode.png" width="200">
 - 关注我的哔哩哔哩账号 [风痕 di-didi--](https://space.bilibili.com/386916237)
 - 关注我的 Github 账号 [hughfenghen](https://github.com/hughfenghen)
+- 关注我的 Twitter / X 账号 [风痕](https://x.com/hughfenghen)
 
 ## 恰饭
 

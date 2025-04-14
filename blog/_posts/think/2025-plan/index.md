@@ -20,7 +20,7 @@ _大家好，我是风痕，在我的[博客首页](https://fenghen.me)可以看
 
 <img src="./image-1.png" width="400">
 
-当然，最终图片效果还得看 OpenAI。
+当然，最终图片效果还得看 OpenAI，非常自然，虽然跟本人不太像。
 
 <img src="./ai_me.png" width="400">
 
@@ -32,6 +32,8 @@ _大家好，我是风痕，在我的[博客首页](https://fenghen.me)可以看
 地点：远程/上海；方向：AI + Web 音视频/工程效率
 
 联系方式：邮箱 `hughfenghen@gmail.com` 微信号 `liujun_fenghen`。
+
+[_商务合作(帅气博主在线接单)_](https://fenghen.me/posts/2025/04/11/business-cooperation/)
 
 ## 输出形式
 
