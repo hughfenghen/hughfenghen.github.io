@@ -21,7 +21,7 @@
       </footer>
     </article>
     <Toc />
-    <div>share</div>
+    <Share />
   </div>
 </template>
 
@@ -30,12 +30,14 @@
 import Toc from '@vuepress/theme-blog/components/Toc.vue'
 import PostMeta from '@vuepress/theme-blog/components/PostMeta.vue'
 import Comment from './Comment.vue'
+import Share from './Share.vue'
 
 export default {
   components: {
     Toc,
     PostMeta,
     Comment,
+    Share,
     Newsletter: () => import('@vuepress/theme-blog/components/Newsletter.vue'),
   },
 }
