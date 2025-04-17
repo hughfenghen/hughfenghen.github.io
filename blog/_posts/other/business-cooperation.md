@@ -8,6 +8,9 @@ date: 2025-04-11
 
 接下来尝试做自由开发者，我擅长的领域是 **Web 音视频、Web 前沿、工程效率**。
 
+如果你有匹配的工作岗位，也欢迎推荐给我，我的意向是  
+地点：远程/上海；方向：AI + Web 音视频/工程效率
+
 ---
 
 我现在主线任务是开发 [**WebAV Pro 版**](https://github.com/WebAV-Tech/WebAV-Pro)，这是我的 [WebAV 开源项目](https://github.com/WebAV-Tech/WebAV)（在浏览器中编辑视频文件）的商业版；  

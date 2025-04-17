@@ -15,8 +15,8 @@
       </header>
       <Content itemprop="articleBody" />
       <footer>
+        <div class="business-cooperation">💗 博主正处于裸辞待业状态，欢迎 <a href="/posts/2025/04/11/business-cooperation/">商务合作</a> 💗</div>
         <Newsletter v-if="$service.email.enabled" />
-        <hr />
         <Comment />
         <hr />
         <RelationPost />
@@ -71,6 +71,11 @@ $wrapper
 
   .post-title
     padding-top 0
+
+.business-cooperation
+  text-align: center
+  padding: 1rem 0
+  background-color: antiquewhite
 
 @media (max-width: $MQMobile)
   .vuepress-blog-theme-content
