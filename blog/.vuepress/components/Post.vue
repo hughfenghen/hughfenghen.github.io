@@ -18,6 +18,8 @@
         <Newsletter v-if="$service.email.enabled" />
         <hr />
         <Comment />
+        <hr />
+        <RelationPost />
       </footer>
     </article>
     <Toc />
@@ -31,6 +33,7 @@ import Toc from '@vuepress/theme-blog/components/Toc.vue'
 import PostMeta from '@vuepress/theme-blog/components/PostMeta.vue'
 import Comment from './Comment.vue'
 import Share from './Share.vue'
+import RelationPost from './RelationPost.vue'
 
 export default {
   components: {
@@ -38,6 +41,7 @@ export default {
     PostMeta,
     Comment,
     Share,
+    RelationPost,
     Newsletter: () => import('@vuepress/theme-blog/components/Newsletter.vue'),
   },
 }
