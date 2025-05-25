@@ -11,6 +11,11 @@ date: 2025-04-11
 如果你有匹配的工作岗位，也欢迎推荐给我，我的意向是  
 地点：远程/上海；方向：AI + Web 音视频/工程效率
 
+我的联系方式如下
+
+- 邮箱：hughfenghen@gmail.com
+- 微信：liujun_fenghen，切记**备注**：合作
+
 ---
 
 我现在主线任务是开发 [**WebAV Pro 版**](https://github.com/WebAV-Tech/WebAV-Pro)，这是我的 [WebAV 开源项目](https://github.com/WebAV-Tech/WebAV)（在浏览器中编辑视频文件）的商业版；  
@@ -27,11 +32,6 @@ date: 2025-04-11
 - 实时沟通，如远程会议进行技术咨询、技术培训、模拟面试，500 元/小时
 - 异步沟通，如微信技术咨询、陪聊，400 元/天
 - 项目外包，价格详聊
-
-我的联系方式如下
-
-- 邮箱：hughfenghen@gmail.com
-- 微信：liujun_fenghen，切记**备注**：合作
 
 ---
 
