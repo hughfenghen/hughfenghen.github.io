@@ -8,9 +8,11 @@
 
 - 微信扫码关注公众号 “风痕 Web 栈”  
   <img src="./qrcode.png" width="200">
-- 关注我的 Github 账号 [hughfenghen](https://github.com/hughfenghen)
-- 关注我的哔哩哔哩账号 [风痕 di-didi--](https://space.bilibili.com/386916237)
-- 关注我的 Twitter / X 账号 [风痕](https://x.com/hughfenghen)
+- 我的 Github 账号 [hughfenghen](https://github.com/hughfenghen)
+- 哔哩哔哩 [风痕 di-didi--](https://space.bilibili.com/386916237)
+- 我的抖音 [风痕](https://www.douyin.com/user/MS4wLjABAAAASb6lc9xC44eab5eXt37M_3_G-OkUBFfNZilTMLz7Txw)  
+  <img src="./douyin.png" width="200">
+- 我的 Twitter / X 账号 [风痕](https://x.com/hughfenghen)
 - 当前博客订阅 RSS <https://fenghen.me/rss.xml>
 
 ## 恰饭
