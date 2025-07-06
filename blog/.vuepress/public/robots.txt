@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://fenghen.me/sitemap.xml
