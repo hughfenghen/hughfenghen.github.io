@@ -6,6 +6,9 @@ date: 2025-08-20
 
 # 互联网“骨干协议” —— BGP
 
+> B 站视频： <https://www.bilibili.com/video/BV19VYfzWETN/>  
+> 抖音视频： <https://v.douyin.com/7Nw9TRdTGDs/>
+
 ## 背景
 
 最近将站点部署在 Cloudflare Pages 上，访问速度不稳定，有时非常慢；  
