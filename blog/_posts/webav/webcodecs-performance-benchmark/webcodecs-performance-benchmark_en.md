@@ -9,6 +9,10 @@ date: 2024-07-27
 
 # WebCodecs Performance and Optimization Insights
 
+_[**ZingAI.video**](https://www.zingai.video) is a video editing tool built with WebCodecs. You can experience the performance of video exporting here._
+
+---
+
 It's been a year and a half since I open-sourced [WebAV][1] and wrote a [series of articles](/tag/WebAV_EN) to help beginners get started with Web audio and video.
 
 I've always had concerns about potential performance gaps between Web platform and Native APP audio/video processing, given that WebCodecs API is proxied through the browser and requires JavaScript for some data processing. The extent of performance overhead wasn't clear.

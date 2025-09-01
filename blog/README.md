@@ -15,13 +15,16 @@
 <a href="https://space.bilibili.com/386916237" target="_blank">我的 哔哩哔哩</a><br>
 <a href="https://x.com/hughfenghen" target="_blank">我的 Twitter / X</a><br>
 
+</p>
+
 <a href="https://fenghen.me/posts/2025/04/11/business-cooperation/" target="_blank" style="display: flex; flex-flow: column;">
   <span>商务合作</span><span style="font-size: 12px;">(帅气博主在线接单)</span>
 </a>
 
+<a href="https://www.zingai.video/" target="_blank" style="display: flex; flex-flow: column; margin-top: 10px;">
+  <span>ZingAI.video 字影</span><span style="font-size: 12px;">在线视频剪辑</span>
+</a>
 <!-- <a href="https://t.zsxq.com/GlrxC" target="_blank">知识星球</a>（技术问答） -->
-
-</p>
 
 </div>
 

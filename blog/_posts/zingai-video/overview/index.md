@@ -8,7 +8,7 @@ date: 2025-09-01
 
 # ZingAI.video 在线口播视频剪辑
 
-_[**ZingAI.video 字影**](https://www.zingai.video)是采用前沿 Web 技术构建的口播视频剪辑工具，正在公测，欢迎体验_
+_[**ZingAI.video 字影**](https://www.zingai.video)是采用前沿 Web 技术构建的口播视频剪辑工具，欢迎体验_
 
 ## 背景
 

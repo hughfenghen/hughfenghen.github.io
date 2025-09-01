@@ -9,6 +9,10 @@ date: 2024-07-27
 
 # WebCodecs 性能表现及优化思路
 
+_[**ZingAI.video 字影**](https://www.zingai.video)是采用 WebCodecs 构建的视频剪辑工具，可在这里体验视频导出的性能_
+
+---
+
 笔者开源 [WebAV][1] 已经一年半，还写了[系列文章](/tag/WebAV)帮助初学者入门 Web 音视频。
 
 之前一直隐隐担心在 Web 平台处理音视频与 Native APP 会有明显性能差距，因为 WebCodecs API 毕竟被浏览器代理了一层，且一些数据处理需要 js 配合，不确定有多大的性能损耗。

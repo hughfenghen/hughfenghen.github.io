@@ -8,6 +8,10 @@ date: 2024-10-28
 
 # Pure Web Video Editing
 
+_[**ZingAI.video**](https://www.zingai.video) is a product that uses pure Web technology to implement editing functions. Welcome to try it._
+
+---
+
 ## Introduction
 
 The WebCodecs API provides audio and video codec capabilities for the Web platform, making it possible to implement efficient, professional video editing products on the Web platform (browser, Electron).

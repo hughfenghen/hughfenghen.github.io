@@ -8,6 +8,8 @@ date: 2024-10-28
 
 # 纯 Web 视频剪辑
 
+_[**ZingAI.video 字影**](https://www.zingai.video)是采用纯 Web 技术实现剪辑功能的产品，欢迎体验_
+
 ## 前言
 
 WebCodecs API 为 Web 平台提供了音视频编解码能力，使得在 Web 平台（网页、Electron）上实现高效、专业的视频剪辑成品成为可能。
