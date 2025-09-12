@@ -6,7 +6,7 @@ date: 2025-09-09
 
 # 终端开发环境搭建
 
-都进入 **AI 时代**了啊啊啊啊，为什么还要花时间折腾原始的开发工具？  
+都进入 **AI 时代**了啊啊啊啊，为什么还要花时间折腾上古时代的开发工具？  
 因为太好玩，实在忍不住。。。
 
 ## Yazi
@@ -198,8 +198,6 @@ config.keys = {
 	{ key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
 	{ key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
 }
--- 键盘相关配置
-config.enable_csi_u_key_encoding = true
 
 return config
 ```
@@ -210,7 +208,7 @@ return config
   - 安装并配置字体，字体规格要包含有粗体、斜体
     - 推荐访问 [download nerdfonts](https://www.nerdfonts.com/font-downloads) 然后搜索 `JetBrainsMono Nerd Font`
   - 使用 `font_with_fallback` 配置回退字体，回退字体选择一个包含中文粗体、斜体的字体，否则中文样式显示不全
-- option + 方向键无用
+- option + 方向键无法跳跃词汇
   ```base
   infocmp -1x tmux-256color > tmux-256color.info
   echo "        smxx=\E[9m," >> tmux-256color.info
@@ -227,15 +225,15 @@ return config
 虽然 VSCode + Vim 方案键盘能完成大部分编辑操作，但基于 GUI 的交互设计总是不可避免地要使用鼠标；  
 全键盘完成所有操作（编码、git、文件管理）是真的丝滑，目前只剩下 Web 开发的 chrome 调试环节不得不使用鼠标，就真的没办法了。  
 
-另外，没想到在终端绑定（CMD Option）快捷键这么麻烦，有解决办法（*了解 `CSI u` 协议*）；  
-但我选择先放弃原有的快捷键习惯，将空格作为 `<leader>` 然后在配合字符键也挺不错。
+另外，没想到在终端绑定（CMD Option）快捷键这么麻烦，
+最终选择先放弃原有的快捷键习惯，将空格作为 `<leader>` 然后在配合字符键也挺不错，键盘方案终于也跨平台了 :P
 
 这套方案实在没什么吹的，特别是 AI 时代手动编写代码占比只会越来越少，配置终端环境很可能算是"**没苦硬吃**"。。。  
-对我来说，花时间折腾这些工具，解决碰到各种问题、探索各种可能性，像玩游戏一样解压。
+对我来说，花时间折腾这些工具，解决碰到各种问题、探索各种可能性，有点上头像玩游戏一样解压。
 可能是最近开发压力太大了。 🐶
 
-既然都切换到终端开发环境了，是不是该试试在 Android 手机中写代码，这样异地外出就不用带电脑了？  
-先消停下，后面有空再折腾吧，这次“浪费”的时间太多了。 🐶
+既然都切换到终端开发环境了，是不是该试试在 Android 手机中写代码，这样外出异地就不用带电脑了？  
+还是先消停下，后面有空再折腾吧，这次“浪费”的时间太多了。 🐶
 
 *PS：NeoVim render-markdown 插件渲染效果真漂亮*
 
