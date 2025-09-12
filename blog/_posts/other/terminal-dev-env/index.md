@@ -29,7 +29,7 @@ date: 2025-09-09
 配置这几个插件平时基本够用了，学习快捷键、适应它的交互逻辑还是挺非常费时间。
 
 - **projects**  
-  - 管理项目，你可能需要打开一组文件夹，在重新进入 yazi 是重新加载这一组文件夹 
+  - 管理项目，你可能需要打开一组文件夹，在重新进入 yazi 时重新加载这一组文件夹 
 - **smart-enter**
   - 统一让 `l` 键打开文件、进入文件夹
 - **system-clipboard**
@@ -108,7 +108,7 @@ yazi which-key lazygit render-markdown
   - 【必备】自动切换中英文输入法
 - **markdown**
   - 快捷操作 Markdown
-- **multcursor**
+- **multicursor**
   - 多光标批量编辑操作
 - **render-markdown**
   - 在编辑器中渲染 Markdown，超级漂亮
@@ -138,7 +138,7 @@ yazi which-key lazygit render-markdown
 - **yazi**
   - 文件管理，建议禁用内置的 `neo-tree` 插件 
 - **lazygit**
-  - Git 操作，插件一内置需要独立安装 `lazygit` 命令行
+  - Git 操作，插件已经内置需要独立安装 `lazygit` 命令行
 
 ### 额外配置
 
@@ -171,7 +171,7 @@ local config = {}
 config.term = "wezterm"
 
 -- 一定要先安装 JetBrainsMono Nerd Font 字体
--- 配置 fallabck "PingFang SC" 也是必要的，否则默认字体无法显示中文斜体、加粗、删除样式
+-- 配置 fallback "PingFang SC" 也是必要的，否则默认字体无法显示中文斜体、加粗、删除样式
 config.font = wezterm.font_with_fallback({
 	"JetBrainsMono Nerd Font",
 	"PingFang SC",
@@ -239,6 +239,6 @@ return config
 
 *PS：NeoVim render-markdown 插件渲染效果真漂亮*
 
-![preview-render-markdown](./preview-render-mark.png)
+![preview-render-markdown](./preview-render-markdown.png)
 
 
