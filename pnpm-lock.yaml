@@ -24,6 +24,9 @@ importers:
 
   .:
     devDependencies:
+      '@vssue/api-github-v4':
+        specifier: ^1.4.7
+        version: 1.4.7
       '@vuepress/plugin-blog':
         specifier: ^1.9.4
         version: 1.9.4(chalk@4.1.2)(commander@2.20.3)(esm@3.2.25)(vuepress@1.9.10(@vue/compiler-sfc@3.5.17)(hogan.js@3.0.2)(lodash@4.17.21))
@@ -732,6 +735,9 @@ packages:
 
   '@vssue/api-github-v3@1.4.7':
     resolution: {integrity: sha512-ukhOnzGQarmj606ZiYN9iCMyr3EJS3YEPdZXX+zBLVsuzjTL5ffLbbpXsEtPBh2XNt3Ig3XdzCvA9bVXhwy4mQ==}
+
+  '@vssue/api-github-v4@1.4.7':
+    resolution: {integrity: sha512-Tk4ZYyX03RwoVy29RW1+ZdqESzX/gLsN9010Eaq0WT/2pNV+8quyT9TMypIZp6rZCGNYTSdxB8ET4IiF7SLKXQ==}
 
   '@vssue/utils@1.4.7':
     resolution: {integrity: sha512-e94karP4szmSNT2L4bgIT+VGToBSY3bdlgmGcomcD2qCXTWDK4krSOYm8ES+BhHTcmCvzQYU/xenHR4tzrythA==}
@@ -5925,6 +5931,13 @@ snapshots:
       source-map: 0.6.1
 
   '@vssue/api-github-v3@1.4.7':
+    dependencies:
+      '@vssue/utils': 1.4.7
+      axios: 1.12.2
+    transitivePeerDependencies:
+      - debug
+
+  '@vssue/api-github-v4@1.4.7':
     dependencies:
       '@vssue/utils': 1.4.7
       axios: 1.12.2

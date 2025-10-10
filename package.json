@@ -8,6 +8,7 @@
     "deploy": "pnpm deploy-github && pnpm deploy-coding"
   },
   "devDependencies": {
+    "@vssue/api-github-v4": "^1.4.7",
     "@vuepress/plugin-blog": "^1.9.4",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "@vuepress/theme-blog": "^2.3.3",
