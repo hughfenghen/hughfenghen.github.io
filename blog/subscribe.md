@@ -10,6 +10,7 @@
   <img src="./qrcode.png" width="200">
 - 我的 Github 账号 [hughfenghen](https://github.com/hughfenghen)
 - 哔哩哔哩 [风痕 di-didi--](https://space.bilibili.com/386916237)
+- 小红书 [风痕](https://www.xiaohongshu.com/user/profile/58f98a546a6a694e75b3495b)
 - 我的抖音 [风痕](https://www.douyin.com/user/MS4wLjABAAAASb6lc9xC44eab5eXt37M_3_G-OkUBFfNZilTMLz7Txw)  
   <img src="./douyin.png" width="200">
 - 我的 Twitter / X 账号 [风痕](https://x.com/hughfenghen)
