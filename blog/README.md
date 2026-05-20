@@ -21,9 +21,9 @@
   <span>商务合作</span><span style="font-size: 12px;">(帅气博主在线接单)</span>
 </a>
 
-<a href="https://www.zingai.video/" target="_blank" style="display: flex; flex-flow: column; margin-top: 10px;">
-  <span>ZingAI.video 字影</span><span style="font-size: 12px;">在线视频剪辑</span>
-</a>
+<!-- <a href="https://www.zingai.video/" target="_blank" style="display: flex; flex-flow: column; margin-top: 10px;"> -->
+<!--   <span>ZingAI.video 字影</span><span style="font-size: 12px;">在线视频剪辑</span> -->
+<!-- </a> -->
 <!-- <a href="https://t.zsxq.com/GlrxC" target="_blank">知识星球</a>（技术问答） -->
 
 </div>
@@ -47,8 +47,10 @@
   整理 Web 音视频相关资料，帮助前端开发者入门/进阶音视频领域
 - <a href="https://github.com/hughfenghen/opfs-tools/">opfs-tools</a> <a href="https://github.com/hughfenghen/opfs-tools/"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/opfs-tools" style="max-width: 100%; vertical-align: text-bottom;"></a>  
   简单、高性能、完备的**文件系统 API**，在浏览器中运行
-- <a href="https://github.com/hughfenghen/opfs-finder/">opfs-finder</a> <a href="https://github.com/hughfenghen/opfs-finder"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/opfs-finder" style="max-width: 100%; vertical-align: text-bottom;"></a>  
-  使用 AI + OPFS 在浏览器中实现 MacOS Finder (文件管理器)
+- <a href="https://fenghen.me/dimcut/">Dimcut</a> <a href="https://github.com/hughfenghen/dimcut/"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/dimcut" style="max-width: 100%; vertical-align: text-bottom;"></a>  
+  创新交互设计：**二维时间轴+文字轨**的网页视频剪辑产品
+<!-- - <a href="https://github.com/hughfenghen/opfs-finder/">opfs-finder</a> <a href="https://github.com/hughfenghen/opfs-finder"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/opfs-finder" style="max-width: 100%; vertical-align: text-bottom;"></a>   -->
+<!--   使用 AI + OPFS 在浏览器中实现 MacOS Finder (文件管理器) -->
 
 ---
 
