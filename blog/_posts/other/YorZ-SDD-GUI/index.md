@@ -115,7 +115,10 @@ YorZ 致力于提升开发者与 Agent 的协同效率，特意对并发启动�
 
 _欢迎加入交流群：QQ 群 `224778869`_
 
-<img src="./qq-group.png" width="200px"> <img src="./wechat-group.png" width="200px">
+<img src="./qq-group.png" width="200px">
+
+微信群：  
+<img src="./wechat-group.png" width="200px">
 
 [1]: https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html
 [2]: https://github.com/hughfenghen/YorZ
