@@ -33,7 +33,7 @@ _大家好，我是风痕，在我的[博客首页](https://fenghen.me)可以看
 
 联系方式：邮箱 `hughfenghen@gmail.com` 微信号 `liujun_fenghen`。
 
-[_商务合作(帅气博主在线接单)_](https://fenghen.me/posts/2025/04/11/business-cooperation/)
+[_商务合作_](https://fenghen.me/posts/2025/04/11/business-cooperation/)
 
 ## 输出形式
 

@@ -26,6 +26,6 @@
 [Paypal.me](https://paypal.me/hughfenghen)
 
 _若需技术交流，打赏时备注微信昵称，我会加你_  
-_也欢迎[商务合作（帅气博主在线接单）](https://fenghen.me/posts/2025/04/11/business-cooperation/)_
+_也欢迎[合作](https://fenghen.me/posts/2025/04/11/business-cooperation/)_
 
 </div>

@@ -18,7 +18,7 @@
 </p>
 
 <a href="https://fenghen.me/posts/2025/04/11/business-cooperation/" target="_blank" style="display: flex; flex-flow: column;">
-  <span>商务合作</span><span style="font-size: 12px;">(帅气博主在线接单)</span>
+  <span>商务合作</span>
 </a>
 
 <!-- <a href="https://www.zingai.video/" target="_blank" style="display: flex; flex-flow: column; margin-top: 10px;"> -->
@@ -41,6 +41,8 @@
 
 我正在维护的开源项目，欢迎 star、follow me ：）
 
+- <a href="https://github.com/hughfenghen/yorz">YorZ</a> <a href="https://github.com/hughfenghen/yorz"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/yorz" style="max-width: 100%; vertical-align: text-bottom;"></a>  
+  为 Spec 驱动开发工作流定制 UI 并提供方案可视化，降低开发者信息过载，释放 Agent 潜力
 - <a href="https://github.com/WebAV-Tech/WebAV/">WebAV</a> <a href="https://github.com/WebAV-Tech/WebAV/"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/WebAV-Tech/WebAV" style="max-width: 100%; vertical-align: text-bottom;"></a>  
   基于 WebCodecs 构建的 SDK，在 Web 平台**创建/编辑视频文件**
 - <a href="https://github.com/hughfenghen/WebAV-KnowledgeGraph">Web 音视频知识图谱</a> <a href="https://github.com/hughfenghen/WebAV-KnowledgeGraph"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/WebAV-KnowledgeGraph" style="max-width: 100%; vertical-align: text-bottom;"></a>  
@@ -48,9 +50,9 @@
 - <a href="https://github.com/hughfenghen/opfs-tools/">opfs-tools</a> <a href="https://github.com/hughfenghen/opfs-tools/"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/opfs-tools" style="max-width: 100%; vertical-align: text-bottom;"></a>  
   简单、高性能、完备的**文件系统 API**，在浏览器中运行
 - <a href="https://fenghen.me/dimcut/">Dimcut</a> <a href="https://github.com/hughfenghen/dimcut/"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/dimcut" style="max-width: 100%; vertical-align: text-bottom;"></a>  
-  创新交互设计：**二维时间轴+文字轨**的网页视频剪辑产品
-<!-- - <a href="https://github.com/hughfenghen/opfs-finder/">opfs-finder</a> <a href="https://github.com/hughfenghen/opfs-finder"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/opfs-finder" style="max-width: 100%; vertical-align: text-bottom;"></a>   -->
-<!--   使用 AI + OPFS 在浏览器中实现 MacOS Finder (文件管理器) -->
+   创新交互设计：**二维时间轴+文字轨**的网页视频剪辑产品
+  <!-- - <a href="https://github.com/hughfenghen/opfs-finder/">opfs-finder</a> <a href="https://github.com/hughfenghen/opfs-finder"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/hughfenghen/opfs-finder" style="max-width: 100%; vertical-align: text-bottom;"></a>   -->
+  <!--   使用 AI + OPFS 在浏览器中实现 MacOS Finder (文件管理器) -->
 
 ---
 
