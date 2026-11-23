@@ -1,7 +1,7 @@
 ---
 tags:
   - think
-  - AI 创作
+  - AI
 date: 2025-03-12
 ---
 
