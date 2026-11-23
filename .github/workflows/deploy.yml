@@ -30,7 +30,9 @@ jobs:
       - name: set pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          # 与本机 / pnpm-lock.yaml 生成时使用的 pnpm 版本保持一致（需 >= 12，
+          # 否则 pnpm 9/10 会因 overrides 或 workspace 配置报错）
+          version: 12.21.0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
